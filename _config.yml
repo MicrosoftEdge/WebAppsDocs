@@ -1,0 +1,18 @@
+# Site settings
+baseurl: "/content"
+url: "http://seksenov.github.io/content"
+repositoryurl: "https://github.com/seksenov/content/blob/develop/"
+landingurl: "/content/en-US/win10/CreateHWA.htm"
+hacksterurl: "http://microsoft.hackster.io"
+hardwareurl: "http://go.microsoft.com/fwlink/p/?linkID=532948"
+signupurl: "https://www.windowsondevices.com/signup.aspx"
+downloadurl: "http://connect.microsoft.com/windowsembeddedIoT/Downloads/"
+
+
+# Build settings
+markdown: kramdown
+markdown_ext:  markdown,mkdown,mkdn,mkd,md
+permalink: pretty
+highlighter: pygments
+safe: true
+lsi: false

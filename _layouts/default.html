@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+<body class="default-body">
+    <div class="chrome-header-wrapper">
+        {% include chrome-header-base.html %}
+    </div>
+
+    <div class="default-main">
+        <div class="row">
+            <div class="default-max-width">
+                <div style="margin-top: 20px; border-bottom: 1px solid #efefef;">
+                
+                </div>
+                <div class="content-container col-md-12">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chrome-header-wrapper">
+        {% include footer.html %}
+    </div>
+    {% include script.html %}
+    {% include chrome-footer-base.html %}
+</body>
+</html>

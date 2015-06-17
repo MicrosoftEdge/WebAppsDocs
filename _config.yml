@@ -1,8 +1,8 @@
 # Site settings
-baseurl: "/content"
-url: "http://seksenov.github.io/content"
+baseurl: "/WebAppsDocs"
+url: "http://MicrosoftEdge.github.io/WebAppsDocs"
 repositoryurl: "https://github.com/seksenov/content/blob/develop/"
-landingurl: "/content/en-US/win10/CreateHWA.htm"
+landingurl: "/WebAppsDocs/en-US/win10/CreateHWA.htm"
 hacksterurl: "http://microsoft.hackster.io"
 hardwareurl: "http://go.microsoft.com/fwlink/p/?linkID=532948"
 signupurl: "https://www.windowsondevices.com/signup.aspx"

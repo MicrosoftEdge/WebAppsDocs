@@ -38,7 +38,7 @@ Learn how to quickly create a Hosted Web App for Windows 10 starting with your w
 	* Go ahead and delete the local HTML, JS and CSS resources. All you'll need to keep is the appx manifest (Where you configure the app) and the image resources to be displayed in the store, start menu and on the taskbar.
 
 	<br>
-	**Delete hihglighted folders/files**
+	**Delete highlighted folders/files**
 	<img src="{{site.baseurl}}/images/CreateHWA/DeletePackagedContent.PNG">
 
 	<br>

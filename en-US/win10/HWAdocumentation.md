@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Create a Hosted Web App
-permalink: /en-US/win10/CreateHWA.htm
+title: UWP Bridge for web apps - Accessing Windows features
+permalink: /en-US/win10/CreateHWA/documentation.htm
 lang: en-US
 ---
 
@@ -53,27 +53,3 @@ To enable this, you need to specify the `(WindowsRuntimeAccess="<<level>>")` att
 
 Here is an example rule type:
 
-
-----------
-**Create a Blank JS App**
-	* At minimum you will need Visual Studio 2015 RC released for //BUILD with the SDK installed
-	* Launch Visual Studio
-	* Click "File -> New Project" and choose "JavaScript -> Windows -> Windows Universal -> Blank App (Windows Universal)" 
-
-	<br>
-	**Choose the blank JavaScript Template**
-	<img src="{{site.baseurl}}/images/CreateHWA/BlankJSTemplate.PNG">
-
-	<br>
-
-	**Delete highlighted folders/files**
-	<img src="{{site.baseurl}}/images/CreateHWA/DeletePackagedContent.PNG">
-
-	<br>
-
-	<br>
-	**Appx Manifest Additions**
-	<img src="{{site.baseurl}}/images/CreateHWA/ManifestAddition.PNG">
-
-	<br>
-	

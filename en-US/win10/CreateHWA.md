@@ -10,8 +10,8 @@ lang: en-US
 Learn how to quickly create a Universal Windows Platform (UWP) app using Project Westminster for Windows 10 starting with your website URL. All you'll need to do is add your site URL to a Windows app manifest, set your image resources to use for app tiles and store discovery and package it up. Continue by adding native platform integration from JavaScript hosted on your servers in a matter of minutes. 
 
 ##What you need
-1. **Windows 10 Insider Preview** - make sure to install the Windows 10 SDK
-2. **Visual Studio RC 2015** - to build the appx package that you submit to the store
+1. [**Windows 10 Insider Preview**](https://insider.windows.com) - make sure to install the Windows 10 SDK
+2. [**Visual Studio RC 2015**](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx) - to build the appx package that you submit to the store
 
 ##Follow these steps to convert a Website into an Web App on Windows
 

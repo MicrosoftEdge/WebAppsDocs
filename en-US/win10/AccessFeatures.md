@@ -1,7 +1,7 @@
 ---
 layout: default
 title: UWP Bridge for web apps - Accessing Windows features
-permalink: /en-US/win10/documentation.htm
+permalink: /en-US/win10/features.htm
 lang: en-US
 ---
 

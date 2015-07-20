@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Windows Web Apps - UWP Bridge for web apps - Accessing Windows features</title>
+    <title>Windows Web Apps - UWP Bridge for web apps</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Everything you need to know about Hosted Web Apps on Windows, part of the Universal Windows Apps family with full access to platform APIs from remote JavaScript.">
     <meta name="keywords" content="Windows Web Apps, Hosted Web Apps, Windows Web Applications, Web Apps, JavaScript Apps, HTML Apps, HTML 5, Windows 10, Windows Universal, Windows Universal Apps, Windows Platform, Universal Windows Apps, Universal Windows APIs, UWP, Project Westminster, Westminster, Windows Apps, Windows 10 Apps, Windows App Building, Apps, Web, HTML5">
@@ -855,135 +855,293 @@
                 
                 </div>
                 <div class="content-container col-md-12">
-                    <h1 id="uwp-bridge-for-web-apps---accessing-windows-features">UWP Bridge for web apps - Accessing Windows features</h1>
+                    <div class="row section-heading">
+    <div class="col-md-6">
+        <h1>Docs and Samples</h1>
+        <p>Download code samples to get started with Windows on Devices. Also, read docs to help you use tools and resources to help you develop.</p>
+        <br />
+        <h4>Did you set up your environment?</h4>
+        <p>We assume you already <a href="/WebAppsDocs/en-US/GetStarted.htm">set up your environment</a>, have a working Visual Studio and have a device running Windows IoT Core (MinnowBoard Max, Raspberry Pi 2, or VM).</p>
+        <br />
+        <h4>Questions/Suggestions</h4>
+        <p>Remember, you can always send <a href="/WebAppsDocs/en-US/Community.htm#contact">contact us</a> for help and suggestions!</p>
+    </div>
+    <div class="col-md-6">
+        <div class="downloads-image"></div>
+    </div>
+</div>
+<div class="row section-heading">
+    <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#first" aria-controls="first" role="tab" data-toggle="tab"><h3>Docs and Tutorials</h3></a></li>
+            <li role="presentation"><a href="#second" aria-controls="second" role="tab" data-toggle="tab"><h3>Samples</h3></a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="first">
+               <div class="row section-heading">
+                    <div class="col-md-3">
+                        <h4>On-Device Command-line Utilities</h4>
+                        <p>A set of tools available on your device to help you configure a slew of options</p>
+                        <a href="/WebAppsDocs/en-US/win10/tools/CommandLineUtils.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Windows 10 IoT Core Insider Preview Porting Tool</h4>
+                        <p>A tool for helping you port your existing Win32 and Windows CE applications to Windows 10 IoT Core</p>
+                        <a href="/WebAppsDocs/en-US/win10/tools/IoTAPIPortingTool.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Using PowerShell</h4>
+                        <p>Allows Remote Administration and Configuration so that you can remotely configure and manage any Windows IoT Core device</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/PowerShell.htm">Learn More</a>
+                    </div>
+					<div class="col-md-3">  
+						<h4>Using SSH</h4>  
+						<p>Allows Remote Administration and Configuration of your Windows IoT Core device over SSH</p>  
+						<a href="/WebAppsDocs/en-US/win10/samples/SSH.htm">Learn More</a>  
+					</div>
+                </div>
+                <div class="row section-heading">
+					<div class="col-md-3">
+                        <h4>Hardware Pin Mappings</h4>
+                        <p>Pinout and interfacing information for GPIO, SPI, and I2C</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/PinMappingsRPi2.htm">Raspberry Pi 2 Pinout</a><br />
+						<a href="/WebAppsDocs/en-US/win10/samples/PinMappingsMBM.htm">MinnowBoard Max Pinout</a><br />
+                    </div>
+                    <div class="col-md-3">
+                        <h4>AllJoyn Connectivity</h4>
+                        <p>Learn more about AllJoyn and explore the capabilities of the AllJoyn Device System Bridge with Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/AllJoyn.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Unavailable Universal APIs</h4>
+                        <p>Windows IoT Core is a work in progress.  Here are the UWP APIs that have not been implemented yet on our platform.</p>
+                        <a href="/WebAppsDocs/en-US/win10/UnavailableApis.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Compatible Peripheral USB Devices</h4>
+                        <p>Find a list of USB devices compatible with Window 10 IoT Core devices</p>
+                        <a href="/WebAppsDocs/en-US/win10/Peripherals.htm">Learn More</a>
+                    </div>
+                </div>
+                <div class="row section-heading">
+				    <div class="col-md-3">
+                        <h4>Using WINDBG</h4>
+                        <p>Use WINDBG to debug</p>
+                        <a href="/WebAppsDocs/en-US/win10/Windbg.htm">Learn More</a>
+                    </div>
+    
+					<div class="col-md-3">
+                        <h4>Glossary</h4>
+                        <p>A list of commonly used phrases and their meanings</p>
+                        <a href="/WebAppsDocs/en-US/win10/Glossary.htm">Learn More</a>
+                    </div>
+					<div class="col-md-3">
+                        <h4>Web-based Device Management</h4>
+                        <p>Get advanced diagnostics about your machine from the web</p>
+                        <a href="/WebAppsDocs/en-US/win10/tools/Webb.htm">Learn More</a>
+                    </div>
+                </div>
+                <div class="row section-heading">
+                    <div class="col-md-3">
+                        <h4>Headless UWP Apps</h4>
+                        <p>Windows IoT Core can either be in headed or headless mode. The difference is the presence or absence of any form of UI</p>
+                        <a href="/WebAppsDocs/en-US/win10/HeadlessMode.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Access your files using FTP</h4>
+                        <p>Access the files on your device using FTP</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/FTP.htm">Learn More</a>
+                    </div>
+					<div class="col-md-3">
+                        <h4>Access your files using Windows File Sharing</h4>
+                        <p>Access the files on your device using Windows file sharing</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/SMB.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Placeholder for alignment -->
+                    </div>
+                </div>
+            </div>
 
-<p>You web app can have full access to the <strong>Universal Windows Platform (UWP)</strong>, including calling Windows Runtime APIs directly from script hosted on a server, leveraging Cortana integration, and using an online authentication provider. Hybrid apps are also supported as you can include local code to be called from the hosted script and manage app navigation between remote and local pages.</p>
+            <div role="tabpanel" class="tab-pane" id="second">
+                <div class="row section-heading">
+                    <h2>Windows 10 IoT Core Insider Preview</h2>
+                </div>
+                <div class="row section-heading">
+                    <div class="col-md-3">
+                        <h4>Hello, World!</h4>
+                        <p>Create a 'Hello World' application that runs on devices running Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/HelloWorld.htm">Hello World (C#)</a><br />
+						<a href="/WebAppsDocs/en-US/win10/samples/Python.htm">Hello World (Python)</a><br />
+						<a href="/WebAppsDocs/en-US/win10/samples/NodejsWU.htm">Hello World (Node.js)</a><br />
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Hello Blinky (Headless App)</h4>
+                        <p>Create an app with no UI that toggles an LED on devices running Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/BlinkyHeadless.htm">Blinky (C#)</a><br />
+						<a href="/WebAppsDocs/en-US/win10/samples/PythonBlinky.htm">Blinky (Python)</a><br />
+                    </div>
+                    <div class="col-md-3">
+                        <h4>UI Blinky App</h4>
+                        <p>Create a UI-based app that toggles an LED on devices running Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/Blinky.htm">UI Blinky (C#/C++)</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Blinky Webserver</h4>
+                        <p>Create a Webserver app that controls an LED on devices running Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/BlinkyWebServer.htm">Webserver Blinky (C#)</a><br />
+						<a href="/WebAppsDocs/en-US/win10/samples/PythonBlinkyServer.htm">Webserver Blinky (Python)</a><br />
+						<a href="/WebAppsDocs/en-US/win10/samples/NodejsWUBlinky.htm">Webserver Blinky (Node.js)</a><br />
+                    </div>
+                </div>
 
-<p><strong>Project Westminster</strong> enables you to get started.</p>
+                <div class="row section-heading">
+                    <div class="col-md-3">
+                        <h4>Console App</h4>
+                        <p>Create a console app that monitors memory usage on devices running Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/ConsoleApp.htm">Console App (C++)</a><br />
+                        <a href="/WebAppsDocs/en-US/win10/samples/Nodejs.htm">Console App (Node.js)</a><br />
+                    </div>
+                    <div class="col-md-3">
+                        <h4>I2C/SPI Accelerometer</h4>
+                        <p>Create an app leveraging I2C or SPI on devices running Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/I2CAccelerometer.htm">I2C Accelerometer (C#)</a><br />
+						<a href="/WebAppsDocs/en-US/win10/samples/SPIAccelerometer.htm">SPI Accelerometer (C#)</a><br />
+                    </div>
+                    <div class="col-md-3">
+                        <h4>SPI Display</h4>
+                        <p>Create an app using SPI on devices running Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/SPIDisplay.htm">SPI Display (C#)</a>
+                    </div>
+					<div class="col-md-3">
+                        <h4>AllJoyn Connectivity</h4>
+                        <p>Learn more about AllJoyn and explore the capabilities of the AllJoyn Device System Bridge with Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/AllJoyn.htm">Learn More</a>
+                    </div>
+                </div>
 
-<h2 id="get-started">Get started</h2>
-<ol>
-  <li>Sign up for the <a href="https://insider.windows.com"><strong>Windows 10 Insider Preview</strong></a> to install the Windows 10 SDK (Software Development Kit).</li>
-  <li>Install <a href="https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx"><strong>Visual Studio RC 2015</strong></a> to build the appx package that you submit to the store.</li>
-  <li>Follow the steps to <a href="../CreateHWA.md">convert your website into an web app on Windows</a>.</li>
-</ol>
+                <div class="row section-heading">
+					<div class="col-md-3">
+                        <h4>Driver Sample</h4>
+                        <p>Create and interact with a universal driver on devices running Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/DriverLab.htm">Driver Sample (C++)</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>I2C Port Expander (RPi2 Basic Kit Lab)</h4>
+                        <p>Raspberry Pi 2 Basic Kit Lab - Create an app that uses the Raspberry Pi 2 I2C bus to communicate with a port expander.</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/I2CPortExpander.htm">I2C Port Expander (C#)</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Serial-In, Parallel-Out Shift Register (RPi2 Basic Kit Lab)</h4>
+                        <p>Raspberry Pi 2 Basic Kit Lab - Create an app that uses the Raspberry Pi 2 to control LEDs using a serial-in, parallel-out shift register.</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/ShiftRegisterSample.htm">Shift Register (C#)</a>
+                    </div>
+                   <div class="col-md-3">
+                        <h4>RGB LED (RPi2 Basic Kit Lab)</h4>
+                        <p>Raspberry Pi 2 Basic Kit Lab - Create an app that uses the Raspberry Pi 2 to toggle an RGB LED.</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/RGBLED.htm">RGB LED (C#)</a>
+                    </div>
+                </div>
 
-<p>Once your web app has been packaged for the Universal Windows Platform following the steps above, learn more about accessing platform features below.</p>
+                <div class="row section-heading">
+                    <div class="col-md-3">
+                        <h4>Push Button(RPi2 Basic Kit Lab)</h4>
+                        <p>Raspberry Pi 2 Basic Kit Lab - Create an app that uses the Raspberry Pi 2 to read the status of a Push Button and control an LED.</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/PushButton.htm">Push Button (C#)</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Potentiometer Sensor Sample (RPi2 Basic Kit Lab)</h4>
+                        <p>Raspberry Pi 2 Basic Kit Lab - A analog sensor is connected to RaspBerry Pi through ADC converter and digital output data is displayed through Monitor and LED </p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/Potentiometer.htm">Potentiometer Sensor Sample (C#)</a>
+                    </div>
+                   <div class="col-md-3">
+                        <h4>GpioTestTool (Console)</h4>
+                        <p>This simple command line utility shows how to use the Gpio WinRT APIs from standard C++.</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/GpioTestTool.htm">GpioTestTool (C++)</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>I2cTestTool (Console)</h4>
+                        <p>This simple utility shows how to use C++/CX in command line programs.</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/I2cTestTool.htm">I2cTestTool (C++)</a>
+                    </div>
+                </div>
+                
+                <div class="row section-heading">
+                    <div class="col-md-3">
+                        <h4>SpiTestTool (Console)</h4>
+                        <p>Write and read from SPI devices on the command line.</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/SpiTestTool.htm">SpiTestTool (C++)</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Express Node.js App (UWP)</h4>
+                        <p>Create an Express Node.js app that runs on devices running Windows 10 IoT Core Insider Preview</p>
+                        <a href="/WebAppsDocs/en-US/win10/samples/NodejsWUExpress.htm">Express (Node.js)</a>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Placeholder for alignment -->
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Placeholder for alignment -->
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Placeholder for alignment -->
+                    </div>
+                </div>
 
-<h2 id="setting-application-content-uri-rules-acurs">Setting Application Content URI Rules (ACURs)</h2>
-<p>You can define which URLs your hosted web app can and cannot include. You do this by setting Application Content URI Rules (ACURs) in the app package manifest. Your rules should include your app’s start page and any other pages you want included as app pages. Optionally, you can exclude specific URLs, too.</p>
+                <div class="row section-heading">
+                    <h2>Previous Version of Windows</h2>
+                </div>
+                <div class="row section-heading">
+                    <div class="col-md-3">
+                        <h4>Hello Blinky for Galileo</h4>
+                        <p>The Windows IoT Platform that runs on devices like Intel Galileo</p>
+                        <a href="/WebAppsDocs/en-US/win8/samples/HelloBlinky.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>TX/RX for Galileo</h4>
+                        <p>State of the art IDE, tools and services that you can use to create great IoT apps</p>
+                        <a href="/WebAppsDocs/en-US/win8/samples/TXRX.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>UART for Galileo</h4>
+                        <p>Provides an integrated development environment for creating efficient high quality drivers for devices running Windows 8.1</p>
+                        <a href="/WebAppsDocs/en-US/win8/samples/UART.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>RGB Pixel for Galileo</h4>
+                        <p>Provides an integrated development environment for creating efficient high quality drivers for devices running Windows 8.1</p>
+                        <a href="/WebAppsDocs/en-US/win8/samples/RGBPixel.htm">Learn More</a>
+                    </div>
+                </div>
 
-<p>There are several ways to specify a URL match in your rules:</p>
+                <div class="row section-heading">
+                    <div class="col-md-3">
+                        <h4>Weather Shield Sensors for Galileo</h4>
+                        <p>The Windows IoT Platform that runs on devices like Intel Galileo</p>
+                        <a href="/WebAppsDocs/en-US/win8/samples/WeatherShieldSensors.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>OneNote API using http for Galileo</h4>
+                        <p>State of the art IDE, tools and services that you can use to create great IoT apps</p>
+                        <a href="/WebAppsDocs/en-US/win8/samples/TODO_Sample.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Servo for Galileo</h4>
+                        <p>Provides an integrated development environment for creating efficient high quality drivers for devices running Windows 8.1</p>
+                        <a href="/WebAppsDocs/en-US/win8/samples/Servo.htm">Learn More</a>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Phidget Sensors for Galileo</h4>
+                        <p>Provides an integrated development environment for creating efficient high quality drivers for devices running Windows 8.1</p>
+                        <a href="/WebAppsDocs/en-US/win8/samples/PhidgetsSensors.htm">Learn More</a>
+                    </div>
+                </div>
+            </div>
 
-<ul>
-  <li>An exact hostname</li>
-  <li>A hostname for which a URI with any subdomain of that hostname is included or excluded</li>
-  <li>An exact URI</li>
-  <li>An exact URI that can contain a query property</li>
-  <li>A partial path and a wildcard to indicate a particular file extension for an include rule</li>
-  <li>Relative paths for exclude rules</li>
-</ul>
 
-<p>If your user navigates to a URL that is not included in your rules, then Windows opens the target URL in a browser.</p>
-
-<p>Here are a few examples of ACURs.</p>
-
-<p><code>javascript
-	&lt;uap:ApplicationContentUriRules&gt;
-      &lt;uap:Rule Type="include" Match="https://example.com/" /&gt;
-      &lt;uap:Rule Type="include" Match="https://*.example.com/" /&gt;
-      &lt;uap:Rule Type="exclude" Match="https://example.com/excludethispage.aspx" /&gt;
-	&lt;/uap:ApplicationContentUriRules&gt;
-</code></p>
-
-<h2 id="hybrid-apps----packaged-web-apps-vs-hosted-web-apps">Hybrid apps – Packaged web apps vs. Hosted web apps</h2>
-
-<p>You have options for creating your UWP app. The app might be designed to be downloaded from the Windows Store and fully hosted on the local client; often referred to as a <strong>Packaged Web App</strong>. This lets you run your app offline on any compatible platform. Or the app might be a fully hosted web app that runs on a remote web server; typically known as a <strong>Hosted Web App</strong>. But there is also a third option: the app can be hosted partially on the local client and partially on a remote web server. We call this third option a <strong>Hybrid app</strong> and it typically uses the <strong>WebView</strong> component to make remote content look like local content. Hybrid apps can include your HTML5, CSS, and Javascript code running as a package inside the local app client and retain the ability to interact with remote content.</p>
-
-<h2 id="manifoldjs-and-the-app-manifest">manifoldjs and the app manifest</h2>
-
-<p>An easy way to turn your website into a UWP app is to use an <strong>app manifest</strong> and <strong>manifoldjs</strong>. The app manifest is an xml file that contains metadata about the app. It specifies such things as the app’s name, links to resources, display mode, URLs, and other data that describes how the app should be deployed and run. <strong>manifoldjs</strong> makes this process very easy, even on systems that do not support web apps. Please go to <a href="http://go.microsoft.com/fwlink/p/?LinkId=615590">manifoldjs.com</a> for more information on how it works. You can also view a manifoldjs demonstration as part of this <a href="http://channel9.msdn.com/Events/WebPlatformSummit/2015/Hosted-web-apps-and-web-platform-innovations?wt.mc_id=relatedsession">Windows 10 Web Apps presentation</a>.</p>
-
-<h2 id="call-windows-runtime-apis">Call Windows Runtime APIs</h2>
-<p>You can directly call Windows Runtime APIs through JavaScript that you host on your server as long as that hosted content is running as an app on Windows.</p>
-
-<p>To enable this, you need to specify the <code>(WindowsRuntimeAccess="&lt;&lt;level&gt;&gt;")</code> attribute in the ACURs with the one of these values:</p>
-
-<ul>
-  <li>“none” blocks all access to Windows Runtime APIs. This is the default.</li>
-  <li>“AllowForWebOnly” allows remote script to call local Windows Runtime Components that are included in the app package.</li>
-  <li>“all” gives developers access to the full Windows Runtime namespaces and any local components.</li>
-</ul>
-
-<p>Here is an example rule type:</p>
-
-<p><code>javascript
-	&lt;uap:ApplicationContentUriRules&gt;
-      		&lt;uap:Rule Type="include" WindowsRuntimeAccess="all" Match="http://example.com/" /&gt;
-	&lt;/uap:ApplicationContentUriRules&gt;
-</code></p>
-
-<p>This gives script running on http://example.com/ access to Windows Runtime namespaces and custom packaged components in the package. See the <a href="https://gist.github.com/Gr8Gatsby/3d471150e5b317eb1813#file-windows-ui-notifications-js"><strong>Windows.UI.Notifications.js</strong></a> example on GitHub for toast notifications.</p>
-
-<h2 id="integrate-cortana-voice-commands">Integrate Cortana voice commands</h2>
-
-<p>You can take advantage of Cortana integration by specifying a Voice Command Definition (VCD) file in your html page. The VCD file is an xml file that maps commands to specific phrases. For example, a user could tap the Start button and say “Contoso Widgets, show best sellers” to both launch the Contoso Widgets app and to navigate to a “best sellers” page.</p>
-
-<p>When you add a <code>&lt;meta&gt;</code> element tag that lists the location of your VCD file, Windows automatically downloads and registers the Voice Command Definition file.</p>
-
-<p>Here is an example of the use of the <meta /> tag in an html page in a hosted web app:</p>
-
-<p>```html</p>
-<meta name="msapplication-cortanavcd" content="http:// example.com/vcd.xml" />
-
-<p>```</p>
-
-<p>For more info on Cortana integration and VCDs, see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn974231.aspx"><strong>Cortana interactions</strong></a> and <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn954977.aspx"><strong>Voice Command Defintion (VCD) elements and attributes v1.2</strong></a>.</p>
-
-<h2 id="use-the-web-authentication-broker">Use the web authentication broker</h2>
-
-<p>You can use the web authentication broker to handle the login flow for your users if you have an online identity provider that uses internet authentication and authorization protocols like OpenID or OAuth. You specify the start and end URIs in a <code>&lt;meta&gt;</code> tag on an html page in your app. Windows detects these URIs and passes them to the web authentication broker to complete the login flow. The start URI consists of the address where you send the authentication request to your online provider appended with other required information, such as an app ID, a redirect URI where the user is sent after completing authentication, and the expected response type. You can find out from your provider what parameters are required.
-Here is an example use of the <code>&lt;meta&gt;</code> tag:</p>
-
-<p><code>html
-	&lt;meta name="ms-webauth-uris" 
-	 	content="https://&lt;providerstartpoint&gt;?client_id=&lt;clientid&gt;&amp;response_type=token, 
-               		https://&lt;appendpoint&gt;"/&gt;
-</code></p>
-
-<p>For more guidance, see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn448956.aspx"><strong>Web authentication broker considerations for online providers</strong></a>.</p>
-
-<h2 id="available-platform-capabilities">Available platform capabilities</h2>
-
-<p>Hosted web apps can access the vast majority of Windows Runtime APIs, but there are special capabilities that are not inherently available. For more info, see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh464936.aspx"><strong>App capability declarations</strong></a>.</p>
-
-<h2 id="use-visual-studio">Use Visual Studio</h2>
-
-<p>Creating the hosted web app in Visual Studio is straightforward. All you need is an existing website to host. Using Visual Studio also gives you access to the full Universal Windows Platform and all supported APIs.</p>
-
-<ol>
-  <li>Start a new Windows 10 Insider Preview JavaScript project using the Blank template.</li>
-  <li>Set the start page URL and application content URI rules in the package.appxmanifest.</li>
-</ol>
-
-<ul>
-  <li>In the Microsoft Visual Studio solution explorer, right-click your app’s package.appxmanifest file and select View Designer.</li>
-  <li>Specify the URIs you want to include or exclude.</li>
-  <li>Visual Studio then updates the manifest file.
-    <ol>
-      <li>Press Run.</li>
-    </ol>
-  </li>
-</ul>
-
-<h2 id="related-topics">Related topics</h2>
-
-<p><a href="http://rjs.azurewebsites.net/"><strong>RJS: examples of platform integration points</strong></a>
-<a href="http://codepen.io/seksenov/pen/wBbVyb/"><strong>Codepen: sandbox to use for calling Windows Runtime APIs</strong></a>
-<a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn974231.aspx"><strong>Cortana interactions</strong></a>
-<a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn954977.aspx"><strong>Voice Command Defintion (VCD) elements and attributes v1.2</strong></a>
-<a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn448956.aspx"><strong>Web authentication broker considerations for online providers</strong></a>
-<a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh464936.aspx"><strong>App capability declarations</strong></a></p>
+        </div>
+    </div>
+</div>
 
                 </div>
             </div>
@@ -995,7 +1153,7 @@ Here is an example use of the <code>&lt;meta&gt;</code> tag:</p>
         <div class="col-md-12 text-center">
             <!-- <h3>Questions/Suggestions</h3> -->
             <!-- <p>As always, for questions or feedback, <a href="/WebAppsDocs/en-US/Community.htm#contact">contact us</a></p> -->
-            <a href="https://github.com/seksenov/content/blob/develop/en-US/win10/AccessFeatures.md">
+            <a href="https://github.com/seksenov/content/blob/develop/en-US/win10/HostedWebApps.md">
                 <img src="/WebAppsDocs/images/Octocat.png" class="nr" />Edit this page on GitHub
             </a>
         </div>

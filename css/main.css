@@ -211,3 +211,18 @@ ul.get-started-steps > li > a:hover {
     margin-bottom: 50px;
     padding: 20px;
 }
+
+/*Added styles for HWA*/
+h3 {
+    color: #505050;
+    font-weight: 300;
+}
+
+.video-player {
+    margin-top: 6em;
+}
+
+.description {
+    margin-top: 2em;
+}
+

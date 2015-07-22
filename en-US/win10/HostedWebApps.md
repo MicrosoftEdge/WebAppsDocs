@@ -8,225 +8,104 @@ lang: en-US
 
 <div class="row section-heading">
     <div class="col-md-6">
-        <h1>Docs and Samples</h1>
-        <p>Download code samples to get started with Windows on Devices. Also, read docs to help you use tools and resources to help you develop.</p>
-        <br/>
-        <h4>Did you set up your environment?</h4>
-        <p>We assume you already <a href="{{site.baseurl}}/{{page.lang}}/GetStarted.htm">set up your environment</a>, have a working Visual Studio and have a device running Windows IoT Core (MinnowBoard Max, Raspberry Pi 2, or VM).</p>
-        <br/>
-        <h4>Questions/Suggestions</h4>
-        <p>Remember, you can always send <a href="{{site.baseurl}}/{{page.lang}}/Community.htm#contact">contact us</a> for help and suggestions!</p>
+        <h1>UWP Bridge for web apps</h1>
+        <h3>Build great Windows apps with your existing website code.</h3>
+        <p class="description">For existing web applications, Windows 10 makes it easy for you to create a Universal Windows Platform (UWP) app that packages your website for publishing to the Store.</p>
+        <ul>
+            <li>Look great across all Windows-based devices, including PCs, tablets, phones, HoloLens, Surface Hub, Xbox and Raspberry Pi.</li>
+            <li>Update and call native Windows APIs from JavaScript running on your website, creating a more engaging user experience.</li>
+            <li>Integrate with Cortana voice commands.</li>
+            <li>Debug your app with Microsoft Edge F12 Developer Tools.</li>
+            <li>Track status, ratings, and reviews, see analytics, and get paid for all of your Windows app in the Windows Store.</li>
+        </ul>
     </div>
     <div class="col-md-6">
-        <div class="downloads-image"></div>
+        <div class="video-player">
+            <div class="video-view embed-responsive embed-responsive-16by9 remove-top-margin">
+                <video preload="none" poster="https://assets.windowsphone.com/e9e95cdd-bf84-410b-922c-886c19cc2be1/westminsterPosterImg_InvariantCulture_Default.png" controls="">
+                    <source src="https://sec.ch9.ms/ch9/d87f/3527ba83-7ab8-413a-9aae-d62b4847d87f/Westminster_high.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
     </div>
-</div>
+</div> <!-- Close description and video section -->
 <div class="row section-heading">
     <div role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#first" aria-controls="first" role="tab" data-toggle="tab"><h3>Docs and Tutorials</h3></a></li>
-            <li role="presentation"><a href="#second" aria-controls="second" role="tab" data-toggle="tab"><h3>Samples</h3></a></li>
+            <li role="presentation" class="active">
+                <a href="#first" aria-controls="first" role="tab" data-toggle="tab">
+                    <h3>Create your app</h3>
+                </a>
+            </li>
+            <li role="presentation">
+                <a href="#second" aria-controls="second" role="tab" data-toggle="tab">
+                    <h3>Access Windows features</h3>
+                </a>
+            </li>
+             <li role="presentation">
+                <a href="#third" aria-controls="third" role="tab" data-toggle="tab">
+                    <h3>Demos</h3>
+                </a>
+            </li>
         </ul>
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="first">
                <div class="row section-heading">
-                    <div class="col-md-3">
-                        <h4>On-Device Command-line Utilities</h4>
-                        <p>A set of tools available on your device to help you configure a slew of options</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/tools/CommandLineUtils.htm">Learn More</a>
+                    <div class="col-md-12">
+                        <br>
+                        <h4>Create your app with Visual Studio on a PC</h4>
+                        <p>Step-by-step instructions to connect your web app to the Universal Windows Platform using Visual Studio 2015RC and a Windows-based Operating System.</p>
+                        <a href="{{site.baseurl}}/{{page.lang}}/win10/CreateHWA.htm">Create your app now</a>
                     </div>
-                    <div class="col-md-3">
-                        <h4>Windows 10 IoT Core Insider Preview Porting Tool</h4>
-                        <p>A tool for helping you port your existing Win32 and Windows CE applications to Windows 10 IoT Core</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/tools/IoTAPIPortingTool.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Using PowerShell</h4>
-                        <p>Allows Remote Administration and Configuration so that you can remotely configure and manage any Windows IoT Core device</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/PowerShell.htm">Learn More</a>
-                    </div>
-					<div class="col-md-3">  
-						<h4>Using SSH</h4>  
-						<p>Allows Remote Administration and Configuration of your Windows IoT Core device over SSH</p>  
-						<a href="{{site.baseurl}}/{{page.lang}}/win10/samples/SSH.htm">Learn More</a>  
-					</div>
-                </div>
-                <div class="row section-heading">
-					<div class="col-md-3">
-                        <h4>Hardware Pin Mappings</h4>
-                        <p>Pinout and interfacing information for GPIO, SPI, and I2C</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/PinMappingsRPi2.htm">Raspberry Pi 2 Pinout</a><br>
-						<a href="{{site.baseurl}}/{{page.lang}}/win10/samples/PinMappingsMBM.htm">MinnowBoard Max Pinout</a><br>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>AllJoyn Connectivity</h4>
-                        <p>Learn more about AllJoyn and explore the capabilities of the AllJoyn Device System Bridge with Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/AllJoyn.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Unavailable Universal APIs</h4>
-                        <p>Windows IoT Core is a work in progress.  Here are the UWP APIs that have not been implemented yet on our platform.</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/UnavailableApis.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Compatible Peripheral USB Devices</h4>
-                        <p>Find a list of USB devices compatible with Window 10 IoT Core devices</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/Peripherals.htm">Learn More</a>
+                    <div class="col-md-12">
+                        <h4>Create your app with the CLI on a Mac</h4>
+                        <p>Step-by-step instructions to connect your web app to the Universal Windows Platform using Command Line Interfase (CLI) and a Mac-based Operating System.</p>
+                        <a href="{{site.baseurl}}/{{page.lang}}/win10/CreateHWA.htm">Create your app now</a>
                     </div>
                 </div>
                 <div class="row section-heading">
-				    <div class="col-md-3">
-                        <h4>Using WINDBG</h4>
-                        <p>Use WINDBG to debug</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/Windbg.htm">Learn More</a>
-                    </div>
-    
-					<div class="col-md-3">
-                        <h4>Glossary</h4>
-                        <p>A list of commonly used phrases and their meanings</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/Glossary.htm">Learn More</a>
-                    </div>
-					<div class="col-md-3">
-                        <h4>Web-based Device Management</h4>
-                        <p>Get advanced diagnostics about your machine from the web</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/tools/Webb.htm">Learn More</a>
-                    </div>
-                </div>
-                <div class="row section-heading">
-                    <div class="col-md-3">
-                        <h4>Headless UWP Apps</h4>
-                        <p>Windows IoT Core can either be in headed or headless mode. The difference is the presence or absence of any form of UI</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/HeadlessMode.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Access your files using FTP</h4>
-                        <p>Access the files on your device using FTP</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/FTP.htm">Learn More</a>
-                    </div>
-					<div class="col-md-3">
-                        <h4>Access your files using Windows File Sharing</h4>
-                        <p>Access the files on your device using Windows file sharing</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/SMB.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <!-- Placeholder for alignment -->
+                    <div class="col-md-12">
+                        
                     </div>
                 </div>
             </div>
 
             <div role="tabpanel" class="tab-pane" id="second">
                 <div class="row section-heading">
-                    <h2>Windows 10 IoT Core Insider Preview</h2>
-                </div>
-                <div class="row section-heading">
                     <div class="col-md-3">
-                        <h4>Hello, World!</h4>
-                        <p>Create a 'Hello World' application that runs on devices running Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/HelloWorld.htm">Hello World (C#)</a><br>
-						<a href="{{site.baseurl}}/{{page.lang}}/win10/samples/Python.htm">Hello World (Python)</a><br>
-						<a href="{{site.baseurl}}/{{page.lang}}/win10/samples/NodejsWU.htm">Hello World (Node.js)</a><br>
+                        <h4>Keep your app secure</h4>
+                        <p>Set application content URI Rules (ACURs) and learn how to utilize the Content Security Policy (CSP) model, defining which URLs can and cannot gain access in your app package manifest.</p>
+                        <a href="#secure">Learn More</a>
                     </div>
                     <div class="col-md-3">
-                        <h4>Hello Blinky (Headless App)</h4>
-                        <p>Create an app with no UI that toggles an LED on devices running Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/BlinkyHeadless.htm">Blinky (C#)</a><br>
-						<a href="{{site.baseurl}}/{{page.lang}}/win10/samples/PythonBlinky.htm">Blinky (Python)</a><br>
+                        <h4>Call Windows Runtime APIs</h4>
+                        <p>Access Windows features, such as Active Notifications for unlocking an achievement, via your web app's JavaScript file.</p>
+                        <a href="#ID">Learn More</a>
                     </div>
                     <div class="col-md-3">
-                        <h4>UI Blinky App</h4>
-                        <p>Create a UI-based app that toggles an LED on devices running Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/Blinky.htm">UI Blinky (C#/C++)</a>
+                        <h4>Integrate Cortana Voice Commands</h4>
+                        <p>Run your app with the power of voice -- whether you want to play a song, turn on the lights, or send a tweet.</p>
+                        <a href="#ID">Learn More</a>
                     </div>
                     <div class="col-md-3">
-                        <h4>Blinky Webserver</h4>
-                        <p>Create a Webserver app that controls an LED on devices running Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/BlinkyWebServer.htm">Webserver Blinky (C#)</a><br>
-						<a href="{{site.baseurl}}/{{page.lang}}/win10/samples/PythonBlinkyServer.htm">Webserver Blinky (Python)</a><br>
-						<a href="{{site.baseurl}}/{{page.lang}}/win10/samples/NodejsWUBlinky.htm">Webserver Blinky (Node.js)</a><br>
+                        <h4>Create Hybrid Apps</h4>
+                        <p>You no longer need to decide between a Packaged Web App, downloaded to run offline, and a Hosted Web App, run from a server online... now you can have a bit of both.</p>
+                        <a href="#ID">Learn More</a>
                     </div>
-                </div>
 
-                <div class="row section-heading">
-                    <div class="col-md-3">
-                        <h4>Console App</h4>
-                        <p>Create a console app that monitors memory usage on devices running Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/ConsoleApp.htm">Console App (C++)</a><br>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/Nodejs.htm">Console App (Node.js)</a><br>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>I2C/SPI Accelerometer</h4>
-                        <p>Create an app leveraging I2C or SPI on devices running Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/I2CAccelerometer.htm">I2C Accelerometer (C#)</a><br>
-						<a href="{{site.baseurl}}/{{page.lang}}/win10/samples/SPIAccelerometer.htm">SPI Accelerometer (C#)</a><br>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>SPI Display</h4>
-                        <p>Create an app using SPI on devices running Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/SPIDisplay.htm">SPI Display (C#)</a>
-                    </div>
-					<div class="col-md-3">
-                        <h4>AllJoyn Connectivity</h4>
-                        <p>Learn more about AllJoyn and explore the capabilities of the AllJoyn Device System Bridge with Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/AllJoyn.htm">Learn More</a>
-                    </div>
                 </div>
 
                 <div class="row section-heading">
 					<div class="col-md-3">
-                        <h4>Driver Sample</h4>
-                        <p>Create and interact with a universal driver on devices running Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/DriverLab.htm">Driver Sample (C++)</a>
+                        <h4>Web Authentication Broker</h4>
+                        <p>Set your app up with a simple and smooth login flow for your users to verify their identify using any provider with OpenID or OAuth protocols.</p>
+                        <a href="#ID">Learn More</a>
                     </div>
                     <div class="col-md-3">
-                        <h4>I2C Port Expander (RPi2 Basic Kit Lab)</h4>
-                        <p>Raspberry Pi 2 Basic Kit Lab - Create an app that uses the Raspberry Pi 2 I2C bus to communicate with a port expander.</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/I2CPortExpander.htm">I2C Port Expander (C#)</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Serial-In, Parallel-Out Shift Register (RPi2 Basic Kit Lab)</h4>
-                        <p>Raspberry Pi 2 Basic Kit Lab - Create an app that uses the Raspberry Pi 2 to control LEDs using a serial-in, parallel-out shift register.</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/ShiftRegisterSample.htm">Shift Register (C#)</a>
-                    </div>
-                   <div class="col-md-3">
-                        <h4>RGB LED (RPi2 Basic Kit Lab)</h4>
-                        <p>Raspberry Pi 2 Basic Kit Lab - Create an app that uses the Raspberry Pi 2 to toggle an RGB LED.</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/RGBLED.htm">RGB LED (C#)</a>
-                    </div>
-                </div>
-
-                <div class="row section-heading">
-                    <div class="col-md-3">
-                        <h4>Push Button(RPi2 Basic Kit Lab)</h4>
-                        <p>Raspberry Pi 2 Basic Kit Lab - Create an app that uses the Raspberry Pi 2 to read the status of a Push Button and control an LED.</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/PushButton.htm">Push Button (C#)</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Potentiometer Sensor Sample (RPi2 Basic Kit Lab)</h4>
-                        <p>Raspberry Pi 2 Basic Kit Lab - A analog sensor is connected to RaspBerry Pi through ADC converter and digital output data is displayed through Monitor and LED </p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/Potentiometer.htm">Potentiometer Sensor Sample (C#)</a>
-                    </div>
-                   <div class="col-md-3">
-                        <h4>GpioTestTool (Console)</h4>
-                        <p>This simple command line utility shows how to use the Gpio WinRT APIs from standard C++.</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/GpioTestTool.htm">GpioTestTool (C++)</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>I2cTestTool (Console)</h4>
-                        <p>This simple utility shows how to use C++/CX in command line programs.</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/I2cTestTool.htm">I2cTestTool (C++)</a>
-                    </div>
-                </div>
-                
-                <div class="row section-heading">
-                    <div class="col-md-3">
-                        <h4>SpiTestTool (Console)</h4>
-                        <p>Write and read from SPI devices on the command line.</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/SpiTestTool.htm">SpiTestTool (C++)</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Express Node.js App (UWP)</h4>
-                        <p>Create an Express Node.js app that runs on devices running Windows 10 IoT Core Insider Preview</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/samples/NodejsWUExpress.htm">Express (Node.js)</a>
+                        <h4>App capability declarations</h4>
+                        <p>If your app needs programmatic access to user resources like Pictures, or to devices like a camera, you must declare the appropriate capability.</p>
+                        <a href="#ID">Learn More</a>
                     </div>
                     <div class="col-md-3">
                         <!-- Placeholder for alignment -->
@@ -240,55 +119,72 @@ lang: en-US
                 </div>
 
                 <div class="row section-heading">
-                    <h2>Previous Version of Windows</h2>
-                </div>
-                <div class="row section-heading">
-                    <div class="col-md-3">
-                        <h4>Hello Blinky for Galileo</h4>
-                        <p>The Windows IoT Platform that runs on devices like Intel Galileo</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win8/samples/HelloBlinky.htm">Learn More</a>
+                    <div class="col-md-12">
+                        <h2 id="secure">Keep your app secure</h2>
+                        <br>
+                        <h4>Setting Application Content URI Rules (ACURs)</h4>
+                        <p>You can define which URLs your hosted web app can and cannot include. You do this by setting Application Content URI Rules (ACURs) in the app package manifest. Your rules should include your app’s start page and any other pages you want included as app pages. Optionally, you can exclude specific URLs, too.</p>
+                         <p>There are several ways to specify a URL match in your rules:</p>
+                         <ul>
+                             <li>An exact hostname</li>
+                             <li>A hostname for which a URI with any subdomain of that hostname is included or excluded</li>
+                             <li>An exact URI</li>
+                             <li>An exact URI that can contain a query property</li>
+                             <li>A partial path and a wildcard to indicate a particular file extension for an include rule</li>
+                             <li>Relative paths for exclude rules</li>
+                         </ul>
+                         
                     </div>
                     <div class="col-md-3">
-                        <h4>TX/RX for Galileo</h4>
-                        <p>State of the art IDE, tools and services that you can use to create great IoT apps</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win8/samples/TXRX.htm">Learn More</a>
+                        <h4>H4 Title</h4>
+                        <p>Description</p>
+                         <a href="{{site.baseurl}}/{{page.lang}}/win10/hwa.htm">Learn More</a>
                     </div>
                     <div class="col-md-3">
-                        <h4>UART for Galileo</h4>
-                        <p>Provides an integrated development environment for creating efficient high quality drivers for devices running Windows 8.1</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win8/samples/UART.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>RGB Pixel for Galileo</h4>
-                        <p>Provides an integrated development environment for creating efficient high quality drivers for devices running Windows 8.1</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win8/samples/RGBPixel.htm">Learn More</a>
+                        <h4 id="test">H4 Title</h4>
+                        <p>Description</p>
+                         <a href="{{site.baseurl}}/{{page.lang}}/win10/hwa.htm">Learn More</a>
                     </div>
                 </div>
 
-                <div class="row section-heading">
-                    <div class="col-md-3">
-                        <h4>Weather Shield Sensors for Galileo</h4>
-                        <p>The Windows IoT Platform that runs on devices like Intel Galileo</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win8/samples/WeatherShieldSensors.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>OneNote API using http for Galileo</h4>
-                        <p>State of the art IDE, tools and services that you can use to create great IoT apps</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win8/samples/TODO_Sample.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Servo for Galileo</h4>
-                        <p>Provides an integrated development environment for creating efficient high quality drivers for devices running Windows 8.1</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win8/samples/Servo.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Phidget Sensors for Galileo</h4>
-                        <p>Provides an integrated development environment for creating efficient high quality drivers for devices running Windows 8.1</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win8/samples/PhidgetsSensors.htm">Learn More</a>
-                    </div>
-                </div>
             </div>
 
+            <div role="tabpanel" class="tab-pane" id="third">
+                <div class="row section-heading">
+                    <div class="col-md-6">
+                        <h4>Contoso Travel App</h4>
+                        <p>The Contoso travel app demonstrates a few simple ways to call Windows Runtime APIs.</p>
+                        <ul>
+                            <li>
+                                <a href="http://contosotravel.azurewebsites.net/">Visit the App</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/seksenov/ContosoTravel">Checkout the Code</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Simple demo page for Windows APIs</h4>
+                        <p>Experiment with Windows APIs using this simple demo page.</p>
+                        <ul>
+                            <li>
+                                <a href="http://rjs.azurewebsites.net/">Visit the Demo App</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Gr8Gatsby/rjs">Checkout the code</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row section-heading">
+                    <div class="col-md-6">
+                        <h4>Find more Demos</h4>
+                        <p>Take a look at the collection of standards based showcase sites and web platform feature demonstrations on the Modern.IE website.</p>
+                        <a href="http://dev.modern.ie/testdrive/">Microsoft Edge | Dev Demos</a>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     </div>

@@ -29,7 +29,7 @@ lang: en-US
             </div>
         </div>
     </div>
-</div> <!-- Close description and video section -->
+</div> 
 <div class="row section-heading">
     <div role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">

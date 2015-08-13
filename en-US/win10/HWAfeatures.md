@@ -12,9 +12,9 @@ You web app can have full access to the **Universal Windows Platform (UWP)**, in
 **Project Westminster** enables you to get started.  
 
 ##Get started
-1. Sign up for the [**Windows 10 Insider Preview**](https://insider.windows.com) to install the Windows 10 SDK (Software Development Kit).
-2. Install [**Visual Studio RC 2015**](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx) to build the appx package that you submit to the store.
-3. Follow the steps to [convert your website into an web app on Windows](../CreateHWA.md).
+1. Install [**Visual Studio 2015**](https://dev.windows.com/en-us/downloads) - The  free, full-featured Visual Studio Community 2015 includes the Windows 10 developer tools, universal app templates, a code editor, a powerful debugger, Windows Mobile emulators, rich language support, and more, all ready to use in production. 
+ **NOTE** If you are using a different development environment than Visual Studio 2015, you can download the [Windows Standalone SDK for Windows 10](https://dev.windows.com/en-us/downloads/windows-10-sdk) installer.
+2. Follow the steps to [convert your website into an web app on Windows 10](../CreateHWA.md).
 
 Once your web app has been packaged for the Universal Windows Platform following the steps above, learn more about accessing platform features below.
 

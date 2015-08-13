@@ -59,9 +59,9 @@ lang: en-US
                         <a href="{{site.baseurl}}/{{page.lang}}/win10/CreateHWA.htm">Create your app now</a>
                     </div>
                     <div class="col-md-12">
-                        <h4>Create your app with the CLI on a Mac</h4>
-                        <p>Step-by-step instructions to connect your web app to the Universal Windows Platform using Command Line Interfase (CLI) and a Mac-based Operating System.</p>
-                        <a href="{{site.baseurl}}/{{page.lang}}/win10/CreateHWA.htm">Create your app now</a>
+                        <h4 class="text-muted gray-lighter top15">COMING SOON... Create your app with the CLI on a Mac</h4>
+                        <p class="text-muted gray-light">Step-by-step instructions to connect your web app to the Universal Windows Platform using Command Line Interfase (CLI) and a Mac-based Operating System.</p>
+                        <a href="#" class="text-muted gray-light">Create your app with your Mac now</a>
                     </div>
                 </div>
                 <div class="row section-heading">
@@ -76,22 +76,22 @@ lang: en-US
                     <div class="col-md-3">
                         <h4>Keep your app secure</h4>
                         <p>Set application content URI Rules (ACURs) and learn how to utilize the Content Security Policy (CSP) model, defining which URLs can and cannot gain access in your app package manifest.</p>
-                        <a href="#secure">Learn More</a>
+                        <a href="http://microsoftedge.github.io/WebAppsDocs/en-US/win10/HWAfeatures.htm#keep-your-app-secure----setting-application-content-uri-rules-acurs">Learn More</a>
                     </div>
                     <div class="col-md-3">
                         <h4>Call Windows Runtime APIs</h4>
                         <p>Access Windows features, such as Active Notifications for unlocking an achievement, via your web app's JavaScript file.</p>
-                        <a href="#ID">Learn More</a>
+                        <a href="http://microsoftedge.github.io/WebAppsDocs/en-US/win10/HWAfeatures.htm#call-windows-runtime-apis">Learn More</a>
                     </div>
                     <div class="col-md-3">
                         <h4>Integrate Cortana Voice Commands</h4>
                         <p>Run your app with the power of voice -- whether you want to play a song, turn on the lights, or send a tweet.</p>
-                        <a href="#ID">Learn More</a>
+                        <a href="http://microsoftedge.github.io/WebAppsDocs/en-US/win10/HWAfeatures.htm#integrate-cortana-voice-commands">Learn More</a>
                     </div>
                     <div class="col-md-3">
                         <h4>Create Hybrid Apps</h4>
                         <p>You no longer need to decide between a Packaged Web App, downloaded to run offline, and a Hosted Web App, run from a server online... now you can have a bit of both.</p>
-                        <a href="#ID">Learn More</a>
+                        <a href="http://microsoftedge.github.io/WebAppsDocs/en-US/win10/HWAfeatures.htm#create-hybrid-apps----packaged-web-apps-vs-hosted-web-apps">Learn More</a>
                     </div>
 
                 </div>
@@ -100,7 +100,7 @@ lang: en-US
 					<div class="col-md-3">
                         <h4>Web Authentication Broker</h4>
                         <p>Set your app up with a simple and smooth login flow for your users to verify their identify using any provider with OpenID or OAuth protocols.</p>
-                        <a href="#ID">Learn More</a>
+                        <a href="http://microsoftedge.github.io/WebAppsDocs/en-US/win10/HWAfeatures.htm#web-authentication-broker">Learn More</a>
                     </div>
                     <div class="col-md-3">
                         <h4>App capability declarations</h4>
@@ -117,38 +117,7 @@ lang: en-US
                         <!-- Placeholder for alignment -->
                     </div>
                 </div>
-
-                <div class="row section-heading">
-                    <div class="col-md-12">
-                        <h2 id="secure">Keep your app secure</h2>
-                        <br>
-                        <h4>Setting Application Content URI Rules (ACURs)</h4>
-                        <p>You can define which URLs your hosted web app can and cannot include. You do this by setting Application Content URI Rules (ACURs) in the app package manifest. Your rules should include your app’s start page and any other pages you want included as app pages. Optionally, you can exclude specific URLs, too.</p>
-                         <p>There are several ways to specify a URL match in your rules:</p>
-                         <ul>
-                             <li>An exact hostname</li>
-                             <li>A hostname for which a URI with any subdomain of that hostname is included or excluded</li>
-                             <li>An exact URI</li>
-                             <li>An exact URI that can contain a query property</li>
-                             <li>A partial path and a wildcard to indicate a particular file extension for an include rule</li>
-                             <li>Relative paths for exclude rules</li>
-                         </ul>
-                         
-                    </div>
-                    <div class="col-md-3">
-                        <h4>H4 Title</h4>
-                        <p>Description</p>
-                         <a href="{{site.baseurl}}/{{page.lang}}/win10/hwa.htm">Learn More</a>
-                    </div>
-                    <div class="col-md-3">
-                        <h4 id="test">H4 Title</h4>
-                        <p>Description</p>
-                         <a href="{{site.baseurl}}/{{page.lang}}/win10/hwa.htm">Learn More</a>
-                    </div>
-                </div>
-
-            </div>
-
+	    </div>
             <div role="tabpanel" class="tab-pane" id="third">
                 <div class="row section-heading">
                     <div class="col-md-6">

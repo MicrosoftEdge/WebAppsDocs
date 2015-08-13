@@ -91,7 +91,7 @@ Here is an example of how to implement a Live Tile and update it from remote Jav
 ```
 
 This code will produce a tile that looks something like this:
-![Windows Runtime API Live Tile Example](../images/HWA_liveTile.PNG)
+![Windows Runtime API Live Tile Example](../../images/HWA_liveTile.PNG)
 <img src="{{site.baseurl}}/images/HWA_liveTile.PNG">
 
 Call Windows Runtime APIs with whatever environment or technique is most familiar to you by keeping your resources on a server feature detecting for Windows capabilities prior to calling them. If platform capabilities are not available, and the web app is running in another host, you can provide the user with a standard default experience that works in the browser.

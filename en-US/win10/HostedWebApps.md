@@ -91,7 +91,7 @@ lang: en-US
                     <div class="col-md-3">
                         <h4>Create Hybrid Apps</h4>
                         <p>You no longer need to decide between a Packaged Web App, downloaded to run offline, and a Hosted Web App, run from a server online... now you can have a bit of both.</p>
-                        <a href="#ID">Learn More</a>
+                        <a href="http://microsoftedge.github.io/WebAppsDocs/en-US/win10/features.htm#hybrid-apps----packaged-web-apps-vs-hosted-web-apps">Learn More</a>
                     </div>
 
                 </div>

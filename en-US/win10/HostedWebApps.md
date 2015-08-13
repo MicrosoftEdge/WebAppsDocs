@@ -117,7 +117,7 @@ lang: en-US
                         <!-- Placeholder for alignment -->
                     </div>
                 </div>
-
+	    </div>
             <div role="tabpanel" class="tab-pane" id="third">
                 <div class="row section-heading">
                     <div class="col-md-6">

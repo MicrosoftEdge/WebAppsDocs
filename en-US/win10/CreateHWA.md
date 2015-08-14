@@ -23,8 +23,7 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 	<br>
 
 2. **Create a Blank JS App**
-	* At minimum you will need Visual Studio 2015 RC released for //BUILD with the SDK installed
-	* Launch Visual Studio
+	* Launch Visual Studio 2015
 	* Click "File -> New Project" and choose "JavaScript -> Windows -> Windows Universal -> Blank App (Windows Universal)" 
 
 	<br>

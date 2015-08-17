@@ -55,7 +55,7 @@ lang: en-US
                     <div class="col-md-12">
                         <br>
                         <h4>Create your app with Visual Studio on a PC</h4>
-                        <p>Step-by-step instructions to connect your web app to the Universal Windows Platform using Visual Studio 2015RC and a Windows-based Operating System.</p>
+                        <p>Step-by-step instructions to connect your web app to the Universal Windows Platform using Visual Studio 2015 (along with a link for free download) and a Windows-based Operating System.</p>
                         <a href="{{site.baseurl}}/{{page.lang}}/win10/CreateHWA.htm">Create your app now</a>
                     </div>
                     <div class="col-md-12">

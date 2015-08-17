@@ -51,8 +51,8 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 	<br>
 
 5. **Define the Boundaries of your Web App**
-	* Add the Application Content URI Rules (ACURs) tag in the manifest in order to define the URLs that are part of your app. If users click on URLs that aren't defined int he ACURs they will open in the default browser.
-	* In the ACURs you are also able to define URLs that can access native platform APIs directly. To do this use the WindowsRuntimeAccess tag as outlined below.
+	* Add the Application Content URI Rules (ACURs) tag in the manifest in order to define the URLs that are part of your app. If users click on URLs that aren't defined in the ACURs they will open in the default browser.
+	* In the ACURs, you are also able to define URLs that can access native platform APIs directly. To do this, use the WindowsRuntimeAccess tag as outlined below.
 	* There are three levels of access "none" for no access (default value), "AllowForWeb" access to local in package runtime components, "all" access to the Windows namespace from remote code.
 
 	<br>

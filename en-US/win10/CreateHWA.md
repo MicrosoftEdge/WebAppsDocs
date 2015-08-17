@@ -16,8 +16,8 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 ##Follow these steps to convert a Website into an Web App on Windows
 
 1. **Pick a Website URL**
-	* If have an existing website that will work great as a single page app and preferably you are the owner/developer of the site so you are able to make changes.
-	* If you don't have an URL in mind the tutorial will walk you through using this [Codepen Example](http://codepen.io/seksenov/pen/wBbVyb/?editors=101) (http://codepen.io/seksenov/pen/wBbVyb/?editors=101) as the URL
+	* Choose an existing website that will work great as a single page app -- preferably you are the owner/developer of the site so you are able to make changes
+	* If you don't have a URL in mind, the tutorial will walk you through using this [Codepen Example](http://codepen.io/seksenov/pen/wBbVyb/?editors=101) (http://codepen.io/seksenov/pen/wBbVyb/?editors=101) as the URL
 	* Copy your URL or the Codepen URL above to use throughout the tutorial
 
 	<br>

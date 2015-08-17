@@ -91,3 +91,7 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 ##All Set!
 
 After 7 simple steps you've been able to not only turn a website into an app but also access Universal Windows APIs from your hosted JavaScript. Thanks for completing the tutorial and we can't wait to see what scenarios you envision next!
+
+<br>
+
+<a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm"><button>Next: Accessing Features</button></a>

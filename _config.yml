@@ -1,7 +1,7 @@
 # Site settings
 baseurl: "/WebAppsDocs"
 url: "http://MicrosoftEdge.github.io/WebAppsDocs"
-repositoryurl: "https://github.com/MicrosoftEdge/WebAppsDocs"
+repositoryurl: "https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/"
 landingurl: "/WebAppsDocs/en-US/win10/HWA.htm"
 hacksterurl: "http://microsoft.hackster.io"
 hardwareurl: "http://go.microsoft.com/fwlink/p/?linkID=532948"

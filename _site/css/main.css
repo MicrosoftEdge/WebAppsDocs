@@ -215,3 +215,24 @@ ul.get-started-steps > li > a:hover {
     margin-bottom: 50px;
     padding: 20px;
 }
+
+.video-player {
+    margin-top: 1.7em;   
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    background-color: #0072c6;
+    border: none;
+    color: #FFF;
+    padding: .5em 1em;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+button:hover {
+    background-color: #333;
+}

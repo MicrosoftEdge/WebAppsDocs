@@ -16,15 +16,14 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 ##Follow these steps to convert a Website into an Web App on Windows
 
 1. **Pick a Website URL**
-	* If have an existing website that will work great as a single page app and preferably you are the owner/developer of the site so you are able to make changes.
-	* If you don't have an URL in mind the tutorial will walk you through using this [Codepen Example](http://codepen.io/seksenov/pen/wBbVyb/?editors=101) (http://codepen.io/seksenov/pen/wBbVyb/?editors=101) as the URL
+	* Choose an existing website that will work great as a single page app -- preferably you are the owner/developer of the site so you are able to make changes
+	* If you don't have a URL in mind, the tutorial will walk you through using this [Codepen Example](http://codepen.io/seksenov/pen/wBbVyb/?editors=101) (http://codepen.io/seksenov/pen/wBbVyb/?editors=101) as the URL
 	* Copy your URL or the Codepen URL above to use throughout the tutorial
 
 	<br>
 
 2. **Create a Blank JS App**
-	* At minimum you will need Visual Studio 2015 RC released for //BUILD with the SDK installed
-	* Launch Visual Studio
+	* Launch Visual Studio 2015
 	* Click "File -> New Project" and choose "JavaScript -> Windows -> Windows Universal -> Blank App (Windows Universal)" 
 
 	<br>
@@ -52,8 +51,8 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 	<br>
 
 5. **Define the Boundaries of your Web App**
-	* Add the Application Content URI Rules (ACURs) tag in the manifest in order to define the URLs that are part of your app. If users click on URLs that aren't defined int he ACURs they will open in the default browser.
-	* In the ACURs you are also able to define URLs that can access native platform APIs directly. To do this use the WindowsRuntimeAccess tag as outlined below.
+	* Add the Application Content URI Rules (ACURs) tag in the manifest in order to define the URLs that are part of your app. If users click on URLs that aren't defined in the ACURs they will open in the default browser.
+	* In the ACURs, you are also able to define URLs that can access native platform APIs directly. To do this, use the WindowsRuntimeAccess tag as outlined below.
 	* There are three levels of access "none" for no access (default value), "AllowForWeb" access to local in package runtime components, "all" access to the Windows namespace from remote code.
 
 	<br>
@@ -92,3 +91,7 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 ##All Set!
 
 After 7 simple steps you've been able to not only turn a website into an app but also access Universal Windows APIs from your hosted JavaScript. Thanks for completing the tutorial and we can't wait to see what scenarios you envision next!
+
+<br>
+
+<a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm"><button>Next: Accessing Features</button></a>

@@ -61,7 +61,7 @@ lang: en-US
                     <div class="col-md-12">
                     	<br>
                         <h4 class="text-muted gray-lighter top15">COMING SOON... Create your app with the CLI on a Mac</h4>
-                        <p class="text-muted gray-light">Step-by-step instructions to connect your web app to the Universal Windows Platform using Command Line Interfase (CLI) and a Mac-based Operating System.</p>
+                        <p class="text-muted gray-light">Step-by-step instructions to connect your web app to the Universal Windows Platform using Command Line Interface (CLI) and a Mac-based Operating System.</p>
                         <a href="#" class="text-muted gray-light">Create your app with your Mac now</a>
                     </div>
                 </div>

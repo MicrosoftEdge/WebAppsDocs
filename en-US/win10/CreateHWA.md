@@ -5,7 +5,7 @@ permalink: /en-US/win10/CreateHWA.htm
 lang: en-US
 ---
 
-#UWP Bridge for web apps - Create your app now
+#Hosted Web Apps - Create your app now
 
 Learn how to quickly create a Universal Windows Platform (UWP) app using Project Westminster for Windows 10 starting with your website URL. All you'll need to do is add your site URL to a Windows app manifest, set your image resources to use for app tiles and store discovery and package it up. Continue by adding native platform integration from JavaScript hosted on your servers in a matter of minutes. 
 

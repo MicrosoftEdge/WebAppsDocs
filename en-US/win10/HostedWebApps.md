@@ -8,7 +8,7 @@ lang: en-US
 
 <div class="row section-heading">
     <div class="col-md-6">
-        <h1>UWP Bridge for web apps</h1>
+        <h1>Hosted Web Apps</h1>
         <h3>Build great Windows apps with your existing website code.</h3>
         <p class="description">For existing web applications, Windows 10 makes it easy for you to create a Universal Windows Platform (UWP) app that packages your website for publishing to the Store.</p>
         <ul>

@@ -5,7 +5,7 @@ permalink: /en-US/win10/HWAfeatures.htm
 lang: en-US
 ---
 
-#UWP Bridge for web apps - Accessing Windows features
+#Hosted Web Apps - Accessing Windows features
 
 You web app can have full access to the **Universal Windows Platform (UWP)**, including calling Windows Runtime APIs directly from script hosted on a server, leveraging Cortana integration, and using an online authentication provider. Hybrid apps are also supported as you can include local code to be called from the hosted script and manage app navigation between remote and local pages.
 

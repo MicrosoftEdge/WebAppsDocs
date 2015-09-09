@@ -1,6 +1,6 @@
 ---
 layout: default
-title: UWP Bridge for web apps - Accessing Windows features
+title: Hosted Web Apps - Accessing Windows features
 permalink: /en-US/win10/HWAfeatures.htm
 lang: en-US
 ---

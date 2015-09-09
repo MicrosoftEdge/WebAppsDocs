@@ -1,6 +1,6 @@
 ---
 layout: default
-title: UWP Bridge for web apps
+title: Hosted Web Apps
 permalink: /en-US/win10/HWA.htm
 lang: en-US
 ---

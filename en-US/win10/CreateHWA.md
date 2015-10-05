@@ -61,7 +61,10 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 
 	<br>
 	**Appx Manifest Additions**
-	<img src="{{site.baseurl}}/images/CreateHWA/ManifestAddition.PNG">
+	<img src="{{site.baseurl}}/images/CreateHWA/StartPageScreen.PNG">
+
+	<br>
+	<img src="{{site.baseurl}}/images/CreateHWA/ContentURIScreen.PNG">
 
 	<br>
 	

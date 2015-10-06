@@ -54,10 +54,10 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 	<br>
 
 5. **Define the Boundaries of your Web App**
-	* In the Content URIs define the URLs that make up your web app
+	* In the Content URIs tab define the URLs that make up your web app
 	* Here you are able to control which URLs gain access to native platform functionality
 	* Go ahead and add 1. http://codepen.io/seksenov/pen/wBbVyb/?editors=101 and 2. http://*.codepen.io/
-	* Seat WinRT Access to All
+	* Set WinRT Access to All for both URLs
 	
 	<br>
 	**Copy and paste the Content URIs**
@@ -78,7 +78,6 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 7. **Add Camera Capture** 
 	* Just copy and paste the JavaScript code for Camera Capture directly into the JS editor of the Codepen
 		* Note: It's best to view the raw code when copying
-	* Next go back into the Appx Manifest and enable the Webcam capability for the app
 	* A button to invoke the cameraCapture() function was already present in HTML, so go ahead, click it and take a pic
 
 	<br>
@@ -86,7 +85,7 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 	{% gist 9f9c2e6881d09116cdb3 %}
 	<br>
 	**Codepen Calling Native Toast Notification**
-	<img src="{{site.baseurl}}/images/CreateHWA/CodepenToast.PNG">
+	<img src="{{site.baseurl}}/images/CreateHWA/CameraCapture.PNG">
 	<br>
 
 ##All Set!

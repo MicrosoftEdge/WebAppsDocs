@@ -84,7 +84,7 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 	**Camera Capture**
 	{% gist 9f9c2e6881d09116cdb3 %}
 	<br>
-	**Codepen Calling Native Toast Notification**
+	**Codepen Calling Native Camera Capture**
 	<img src="{{site.baseurl}}/images/CreateHWA/CameraCapture.PNG">
 	<br>
 

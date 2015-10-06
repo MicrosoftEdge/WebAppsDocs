@@ -42,28 +42,25 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 
 	<br>
 
-4. **Set the Start Page URL in the App Manifest**
+4. **Set the Start page URL in the App Manifest**
 	* Open the package.appxmanifest file
-	* Under the <Application> node find the StartPage="default.html" tag
-	* Replace "default.html" with "http://mysite.com/"
-		* In this tutorial we'll use: http://codepen.io/seksenov/pen/wBbVyb/?editors=101 
+	* Under the Application tab find the StartPage: default.html" field
+	* Replace "default.html" with http://codepen.io/seksenov/pen/wBbVyb/?editors=101 
+
+	<br>
+	**Copy and paste the Start page URL**
+	<img src="{{site.baseurl}}/images/CreateHWA/StartPageScreen.PNG">
 
 	<br>
 
 5. **Define the Boundaries of your Web App**
-	* Add the Application Content URI Rules (ACURs) tag in the manifest in order to define the URLs that are part of your app. If users click on URLs that aren't defined in the ACURs they will open in the default browser.
-	* In the ACURs, you are also able to define URLs that can access native platform APIs directly. To do this, use the WindowsRuntimeAccess tag as outlined below.
-	* There are three levels of access "none" for no access (default value), "AllowForWeb" access to local in package runtime components, "all" access to the Windows namespace from remote code.
-
+	* In the Content URIs define the URLs that make up your web app
+	* Here you are able to control which URLs gain access to native platform functionality
+	* Go ahead and add 1. http://codepen.io/seksenov/pen/wBbVyb/?editors=101 and 2. http://*.codepen.io/
+	* Seat WinRT Access to All
+	
 	<br>
-	**XML to Add in the Manifest**
-	{% gist 8df352b057d7bdc14a2d %}
-
-	<br>
-	**Appx Manifest Additions**
-	<img src="{{site.baseurl}}/images/CreateHWA/StartPageScreen.PNG">
-
-	<br>
+	**Copy and paste the Content URIs**
 	<img src="{{site.baseurl}}/images/CreateHWA/ContentURIScreen.PNG">
 
 	<br>
@@ -71,21 +68,22 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 6. **Hit Run!** 
 	* At this point you have a fully functioning native Web App on Windows that is able to access platform APIs
 	* The hosted Codepen is running in the App Host on Windows 10 and has access to Universal Windows APIs
-	* In the Codepen Click or touch the System Prompt button to call a Windows API from hosted script
+	* In the Codepen Click or touch the Toast Notification button to call a Windows API from hosted script
 
 	<br>
-	**Codepen running as a Hosted Web App and Calling the Native System Prompt UI**
-	<img src="{{site.baseurl}}/images/CreateHWA/systemPrompt.PNG">
+	**Codepen running as a Hosted Web App showing a Windows Toast Notification**
+	<img src="{{site.baseurl}}/images/CreateHWA/CodepenToast.PNG">
 	<br>
 
-7. **Add Toast Notifications** 
-	* Just copy and paste the JavaScript code for Toast Notifications directly into the JS editor of the Codepen
+7. **Add Camera Capture** 
+	* Just copy and paste the JavaScript code for Camera Capture directly into the JS editor of the Codepen
 		* Note: It's best to view the raw code when copying
-	* A button to invoke the showNotification() function was already present, so go ahead, click it and watch the site display and toast notification
+	* Next go back into the Appx Manifest and enable the Webcam capability for the app
+	* A button to invoke the cameraCapture() function was already present in HTML, so go ahead, click it and take a pic
 
 	<br>
-	**Toast notifications**
-	{% gist 2a08ea82483a0578d1aa %}
+	**Camera Capture**
+	{% gist 9f9c2e6881d09116cdb3 %}
 	<br>
 	**Codepen Calling Native Toast Notification**
 	<img src="{{site.baseurl}}/images/CreateHWA/CodepenToast.PNG">
@@ -93,7 +91,7 @@ Learn how to quickly create a Universal Windows Platform (UWP) app using Project
 
 ##All Set!
 
-After 7 simple steps you've been able to not only turn a website into an app but also access Universal Windows APIs from your hosted JavaScript. Thanks for completing the tutorial and we can't wait to see what scenarios you envision next!
+After 7 simple steps you've been able to not only turn a website into an app but also access Universal Windows APIs from your hosted JavaScript. Thanks for completing the tutorial, we can't wait to see what scenarios you envision next!
 
 <br>
 

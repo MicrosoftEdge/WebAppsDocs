@@ -1,23 +1,34 @@
-# Publishing Your Web App to the Windows Store
+---
+layout: default
+title: Windows Store Publication
+permalink: /en-US/win10/StorePublishing.htm
+lang: en-US
+---
 
-## **Option 1:** Visual Studio
+# Bring Your Web App to the Windows Store
 
-**Best for:** If you have an existing website, Windows 10, and Visual Studio 2015 Community or higher.
+###**Option 1:** Visual Studio
+  - You have an existing Web App 
+  - You are running Windows 10
+  - You have or can install Visual Studio 2015 Community or Greater
+  - You are looking for deep integration with the Windows platform
 
-[Tutorial](#)
+  <iframe src="https://channel9.msdn.com/Blogs/One-Dev-Minute/Creating-Hosted-Web-Apps-with-Project-Westminster/player" width="560" height="315" allowFullScreen frameBorder="0"></iframe>
 
-[Integrate with the platform](#)
-
-## **Option 2:** ManifoldJS
-
-**Best for:** If you would like to publish a cross platform app to multiple app Stores.
-
-[ManifoldJS Dev Minute Video](https://channel9.msdn.com/Blogs/One-Dev-Minute/Publishing-a-UWP-Web-App-on-a-Mac-using-ManifoldJS)
-
-[ManifoldJS site and docs](http://manifoldjs.com/)
+  - Check out the [Tutorial](http://microsoftedge.github.io/WebAppsDocs/en-US/win10/CreateHWA.htm)
 
 
-## **Option 3:** Chrome App Conversion Tool
+###**Option 2:** ManifoldJS
+  - You are using the [W3C Manifest] for a Web App
+  - You are developing on a Mac or don't have access to Windows 10
+  - You want to publish a Web App Cross platform (iOS) 
+
+  <iframe src="https://channel9.msdn.com/Blogs/One-Dev-Minute/Publishing-a-UWP-Web-App-on-a-Mac-using-ManifoldJS/player" width="560" height="315" allowFullScreen frameBorder="0"></iframe>
+
+  - Check out the [ManifoldJS site and docs](http://manifoldjs.com/)
+
+
+### **Option 3:** Chrome App Conversion Tool
 
 **Best for:** If you have an existing Hosted App on the Chrome Web Store.
 
@@ -41,7 +52,7 @@ If you have a `.zip` file, simply change the extension to `.web` and run the `hw
 [hwa-cli GitHub](https://github.com/MicrosoftEdge/hwa-cli)
 
 
-## **Option 4:** App Studio
+### **Option 4:** App Studio
 
 **Best for:** You want to quickly try out and publish your website as an app.
 
@@ -49,6 +60,6 @@ If you have a `.zip` file, simply change the extension to `.web` and run the `hw
 
 [Documentation](http://appstudio.windows.com/en-us/home/howto)
 
-## **Option 5:** Direct Store Submission *(Coming Soon...)*
+### **Option 5:** Direct Store Submission *(Coming Soon...)*
 
 **Best for:** You have an existing W3C Manifest or Hosted App on the Chrome Web Store.

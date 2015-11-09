@@ -5,61 +5,52 @@ permalink: /en-US/win10/StorePublishing.htm
 lang: en-US
 ---
 
-# Bring Your Web App to the Windows Store
+# Bring your web app to the Windows Store
+There are a number of different ways you can bring your web app to the Windows Store. Each have their own distinct advantages based on your content and development environment. Below is a list of our suggested options, outlining what you need to know and how to get started:
+* [Visual Studio](#vs)
+* [ManifoldJS](#manifold)
+* [Chrome app conversion tool](#chrome)
+* [App Studio](#appstudio)
 
-###**Option 1:** Visual Studio
-  - You have an existing Web App 
-  - You are running Windows 10
-  - You have or can install Visual Studio 2015 Community or Greater
-  - You are looking for deep integration with the Windows platform
+### <a name="vs"></a> Visual Studio
+This option will work best for you if...
 
-  <iframe src="https://channel9.msdn.com/Blogs/One-Dev-Minute/Creating-Hosted-Web-Apps-with-Project-Westminster/player" width="560" height="315" allowFullScreen frameBorder="0"></iframe>
+1. You have an existing web app
+2. You are developing on Windows 10
+3. You have, or can install, Visual Studio 2015 Community or greater
+4. You are looking for deep integration with the Windows platform
 
-  - Check out the [Tutorial](http://microsoftedge.github.io/WebAppsDocs/en-US/win10/CreateHWA.htm)
+<a href="http://microsoftedge.github.io/WebAppsDocs/en-US/win10/CreateHWA.htm"><button>Get started now</button></a>
 
-
-###**Option 2:** ManifoldJS
-  - You are using the [W3C Manifest] for a Web App
-  - You are developing on a Mac or don't have access to Windows 10
-  - You want to publish a Web App Cross platform (iOS) 
-
-  <iframe src="https://channel9.msdn.com/Blogs/One-Dev-Minute/Publishing-a-UWP-Web-App-on-a-Mac-using-ManifoldJS/player" width="560" height="315" allowFullScreen frameBorder="0"></iframe>
-
-  - Check out the [ManifoldJS site and docs](http://manifoldjs.com/)
+<iframe src="https://channel9.msdn.com/Blogs/One-Dev-Minute/Creating-Hosted-Web-Apps-with-Project-Westminster/player" width="560" height="315" allowFullScreen frameBorder="0"></iframe>
 
 
-### **Option 3:** Chrome App Conversion Tool
+### <a name="manifold"></a> ManifoldJS
+This option will work best for you if...
 
-**Best for:** If you have an existing Hosted App on the Chrome Web Store.
+1. You have an existing web app
+2. You are using a [W3C manifest](https://w3c.github.io/manifest/) in your web app
+3. You are developing on any platform
+4. You want to publish a cross-platform app, including iOS and Android
 
-To get started, make sure you have `Node JS` and `npm` installed. Then run the following command to install:
-```
-npm i -g hwa-cli
-```
+<a href="http://manifoldjs.com/"><button>Get started now</button></a>
 
-Then, to convert your app, run:
-```
-hwa convert path/to/chromeapp.crx
-```
-
-If you have a `.zip` file, simply change the extension to `.web` and run the `hwa convert` command above.
-
-**What you need to know:**
-- Flash is not supported
-- When creating the Windows version of the manifest, if you are using an Auth provider other than Facebook (list others here), you will need to enter your auth provider into the `<uap:ApplicationContentURIRules>` section of the manifest.
-- There is some basic image manipulation done to your icons. We will downscale large images, and pad small images. If you want to have the best images possible, you will need to supply new icons. The supported icon sizes can be found [here](#).
-
-[hwa-cli GitHub](https://github.com/MicrosoftEdge/hwa-cli)
+<iframe src="https://channel9.msdn.com/Blogs/One-Dev-Minute/Publishing-a-UWP-Web-App-on-a-Mac-using-ManifoldJS/player" width="560" height="315" allowFullScreen frameBorder="0"></iframe>
 
 
-### **Option 4:** App Studio
+### <a name="chrome"></a> Chrome app conversion tool
+This option will work best for you if...
 
-**Best for:** You want to quickly try out and publish your website as an app.
+1. You have an existing web app targeting the Chrome web store
+2. You are developing on any platform
 
-[App Studio](http://appstudio.windows.com/)
+<a href="https://github.com/MicrosoftEdge/hwa-cli"><button>Get started now</button></a>
 
-[Documentation](http://appstudio.windows.com/en-us/home/howto)
 
-### **Option 5:** Direct Store Submission *(Coming Soon...)*
+### <a name="appstudio"></a> App Studio
+This option will work best for you if...
 
-**Best for:** You have an existing W3C Manifest or Hosted App on the Chrome Web Store.
+1. You want to build a web app using an existing website
+2. You are not as familiar with software development, including [command-line interfaces](https://en.wikipedia.org/wiki/Command-line_interface) (CLI) and [integrated development environments](https://en.wikipedia.org/wiki/Integrated_development_environment) (IDE)
+
+<a href="http://appstudio.windows.com/"><button>Get started now</button></a>

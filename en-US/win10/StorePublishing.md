@@ -6,7 +6,7 @@ lang: en-US
 ---
 
 # Bring your web app to the Windows Store
-There are a number of different ways you can bring your web app to the Windows Store as a [Hosted Web App](http://microsoftedge.github.io/WebAppsDocs/en-US/win10/HWA.htm) (HWA). Each have their own distinct advantages based on your content and development environment. Below is a list of our suggested options, outlining what you need to know and how to get started:
+There are a number of different ways you can bring your existing website or web app to the Windows Store as a [Hosted Web App](http://microsoftedge.github.io/WebAppsDocs/en-US/win10/HWA.htm) (HWA). Each have their own distinct advantages based on your content and development environment. Below is a list of our suggested options, outlining what you need to know and how to get started:
 * [Visual Studio](#vs)
 * [ManifoldJS](#manifold)
 * [Chrome app conversion tool](#chrome)

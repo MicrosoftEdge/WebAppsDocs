@@ -1,4 +1,41 @@
-<link href="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/v3/scss/shell.min.css" rel="stylesheet" type="text/css" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Windows Web Apps - Create a Hosted Web App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Everything you need to know about Hosted Web Apps on Windows, part of the Universal Windows Apps family with full access to platform APIs from remote JavaScript.">
+    <meta name="keywords" content="Windows Web Apps, Hosted Web Apps, Windows Web Applications, Web Apps, JavaScript Apps, HTML Apps, HTML 5, Windows 10, Windows Universal, Windows Universal Apps, Windows Platform, Universal Windows Apps, Universal Windows APIs, UWP, Project Westminster, Westminster, Windows Apps, Windows 10 Apps, Windows App Building, Apps, Web, HTML5">
+
+    <link id="linkBaseUrl" href="/WebAppsDocs" />
+
+    <link rel="icon" type="image/png" href="http://MicrosoftEdge.github.io/WebAppsDocs/favicon.png">
+    <!--[if IE]><link rel="shortcut icon" href="http://MicrosoftEdge.github.io/WebAppsDocs/favicon.ico"/><![endif]-->
+
+    <!-- Bootstrap core CSS -->
+    <link href="/WebAppsDocs/css/bootstrap.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/pygments.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/main.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/nav.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/syntax.css" rel="stylesheet" />
+
+
+    <script type="text/javascript">
+        var appInsights=window.appInsights||function(config){
+            function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e="script",o=r.createElement(e),i,u;for(o.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)s("track"+i.pop());return config.disableExceptionTracking||(i="onerror",s("_"+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t["_"+i](config,r,f,e,o),s}),t
+        }({
+            instrumentationKey:"5493cd0a-77ff-44c5-a466-dd95277d2968"
+        });
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+
+<body class="default-body">
+    <div class="chrome-header-wrapper">
+        
+  <link href="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/v3/scss/shell.min.css" rel="stylesheet" type="text/css" />
 
 <!--[if lte IE 8]>
     <link href="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/common/respond-proxy.html" id="respond-proxy" rel="respond-proxy"/>
@@ -619,21 +656,21 @@
 
 
         <li class="c-top-nav-item">
-                <a class="c-top-nav-link c-nav-link" href="{{site.baseurl}}/" ms.title="Windows Bridge for Hosted Web Apps" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
+                <a class="c-top-nav-link c-nav-link" href="/WebAppsDocs/" ms.title="Windows Bridge for Hosted Web Apps" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
                     <span>
                         Windows Bridge for Hosted Web Apps
                     </span>
                 </a>
             </li>
          <li class="c-top-nav-item">
-                <a class="c-top-nav-link c-nav-link" href="{{site.baseurl}}/{{page.lang}}//win10/CreateHWA.htm" ms.title="Create your app" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
+                <a class="c-top-nav-link c-nav-link" href="/WebAppsDocs/en-US//win10/CreateHWA.htm" ms.title="Create your app" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
                     <span>
                         Create
                     </span>
                 </a>
             </li>
         <li class="c-top-nav-item">
-                <a class="c-top-nav-link c-nav-link" href="{{site.baseurl}}/{{page.lang}}//win10/HWAfeatures.htm" ms.title="Enhance your app" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
+                <a class="c-top-nav-link c-nav-link" href="/WebAppsDocs/en-US//win10/HWAfeatures.htm" ms.title="Enhance your app" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
                     <span>
                         Enhance
                     </span>
@@ -742,3 +779,320 @@
         signOutStr: 'Sign out'
     };
 </script>
+
+
+    </div>
+
+    <div class="row">
+        <div class="default-max-width">
+            <div class="content-container col-md-12">
+                <h1 id="hosted-web-apps---create-your-app-now">Hosted Web Apps - Create your app now</h1>
+
+<p>Learn how to quickly create a Universal Windows Platform (UWP) app using Project Westminster for Windows 10 starting with your website URL. All you’ll need to do is add your site URL to a Windows app manifest, set your image resources to use for app tiles and store discovery and package it up. Continue by adding native platform integration from JavaScript hosted on your servers in a matter of minutes.</p>
+
+<h2 id="what-you-need">What you need</h2>
+<ul>
+  <li><a href="https://dev.windows.com/en-us/downloads"><strong>Visual Studio 2015</strong></a> - The  free, full-featured Visual Studio Community 2015 includes the Windows 10 developer tools, universal app templates, a code editor, a powerful debugger, Windows Mobile emulators, rich language support, and more, all ready to use in production.</li>
+  <li><a href="https://dev.windows.com/en-us/downloads/windows-10-sdk">Windows Standalone SDK for Windows 10</a> - If you are using a different development environment than Visual Studio 2015, you can download a standalone Windows SDK for Windows 10 installer. Note that you don’t need to install this SDK if you’re using Visual Studio 2015 – it’s already included.</li>
+</ul>
+
+<h2 id="follow-these-steps-to-convert-a-website-into-an-web-app-on-windows">Follow these steps to convert a Website into an Web App on Windows</h2>
+
+<ol>
+  <li><strong>Pick a Website URL</strong>
+    <ul>
+      <li>Choose an existing website that will work great as a single page app – preferably you are the owner/developer of the site so you are able to make changes</li>
+      <li>If you don’t have a URL in mind, the tutorial will walk you through using this <a href="http://codepen.io/seksenov/pen/wBbVyb/?editors=101">Codepen Example</a> (http://codepen.io/seksenov/pen/wBbVyb/?editors=101) as the URL</li>
+      <li>Copy your URL or the Codepen URL above to use throughout the tutorial</li>
+    </ul>
+
+    <p><br /></p>
+  </li>
+  <li><strong>Create a Blank JS App</strong>
+    <ul>
+      <li>Launch Visual Studio 2015</li>
+      <li>Click “File -&gt; New Project” and choose “JavaScript -&gt; Windows -&gt; Windows Universal -&gt; Blank App (Windows Universal)”</li>
+    </ul>
+
+    <p><br />
+ <strong>Choose the blank JavaScript Template</strong>
+ <img src="/WebAppsDocs/images/CreateHWA/BlankJSTemplate.PNG" /></p>
+
+    <p><br /></p>
+  </li>
+  <li><strong>Delete Packaged HTML/CSS/JS</strong>
+    <ul>
+      <li>Since this is a hosted web app where the content is served from a remote server you won’t need most of the local app files that come standard from the JavaScript temple.</li>
+      <li>Go ahead and delete the local HTML, JS and CSS resources. All you’ll need to keep is the appx manifest (Where you configure the app) and the image resources to be displayed in the store, start menu and on the taskbar.</li>
+    </ul>
+
+    <p><br />
+ <strong>Delete highlighted folders/files</strong>
+ <img src="/WebAppsDocs/images/CreateHWA/DeletePackagedContent.PNG" /></p>
+
+    <p><br /></p>
+  </li>
+  <li><strong>Set the Start page URL in the App Manifest</strong>
+    <ul>
+      <li>Open the package.appxmanifest file</li>
+      <li>Under the Application tab find the StartPage: default.html” field</li>
+      <li>Replace “default.html” with http://codepen.io/seksenov/pen/wBbVyb/?editors=101</li>
+    </ul>
+
+    <p><br />
+ <strong>Copy and paste the Start page URL</strong>
+ <img src="/WebAppsDocs/images/CreateHWA/StartPageScreen.PNG" /></p>
+
+    <p><br /></p>
+  </li>
+  <li><strong>Define the Boundaries of your Web App</strong>
+    <ul>
+      <li>In the Content URIs tab define the URLs that make up your web app</li>
+      <li>Here you are able to control which URLs gain access to native platform functionality</li>
+      <li>Go ahead and add 1. http://codepen.io/seksenov/pen/wBbVyb/?editors=101 and 2. http://*.codepen.io/</li>
+      <li>Set WinRT Access to All for both URLs</li>
+    </ul>
+
+    <p><br />
+ <strong>Copy and paste the Content URIs</strong>
+ <img src="/WebAppsDocs/images/CreateHWA/ContentURIScreen.PNG" /></p>
+
+    <p><br /></p>
+  </li>
+  <li><strong>Hit Run!</strong>
+    <ul>
+      <li>At this point you have a fully functioning native Web App on Windows that is able to access platform APIs</li>
+      <li>The hosted Codepen is running in the App Host on Windows 10 and has access to Universal Windows APIs</li>
+      <li>In the Codepen Click or touch the Toast Notification button to call a Windows API from hosted script</li>
+    </ul>
+
+    <p><br />
+ <strong>Codepen running as a Hosted Web App showing a Windows Toast Notification</strong>
+ <img src="/WebAppsDocs/images/CreateHWA/CodepenToast.PNG" />
+ <br /></p>
+  </li>
+  <li><strong>Add Camera Capture</strong>
+    <ul>
+      <li>Just copy and paste the JavaScript code for Camera Capture directly into the JS editor of the Codepen
+        <ul>
+          <li>Note: It’s best to view the raw code when copying</li>
+        </ul>
+      </li>
+      <li>A button to invoke the cameraCapture() function was already present in HTML, so go ahead, click it and take a pic</li>
+    </ul>
+
+    <p><br />
+ <strong>Camera Capture</strong>
+ <br />
+ <strong>Codepen Calling Native Camera Capture</strong>
+ <img src="/WebAppsDocs/images/CreateHWA/CameraCapture.PNG" />
+ <br /></p>
+  </li>
+</ol>
+
+<h2 id="all-set">All Set!</h2>
+
+<p>After 7 simple steps you’ve been able to not only turn a website into an app but also access Universal Windows APIs from your hosted JavaScript. Thanks for completing the tutorial, we can’t wait to see what scenarios you envision next!</p>
+
+<p><br /></p>
+
+<p><a href="/WebAppsDocs/en-US/win10/HWAfeatures.htm"><button class="next">Next: Accessing Features</button></a></p>
+
+            </div>
+        </div>
+    </div>
+    <div class="chrome-header-wrapper">
+        <div class="container iot-site-footer">
+    <div class="row">
+        <div class="text-center">
+            <!-- <h3>Questions/Suggestions</h3> -->
+            <!-- <p>As always, for questions or feedback, <a href="/WebAppsDocs/en-US/Community.htm#contact">contact us</a></p> -->
+            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/CreateHWA.md">
+                <img src="/WebAppsDocs/images/Octocat.png" class="nr" />Edit this page on GitHub
+            </a>
+        </div>
+    </div>
+</div>
+<div class="jumbotron doc-footer webapp-accent remove-bottom-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-24">Made with &#10084; by the Web Apps and Frameworks team</div>
+        </div>
+    </div>
+</div>
+    </div>
+    <script src="/WebAppsDocs/js/jquery-1.11.2.min.js"></script>
+<script src="/WebAppsDocs/js/bootstrap.min.js"></script>
+<script src="/WebAppsDocs/js/app.js"></script>
+
+    
+  <!--[if lte IE 8]>
+    <script src="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/common/js/shell_ie8.js"></script>
+<![endif]-->
+
+
+
+<script src="https://mem.gfx.ms/meversion?partner=dev-center-win-apps"></script>
+<script src="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/generated/shellservice.v3.min.js"></script>
+
+<script src="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/store/blender/js/blender.js"></script>
+<div class="shell-footer" data-bi-area="Footer" data-bi-view="3xLinks">
+    <div class="shell-footer-wrapper" role="contentinfo">
+
+            <div class="shell-footer-menugroups">
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Downloads and tools <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=280676" role="menuitem" ms.title="Windows 10 dev tools" data-bi-name="footer_DownloadsAndTools_Win10DevTools" data-bi-slot="1" data-bi-source="Compass">
+                                            Windows 10 dev tools
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=618475" role="menuitem" ms.title="Visual Studio" data-bi-name="Footer_DownloadsAndTools_VS" data-bi-slot="2" data-bi-source="Compass">
+                                            Visual Studio
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=616887" role="menuitem" ms.title="Windows SDK" data-bi-name="Footer_DownloadsAndTools_WinSDK" data-bi-slot="3" data-bi-source="Compass">
+                                            Windows SDK
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534236" role="menuitem" ms.title="Windows Store badges" data-bi-name="Footer_DownloadsAndTools_Badges" data-bi-slot="4" data-bi-source="Compass">
+                                            Windows Store badges
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Essentials <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534192" role="menuitem" ms.title="API reference (Windows apps)" data-bi-name="Footer_Essentials_WinAppsAPIRef" data-bi-slot="1" data-bi-source="Compass">
+                                            API reference (Windows apps)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=285627" role="menuitem" ms.title="API reference (desktop apps)" data-bi-name="Footer_Essentials_DesktopAppsAPIRef" data-bi-slot="2" data-bi-source="Compass">
+                                            API reference (desktop apps)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/?LinkID=280677" role="menuitem" ms.title="Code samples" data-bi-name="FooterEssentialsCodeSamples" data-bi-slot="3" data-bi-source="Compass">
+                                            Code samples
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://msdn.microsoft.com/library/windows/apps/xaml/mt244352.aspx" role="menuitem" ms.title="How-to guides (Windows apps)" data-bi-name="Footer_Essentials_HowToWinApps" data-bi-slot="4" data-bi-source="Compass">
+                                            How-to guides (Windows apps)
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Learning resources <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://www.microsoftvirtualacademy.com/" role="menuitem" ms.title="Microsoft Virtual Academy" data-bi-name="Footer_MS_Virtual_Academy" data-bi-slot="1" data-bi-source="Compass">
+                                            Microsoft Virtual Academy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://channel9.msdn.com/" role="menuitem" ms.title="Channel 9" data-bi-name="Footer_Ch9" data-bi-slot="2" data-bi-source="Compass">
+                                            Channel 9
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534190" role="menuitem" ms.title="Video gallery" data-bi-name="Footer_VidGallery" data-bi-slot="3" data-bi-source="Compass">
+                                            Video gallery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://blogs.windows.com/buildingapps/2015/08/05/build-better-apps-windows-10-by-10-development-series/" role="menuitem" ms.title="Windows 10 by 10 blog series" data-bi-name="Footer_LearningResources_WIN10x10blog" data-bi-slot="4" data-bi-source="Compass">
+                                            Windows 10 by 10 blog series
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Programs <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534191" role="menuitem" ms.title="Get a dev account" data-bi-name="Footer_Programs_DevAcct" data-bi-slot="1" data-bi-source="Compass">
+                                            Get a dev account
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkID=246847" role="menuitem" ms.title="App Developer Agreement" data-bi-name="Footer_Programs_DevAgreement" data-bi-slot="2" data-bi-source="Compass">
+                                            App Developer Agreement
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://insider.windows.com/" role="menuitem" ms.title="Windows Insider Program" data-bi-name="Footer_Programs_WinInsider" data-bi-slot="3" data-bi-source="Compass">
+                                            Windows Insider Program
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://go.microsoft.com/fwlink/p/?LinkId=529768" role="menuitem" ms.title="Microsoft Affliate Program" data-bi-name="Footer_Programs_MsftAffliatePgrm" data-bi-slot="4" data-bi-source="Compass">
+                                            Microsoft Affliate Program
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+
+            </div>
+
+        <div class="shell-footer-lang">
+                <ul>
+                    <li>
+                        <i class="shell-icon-globe"></i>
+                    </li><li>
+                        <a id="locale-picker-link" href="https://dev.windows.com/locale"
+                           data-bi-name="LocalePicker">
+                            English (United States)&lrm;
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        <div class="shell-footer-copyright">
+            <ul>
+                            <li>
+                                <a id="privacyandcookies" href="//go.microsoft.com/fwlink/p/?LinkId=521839" class="ctl_footerNavLink" data-bi-name="PrivacyAndCookies" data-bi-slot="1">
+                                    Privacy and cookies
+                                </a>
+                            </li>
+                            <li>
+                                <a id="termsofuse" href="//go.microsoft.com/fwlink/p/?linkid=248155" class="ctl_footerNavLink" data-bi-name="TermsOfUse" data-bi-slot="2">
+                                    Terms of use
+                                </a>
+                            </li>
+                            <li>
+                                <a id="trademarks" href="//go.microsoft.com/fwlink/p/?linkid=248154" class="ctl_footerNavLink" data-bi-name="Trademarks" data-bi-slot="3">
+                                    Trademarks
+                                </a>
+                            </li>
+
+                <li class="ctl_footerCopyright">
+                    &copy; 2015 Microsoft
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

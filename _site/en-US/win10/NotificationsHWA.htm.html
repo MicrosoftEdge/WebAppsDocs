@@ -1,4 +1,41 @@
-<link href="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/v3/scss/shell.min.css" rel="stylesheet" type="text/css" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Windows Web Apps - Add Toast Notifications</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Everything you need to know about Hosted Web Apps on Windows, part of the Universal Windows Apps family with full access to platform APIs from remote JavaScript.">
+    <meta name="keywords" content="Windows Web Apps, Hosted Web Apps, Windows Web Applications, Web Apps, JavaScript Apps, HTML Apps, HTML 5, Windows 10, Windows Universal, Windows Universal Apps, Windows Platform, Universal Windows Apps, Universal Windows APIs, UWP, Project Westminster, Westminster, Windows Apps, Windows 10 Apps, Windows App Building, Apps, Web, HTML5">
+
+    <link id="linkBaseUrl" href="/WebAppsDocs" />
+
+    <link rel="icon" type="image/png" href="http://MicrosoftEdge.github.io/WebAppsDocs/favicon.png">
+    <!--[if IE]><link rel="shortcut icon" href="http://MicrosoftEdge.github.io/WebAppsDocs/favicon.ico"/><![endif]-->
+
+    <!-- Bootstrap core CSS -->
+    <link href="/WebAppsDocs/css/bootstrap.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/pygments.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/main.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/nav.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/syntax.css" rel="stylesheet" />
+
+
+    <script type="text/javascript">
+        var appInsights=window.appInsights||function(config){
+            function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e="script",o=r.createElement(e),i,u;for(o.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)s("track"+i.pop());return config.disableExceptionTracking||(i="onerror",s("_"+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t["_"+i](config,r,f,e,o),s}),t
+        }({
+            instrumentationKey:"5493cd0a-77ff-44c5-a466-dd95277d2968"
+        });
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+
+<body class="default-body">
+    <div class="chrome-header-wrapper">
+        
+  <link href="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/v3/scss/shell.min.css" rel="stylesheet" type="text/css" />
 
 <!--[if lte IE 8]>
     <link href="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/common/respond-proxy.html" id="respond-proxy" rel="respond-proxy"/>
@@ -619,21 +656,21 @@
 
 
         <li class="c-top-nav-item">
-                <a class="c-top-nav-link c-nav-link" href="{{site.baseurl}}/" ms.title="Windows Bridge for Hosted Web Apps" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
+                <a class="c-top-nav-link c-nav-link" href="/WebAppsDocs/" ms.title="Windows Bridge for Hosted Web Apps" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
                     <span>
                         Windows Bridge for Hosted Web Apps
                     </span>
                 </a>
             </li>
          <li class="c-top-nav-item">
-                <a class="c-top-nav-link c-nav-link" href="{{site.baseurl}}/{{page.lang}}//win10/CreateHWA.htm" ms.title="Create your app" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
+                <a class="c-top-nav-link c-nav-link" href="/WebAppsDocs/en-US//win10/CreateHWA.htm" ms.title="Create your app" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
                     <span>
                         Create
                     </span>
                 </a>
             </li>
         <li class="c-top-nav-item">
-                <a class="c-top-nav-link c-nav-link" href="{{site.baseurl}}/{{page.lang}}//win10/HWAfeatures.htm" ms.title="Enhance your app" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
+                <a class="c-top-nav-link c-nav-link" href="/WebAppsDocs/en-US//win10/HWAfeatures.htm" ms.title="Enhance your app" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
                     <span>
                         Enhance
                     </span>
@@ -742,3 +779,212 @@
         signOutStr: 'Sign out'
     };
 </script>
+
+
+    </div>
+
+    <div class="row">
+        <div class="default-max-width">
+            <div class="content-container col-md-12">
+                <h1 id="add-notifications-to-your-website">Add Notifications to your Website</h1>
+
+<p>Learn how to add Notifications to your Website when it’s running in the AppHost on Windows. Start with</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="chrome-header-wrapper">
+        <div class="container iot-site-footer">
+    <div class="row">
+        <div class="text-center">
+            <!-- <h3>Questions/Suggestions</h3> -->
+            <!-- <p>As always, for questions or feedback, <a href="/WebAppsDocs/en-US/Community.htm#contact">contact us</a></p> -->
+            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/NotificationsHWA.md">
+                <img src="/WebAppsDocs/images/Octocat.png" class="nr" />Edit this page on GitHub
+            </a>
+        </div>
+    </div>
+</div>
+<div class="jumbotron doc-footer webapp-accent remove-bottom-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-24">Made with &#10084; by the Web Apps and Frameworks team</div>
+        </div>
+    </div>
+</div>
+    </div>
+    <script src="/WebAppsDocs/js/jquery-1.11.2.min.js"></script>
+<script src="/WebAppsDocs/js/bootstrap.min.js"></script>
+<script src="/WebAppsDocs/js/app.js"></script>
+
+    
+  <!--[if lte IE 8]>
+    <script src="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/common/js/shell_ie8.js"></script>
+<![endif]-->
+
+
+
+<script src="https://mem.gfx.ms/meversion?partner=dev-center-win-apps"></script>
+<script src="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/generated/shellservice.v3.min.js"></script>
+
+<script src="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/store/blender/js/blender.js"></script>
+<div class="shell-footer" data-bi-area="Footer" data-bi-view="3xLinks">
+    <div class="shell-footer-wrapper" role="contentinfo">
+
+            <div class="shell-footer-menugroups">
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Downloads and tools <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=280676" role="menuitem" ms.title="Windows 10 dev tools" data-bi-name="footer_DownloadsAndTools_Win10DevTools" data-bi-slot="1" data-bi-source="Compass">
+                                            Windows 10 dev tools
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=618475" role="menuitem" ms.title="Visual Studio" data-bi-name="Footer_DownloadsAndTools_VS" data-bi-slot="2" data-bi-source="Compass">
+                                            Visual Studio
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=616887" role="menuitem" ms.title="Windows SDK" data-bi-name="Footer_DownloadsAndTools_WinSDK" data-bi-slot="3" data-bi-source="Compass">
+                                            Windows SDK
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534236" role="menuitem" ms.title="Windows Store badges" data-bi-name="Footer_DownloadsAndTools_Badges" data-bi-slot="4" data-bi-source="Compass">
+                                            Windows Store badges
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Essentials <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534192" role="menuitem" ms.title="API reference (Windows apps)" data-bi-name="Footer_Essentials_WinAppsAPIRef" data-bi-slot="1" data-bi-source="Compass">
+                                            API reference (Windows apps)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?linkid=285627" role="menuitem" ms.title="API reference (desktop apps)" data-bi-name="Footer_Essentials_DesktopAppsAPIRef" data-bi-slot="2" data-bi-source="Compass">
+                                            API reference (desktop apps)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/?LinkID=280677" role="menuitem" ms.title="Code samples" data-bi-name="FooterEssentialsCodeSamples" data-bi-slot="3" data-bi-source="Compass">
+                                            Code samples
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://msdn.microsoft.com/library/windows/apps/xaml/mt244352.aspx" role="menuitem" ms.title="How-to guides (Windows apps)" data-bi-name="Footer_Essentials_HowToWinApps" data-bi-slot="4" data-bi-source="Compass">
+                                            How-to guides (Windows apps)
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Learning resources <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://www.microsoftvirtualacademy.com/" role="menuitem" ms.title="Microsoft Virtual Academy" data-bi-name="Footer_MS_Virtual_Academy" data-bi-slot="1" data-bi-source="Compass">
+                                            Microsoft Virtual Academy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://channel9.msdn.com/" role="menuitem" ms.title="Channel 9" data-bi-name="Footer_Ch9" data-bi-slot="2" data-bi-source="Compass">
+                                            Channel 9
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534190" role="menuitem" ms.title="Video gallery" data-bi-name="Footer_VidGallery" data-bi-slot="3" data-bi-source="Compass">
+                                            Video gallery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://blogs.windows.com/buildingapps/2015/08/05/build-better-apps-windows-10-by-10-development-series/" role="menuitem" ms.title="Windows 10 by 10 blog series" data-bi-name="Footer_LearningResources_WIN10x10blog" data-bi-slot="4" data-bi-source="Compass">
+                                            Windows 10 by 10 blog series
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+                    <div class="sfm-group">
+                        <div class="grp-title">
+                            Programs <i class="shell-icon-dropdown"></i>
+                        </div>
+                        <ul>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkId=534191" role="menuitem" ms.title="Get a dev account" data-bi-name="Footer_Programs_DevAcct" data-bi-slot="1" data-bi-source="Compass">
+                                            Get a dev account
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://go.microsoft.com/fwlink/p/?LinkID=246847" role="menuitem" ms.title="App Developer Agreement" data-bi-name="Footer_Programs_DevAgreement" data-bi-slot="2" data-bi-source="Compass">
+                                            App Developer Agreement
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://insider.windows.com/" role="menuitem" ms.title="Windows Insider Program" data-bi-name="Footer_Programs_WinInsider" data-bi-slot="3" data-bi-source="Compass">
+                                            Windows Insider Program
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://go.microsoft.com/fwlink/p/?LinkId=529768" role="menuitem" ms.title="Microsoft Affliate Program" data-bi-name="Footer_Programs_MsftAffliatePgrm" data-bi-slot="4" data-bi-source="Compass">
+                                            Microsoft Affliate Program
+                                        </a>
+                                    </li>
+
+                        </ul>
+                    </div>
+
+            </div>
+
+        <div class="shell-footer-lang">
+                <ul>
+                    <li>
+                        <i class="shell-icon-globe"></i>
+                    </li><li>
+                        <a id="locale-picker-link" href="https://dev.windows.com/locale"
+                           data-bi-name="LocalePicker">
+                            English (United States)&lrm;
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        <div class="shell-footer-copyright">
+            <ul>
+                            <li>
+                                <a id="privacyandcookies" href="//go.microsoft.com/fwlink/p/?LinkId=521839" class="ctl_footerNavLink" data-bi-name="PrivacyAndCookies" data-bi-slot="1">
+                                    Privacy and cookies
+                                </a>
+                            </li>
+                            <li>
+                                <a id="termsofuse" href="//go.microsoft.com/fwlink/p/?linkid=248155" class="ctl_footerNavLink" data-bi-name="TermsOfUse" data-bi-slot="2">
+                                    Terms of use
+                                </a>
+                            </li>
+                            <li>
+                                <a id="trademarks" href="//go.microsoft.com/fwlink/p/?linkid=248154" class="ctl_footerNavLink" data-bi-name="Trademarks" data-bi-slot="3">
+                                    Trademarks
+                                </a>
+                            </li>
+
+                <li class="ctl_footerCopyright">
+                    &copy; 2015 Microsoft
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

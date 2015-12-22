@@ -94,4 +94,4 @@ After 7 simple steps you've been able to not only turn a website into an app but
 
 <br>
 
-<a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm"><button>Next: Accessing Features</button></a>
+<a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm"><button class="next">Next: Accessing Features</button></a>

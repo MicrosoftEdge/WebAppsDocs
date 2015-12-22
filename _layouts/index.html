@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  {% include head_index.html %}
+<body class="withLeftNav">
+    <div id="headerWrapper">
+        {% include chrome-header-base.html %}
+    </div>
+
+    {{ content }}
+
+    <div class="chrome-header-wrapper">
+        {% include footer.html %}
+    </div>
+    {% include script.html %}
+    {% include chrome-footer-base.html %}
+</body>
+</html>

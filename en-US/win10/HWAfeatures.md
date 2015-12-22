@@ -12,8 +12,9 @@ You web app can have full access to the **Universal Windows Platform (UWP)**, in
 **Project Westminster** enables you to get started.  
 
 ##Get started
-1. Install [**Visual Studio 2015**](https://dev.windows.com/en-us/downloads) - The  free, full-featured Visual Studio Community 2015 includes the Windows 10 developer tools, universal app templates, a code editor, a powerful debugger, Windows Mobile emulators, rich language support, and more, all ready to use in production. 
- **NOTE** If you are using a different development environment than Visual Studio 2015, you can download the [Windows Standalone SDK for Windows 10](https://dev.windows.com/en-us/downloads/windows-10-sdk) installer.
+1. Install [**Visual Studio 2015**](https://dev.windows.com/en-us/downloads) - The  free, full-featured Visual Studio Community 2015 includes the Windows 10 developer tools, universal app templates, a code editor, a powerful debugger, Windows Mobile emulators, rich language support, and more, all ready to use in production.
+
+  **NOTE:** If you are using a different development environment than Visual Studio 2015, you can download the [Windows Standalone SDK for Windows 10](https://dev.windows.com/en-us/downloads/windows-10-sdk) installer.
 2. Follow the steps to [convert your website into an web app on Windows 10](../CreateHWA.md).
 
 Once your web app has been packaged for the Universal Windows Platform following the steps above, learn more about accessing platform features below.
@@ -34,12 +35,14 @@ If your user navigates to a URL that is not included in your rules, then Windows
 
 Here are a few examples of ACURs.
 
-```javascript
+```xml
+	<Application
+	Id="App"
 	StartPage="http://contoso.com/home">
 	<uap:ApplicationContentUriRules>
-	<uap:Rule Type="include" Match="https://contoso.com/" WindowsRuntimeAccess="all" />
-	<uap:Rule Type="include" Match="https://*.contoso.com/" WindowsRuntimeAccess="all" />
-	<uap:Rule Type="exclude" Match="https://contoso.com/excludethispage.aspx" />
+		<uap:Rule Type="include" Match="https://contoso.com/" WindowsRuntimeAccess="all" />
+		<uap:Rule Type="include" Match="https://*.contoso.com/" WindowsRuntimeAccess="all" />
+		<uap:Rule Type="exclude" Match="https://contoso.com/excludethispage.aspx" />
 	</uap:ApplicationContentUriRules>
 ```
 
@@ -63,6 +66,7 @@ Here is an example rule type:
 This gives script running on http://contoso.com/ access to Windows Runtime namespaces and custom packaged components in the package. See the [**Windows.UI.Notifications.js**](https://gist.github.com/Gr8Gatsby/3d471150e5b317eb1813#file-windows-ui-notifications-js) example on GitHub for toast notifications.
 
 Here is an example of how to implement a Live Tile and update it from remote JavaScript:
+
 ```javascript
 	function updateTile(message, imgUrl, imgAlt) {
 	    // Namespace: Windows.UI.Notifications

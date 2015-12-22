@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Windows Web Apps - Hosted Web Apps - Accessing Windows features</title>
+    <title>Windows Bridge for Hosted Web Apps - Add Toast Notifications</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Everything you need to know about Hosted Web Apps on Windows, part of the Universal Windows Apps family with full access to platform APIs from remote JavaScript.">
     <meta name="keywords" content="Windows Web Apps, Hosted Web Apps, Windows Web Applications, Web Apps, JavaScript Apps, HTML Apps, HTML 5, Windows 10, Windows Universal, Windows Universal Apps, Windows Platform, Universal Windows Apps, Universal Windows APIs, UWP, Project Westminster, Westminster, Windows Apps, Windows 10 Apps, Windows App Building, Apps, Web, HTML5">
@@ -786,165 +786,9 @@
     <div class="row">
         <div class="default-max-width">
             <div class="content-container col-md-12">
-                <h1 id="hosted-web-apps---accessing-windows-features">Hosted Web Apps - Accessing Windows features</h1>
+                <h1 id="add-notifications-to-your-website">Add Notifications to your Website</h1>
 
-<p>You web app can have full access to the <strong>Universal Windows Platform (UWP)</strong>, including calling Windows Runtime APIs directly from script hosted on a server, leveraging Cortana integration, and using an online authentication provider. Hybrid apps are also supported as you can include local code to be called from the hosted script and manage app navigation between remote and local pages.</p>
-
-<p><strong>Project Westminster</strong> enables you to get started.</p>
-
-<h2 id="get-started">Get started</h2>
-<ol>
-  <li>Install <a href="https://dev.windows.com/en-us/downloads"><strong>Visual Studio 2015</strong></a> - The  free, full-featured Visual Studio Community 2015 includes the Windows 10 developer tools, universal app templates, a code editor, a powerful debugger, Windows Mobile emulators, rich language support, and more, all ready to use in production. 
- <strong>NOTE</strong> If you are using a different development environment than Visual Studio 2015, you can download the <a href="https://dev.windows.com/en-us/downloads/windows-10-sdk">Windows Standalone SDK for Windows 10</a> installer.</li>
-  <li>Follow the steps to <a href="../CreateHWA.md">convert your website into an web app on Windows 10</a>.</li>
-</ol>
-
-<p>Once your web app has been packaged for the Universal Windows Platform following the steps above, learn more about accessing platform features below.</p>
-
-<h2 id="keep-your-app-secure----setting-application-content-uri-rules-acurs">Keep your app secure – Setting Application Content URI Rules (ACURs)</h2>
-<p>Through ACURs, otherwise known as a URL allow list, you are able to give remote URLs direct access to Universal Windows APIs from remote HTML, CSS, and JavaScript. At the Windows OS level, the right policy bounds have been set to allow code hosted on your web server to directly call platform APIs. You define these bounds in the app package manifest when you place the set of URLs that make up your Hosted Web App in the Application Content URI Rules (ACURs). Your rules should include your app’s start page and any other pages you want included as app pages. Optionally, you can exclude specific URLs, too.</p>
-
-<p>There are several ways to specify a URL match in your rules:</p>
-
-<ul>
-  <li>An exact hostname</li>
-  <li>A hostname for which a URI with any subdomain of that hostname is included or excluded</li>
-  <li>An exact URI</li>
-  <li>An exact URI that can contain a query property</li>
-  <li>A partial path and a wildcard to indicate a particular file extension for an include rule</li>
-  <li>Relative paths for exclude rules</li>
-</ul>
-
-<p>If your user navigates to a URL that is not included in your rules, then Windows opens the target URL in a browser.</p>
-
-<p>Here are a few examples of ACURs.</p>
-
-<p><code>javascript
-	StartPage="http://contoso.com/home"&gt;
-	&lt;uap:ApplicationContentUriRules&gt;
-	&lt;uap:Rule Type="include" Match="https://contoso.com/" WindowsRuntimeAccess="all" /&gt;
-	&lt;uap:Rule Type="include" Match="https://*.contoso.com/" WindowsRuntimeAccess="all" /&gt;
-	&lt;uap:Rule Type="exclude" Match="https://contoso.com/excludethispage.aspx" /&gt;
-	&lt;/uap:ApplicationContentUriRules&gt;
-</code></p>
-
-<h2 id="call-windows-runtime-apis">Call Windows Runtime APIs</h2>
-<p>If a URL is defined within the app’s bounds (ACURs), it can call Windows Runtime APIs with JavaScript using the “WindowsRuntimeAccess” attribute. The Windows namespace will be injected and present in the script engine when a URL with appropriate access is loaded in the App Host. This makes Universal Windows APIs available for the app’s scripts to call directly. As a developer, you just need to feature detect for the Windows API you would like to call and, if available, proceed to light-up platform features.</p>
-
-<p>To enable this, you need to specify the <code>(WindowsRuntimeAccess="&lt;&lt;level&gt;&gt;")</code> attribute in the ACURs with the one of these values:</p>
-
-<ul>
-  <li><strong>all</strong>: Remote JavaScript code has access to all UWP APIs and any local packaged components.</li>
-  <li><strong>allowForWeb</strong>: Remote JavaScript code has access to custom in package code only.  Local access to custom C++/C# components.</li>
-  <li><strong>none</strong>: <strong>Default.</strong>  The specified URL has no platform access.</li>
-</ul>
-
-<p>Here is an example rule type:</p>
-
-<p><code>javascript
-	&lt;uap:ApplicationContentUriRules&gt;
-      		&lt;uap:Rule Type="include" Match="http://contoso.com/" WindowsRuntimeAccess="all"  /&gt;
-	&lt;/uap:ApplicationContentUriRules&gt;
-</code></p>
-
-<p>This gives script running on http://contoso.com/ access to Windows Runtime namespaces and custom packaged components in the package. See the <a href="https://gist.github.com/Gr8Gatsby/3d471150e5b317eb1813#file-windows-ui-notifications-js"><strong>Windows.UI.Notifications.js</strong></a> example on GitHub for toast notifications.</p>
-
-<p>Here is an example of how to implement a Live Tile and update it from remote JavaScript:
-```javascript
-	function updateTile(message, imgUrl, imgAlt) {
-	    // Namespace: Windows.UI.Notifications
-	    if (typeof Windows !== ‘undefined’&amp;&amp;
-	            typeof Windows.UI !== ‘undefined’ &amp;&amp;
-	            typeof Windows.UI.Notifications !== ‘undefined’) {</p>
-
-<pre><code>        var notifications = Windows.UI.Notifications,
-        tile = notifications.TileTemplateType.tileSquare150x150PeekImageAndText01,
-        tileContent = notifications.TileUpdateManager.getTemplateContent(tile),
-        tileText = tileContent.getElementsByTagName('text'),
-        tileImage = tileContent.getElementsByTagName('image');
-
-        tileText[0].appendChild(tileContent.createTextNode(message || 'Demo Message'));
-        tileImage[0].setAttribute('src', imgUrl || 'https://unsplash.it/150/150/?random');
-        tileImage[0].setAttribute('alt', imgAlt || 'Random demo image');
-
-        var tileNotification = new notifications.TileNotification(tileContent);
-        var currentTime = new Date();
-        tileNotification.expirationTime = new Date(currentTime.getTime() + 600 * 1000);
-        notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
-    } else {
-        //Alternative behavior
-    }
-} ```
-</code></pre>
-
-<p>This code will produce a tile that looks something like this:
-<img src="../../images/HWA_liveTile.png" alt="Windows Runtime API Live Tile Example" /></p>
-
-<p>Call Windows Runtime APIs with whatever environment or technique is most familiar to you by keeping your resources on a server feature detecting for Windows capabilities prior to calling them. If platform capabilities are not available, and the web app is running in another host, you can provide the user with a standard default experience that works in the browser.</p>
-
-<h2 id="integrate-cortana-voice-commands">Integrate Cortana voice commands</h2>
-
-<p>You can take advantage of Cortana integration by specifying a Voice Command Definition (VCD) file in your html page. The VCD file is an xml file that maps commands to specific phrases. For example, a user could tap the Start button and say “Contoso Books, show best sellers” to both launch the Contoso Books app and to navigate to a “best sellers” page.</p>
-
-<p>When you add a <code>&lt;meta&gt;</code> element tag that lists the location of your VCD file, Windows automatically downloads and registers the Voice Command Definition file.</p>
-
-<p>Here is an example of the use of the <meta /> tag in an html page in a hosted web app:</p>
-
-<p>```html</p>
-<meta name="msapplication-cortanavcd" content="http:// contoso.com/vcd.xml" />
-
-<p>```</p>
-
-<p>For more info on Cortana integration and VCDs, see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn974231.aspx"><strong>Cortana interactions</strong></a> and <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn954977.aspx"><strong>Voice Command Defintion (VCD) elements and attributes v1.2</strong></a>.</p>
-
-<h2 id="create-hybrid-apps----packaged-web-apps-vs-hosted-web-apps">Create Hybrid apps – Packaged web apps vs. Hosted web apps</h2>
-
-<p>You have options for creating your UWP app. The app might be designed to be downloaded from the Windows Store and fully hosted on the local client; often referred to as a <strong>Packaged Web App</strong>. This lets you run your app offline on any compatible platform. Or the app might be a fully hosted web app that runs on a remote web server; typically known as a <strong>Hosted Web App</strong>. But there is also a third option: the app can be hosted partially on the local client and partially on a remote web server. We call this third option a <strong>Hybrid app</strong> and it typically uses the <strong>WebView</strong> component to make remote content look like local content. Hybrid apps can include your HTML5, CSS, and Javascript code running as a package inside the local app client and retain the ability to interact with remote content.</p>
-
-<h2 id="web-authentication-broker">Web authentication broker</h2>
-
-<p>You can use the web authentication broker to handle the login flow for your users if you have an online identity provider that uses internet authentication and authorization protocols like OpenID or OAuth. You specify the start and end URIs in a <code>&lt;meta&gt;</code> tag on an html page in your app. Windows detects these URIs and passes them to the web authentication broker to complete the login flow. The start URI consists of the address where you send the authentication request to your online provider appended with other required information, such as an app ID, a redirect URI where the user is sent after completing authentication, and the expected response type. You can find out from your provider what parameters are required.
-Here is an example use of the <code>&lt;meta&gt;</code> tag:</p>
-
-<p><code>html
-	&lt;meta name="ms-webauth-uris" 
-	 	content="https://&lt;providerstartpoint&gt;?client_id=&lt;clientid&gt;&amp;response_type=token, 
-               		https://&lt;appendpoint&gt;"/&gt;
-</code></p>
-
-<p>For more guidance, see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn448956.aspx"><strong>Web authentication broker considerations for online providers</strong></a>.</p>
-
-<h2 id="app-capability-declarations">App capability declarations</h2>
-
-<p>If your app needs programmatic access to user resources like pictures or music, or to devices like a camera or a microphone, you must declare the appropriate capability. There are three app capability declaration categories:
-  - <a href="https://msdn.microsoft.com/en-us/library/windows/apps/Mt270968.aspx#General-use_capabilities"><strong>General-use</strong> capabilities that apply to most common app scenarios.</a>
-  - <a href="https://msdn.microsoft.com/en-us/library/windows/apps/Mt270968.aspx#Device_capabilities"><strong>Device</strong> capabilities that allow your app to access peripheral and internal devices.</a>
-  - <a href="https://msdn.microsoft.com/en-us/library/windows/apps/Mt270968.aspx#Special_and_restricted_capabilities"><strong>Special-use</strong> capabilities that require a special company account for submission to the Store to use them.</a> <em>For more info about company accounts, see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/jj863494.aspx">Account types, locations, and fees</a>.</em></p>
-
-<p><strong>Note:</strong> It is important to know that when customers get your app from the Windows Store, they are notified of all the capabilities that the app declares. So do not use capabilities that your app does not need.</p>
-
-<p>You request access by declaring capabilities in your app’s <a href="https://msdn.microsoft.com/en-us/library/windows/apps/br211474.aspx">package manifest</a>. You can declare general capabilities by using the <a href="https://msdn.microsoft.com/library/windows/apps/xaml/hh454036(v=vs.140).aspx#Configure">Manifest Designer</a> in <a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx">Microsoft Visual Studio</a>, or you can add them manually—see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/br211477.aspx">How to specify capabilities in a package manifest</a>.</p>
-
-<p>Some capabilities provide apps access to a sensitive resource. These resources are considered sensitive because they can access the user’s personal data or cost the user money. Privacy settings, managed by the Settings app, let the user dynamically control access to sensitive resources. Thus, it’s important that your app doesn’t assume a sensitive resource is always available. For more info about accessing sensitive resources, see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh768223.aspx">Guidelines for privacy-aware apps</a>.</p>
-
-<h2 id="manifoldjs-and-the-app-manifest">manifoldjs and the app manifest</h2>
-
-<p>An easy way to turn your website into a UWP app is to use an <strong>app manifest</strong> and <strong>manifoldjs</strong>. The app manifest is an xml file that contains metadata about the app. It specifies such things as the app’s name, links to resources, display mode, URLs, and other data that describes how the app should be deployed and run. <strong>manifoldjs</strong> makes this process very easy, even on systems that do not support web apps. Please go to <a href="http://go.microsoft.com/fwlink/p/?LinkId=615590">manifoldjs.com</a> for more information on how it works. You can also view a manifoldjs demonstration as part of this <a href="http://channel9.msdn.com/Events/WebPlatformSummit/2015/Hosted-web-apps-and-web-platform-innovations?wt.mc_id=relatedsession">Windows 10 Web Apps presentation</a>.</p>
-
-<p><br /></p>
-
-<p><a href="http://rjs.azurewebsites.net/"><button class="next">Next: Windows API Demos</button></a></p>
-
-<h2 id="related-topics">Related topics</h2>
-
-<ul>
-  <li><a href="http://rjs.azurewebsites.net/"><strong>RJS: examples of platform integration points</strong></a></li>
-  <li><a href="http://codepen.io/seksenov/pen/wBbVyb/"><strong>Codepen: sandbox to use for calling Windows Runtime APIs</strong></a></li>
-  <li><a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn974231.aspx"><strong>Cortana interactions</strong></a></li>
-  <li><a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn954977.aspx"><strong>Voice Command Defintion (VCD) elements and attributes v1.2</strong></a></li>
-  <li><a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn448956.aspx"><strong>Web authentication broker considerations for online providers</strong></a></li>
-  <li><a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh464936.aspx"><strong>App capability declarations</strong></a></li>
-</ul>
+<p>Learn how to add Notifications to your Website when it’s running in the AppHost on Windows. Start with</p>
 
             </div>
         </div>
@@ -955,7 +799,7 @@ Here is an example use of the <code>&lt;meta&gt;</code> tag:</p>
         <div class="text-center">
             <!-- <h3>Questions/Suggestions</h3> -->
             <!-- <p>As always, for questions or feedback, <a href="/WebAppsDocs/en-US/Community.htm#contact">contact us</a></p> -->
-            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/HWAfeatures.md">
+            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/NotificationsHWA.md">
                 <img src="/WebAppsDocs/images/Octocat.png" class="nr" />Edit this page on GitHub
             </a>
         </div>

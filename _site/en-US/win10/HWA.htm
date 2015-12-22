@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Windows Web Apps - Create a Hosted Web App</title>
+    <title>Windows Bridge for Hosted Web Apps - Hosted Web Apps</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Everything you need to know about Hosted Web Apps on Windows, part of the Universal Windows Apps family with full access to platform APIs from remote JavaScript.">
     <meta name="keywords" content="Windows Web Apps, Hosted Web Apps, Windows Web Applications, Web Apps, JavaScript Apps, HTML Apps, HTML 5, Windows 10, Windows Universal, Windows Universal Apps, Windows Platform, Universal Windows Apps, Universal Windows APIs, UWP, Project Westminster, Westminster, Windows Apps, Windows 10 Apps, Windows App Building, Apps, Web, HTML5">
@@ -13,13 +13,8 @@
     <link rel="icon" type="image/png" href="http://MicrosoftEdge.github.io/WebAppsDocs/favicon.png">
     <!--[if IE]><link rel="shortcut icon" href="http://MicrosoftEdge.github.io/WebAppsDocs/favicon.ico"/><![endif]-->
 
-    <!-- Bootstrap core CSS -->
-    <link href="/WebAppsDocs/css/bootstrap.css" rel="stylesheet" />
-    <link href="/WebAppsDocs/css/pygments.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/WebAppsDocs/css/WebCore.4.3.0.ltr.light.min.css"/>
     <link href="/WebAppsDocs/css/main.css" rel="stylesheet" />
-    <link href="/WebAppsDocs/css/nav.css" rel="stylesheet" />
-    <link href="/WebAppsDocs/css/syntax.css" rel="stylesheet" />
-
 
     <script type="text/javascript">
         var appInsights=window.appInsights||function(config){
@@ -32,8 +27,8 @@
     </script>
 </head>
 
-<body class="default-body">
-    <div class="chrome-header-wrapper">
+<body class="withLeftNav">
+    <div id="headerWrapper">
         
   <link href="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/v3/scss/shell.min.css" rel="stylesheet" type="text/css" />
 
@@ -783,131 +778,158 @@
 
     </div>
 
-    <div class="row">
-        <div class="default-max-width">
-            <div class="content-container col-md-12">
-                <h1 id="hosted-web-apps---create-your-app-now">Hosted Web Apps - Create your app now</h1>
-
-<p>Learn how to quickly create a Universal Windows Platform (UWP) app using Project Westminster for Windows 10 starting with your website URL. All you’ll need to do is add your site URL to a Windows app manifest, set your image resources to use for app tiles and store discovery and package it up. Continue by adding native platform integration from JavaScript hosted on your servers in a matter of minutes.</p>
-
-<h2 id="what-you-need">What you need</h2>
-<ul>
-  <li><a href="https://dev.windows.com/en-us/downloads"><strong>Visual Studio 2015</strong></a> - The  free, full-featured Visual Studio Community 2015 includes the Windows 10 developer tools, universal app templates, a code editor, a powerful debugger, Windows Mobile emulators, rich language support, and more, all ready to use in production.</li>
-  <li><a href="https://dev.windows.com/en-us/downloads/windows-10-sdk">Windows Standalone SDK for Windows 10</a> - If you are using a different development environment than Visual Studio 2015, you can download a standalone Windows SDK for Windows 10 installer. Note that you don’t need to install this SDK if you’re using Visual Studio 2015 – it’s already included.</li>
-</ul>
-
-<h2 id="follow-these-steps-to-convert-a-website-into-an-web-app-on-windows">Follow these steps to convert a Website into an Web App on Windows</h2>
-
-<ol>
-  <li><strong>Pick a Website URL</strong>
-    <ul>
-      <li>Choose an existing website that will work great as a single page app – preferably you are the owner/developer of the site so you are able to make changes</li>
-      <li>If you don’t have a URL in mind, the tutorial will walk you through using this <a href="http://codepen.io/seksenov/pen/wBbVyb/?editors=101">Codepen Example</a> (http://codepen.io/seksenov/pen/wBbVyb/?editors=101) as the URL</li>
-      <li>Copy your URL or the Codepen URL above to use throughout the tutorial</li>
-    </ul>
-
-    <p><br /></p>
-  </li>
-  <li><strong>Create a Blank JS App</strong>
-    <ul>
-      <li>Launch Visual Studio 2015</li>
-      <li>Click “File -&gt; New Project” and choose “JavaScript -&gt; Windows -&gt; Windows Universal -&gt; Blank App (Windows Universal)”</li>
-    </ul>
-
-    <p><br />
- <strong>Choose the blank JavaScript Template</strong>
- <img src="/WebAppsDocs/images/CreateHWA/BlankJSTemplate.PNG" /></p>
-
-    <p><br /></p>
-  </li>
-  <li><strong>Delete Packaged HTML/CSS/JS</strong>
-    <ul>
-      <li>Since this is a hosted web app where the content is served from a remote server you won’t need most of the local app files that come standard from the JavaScript temple.</li>
-      <li>Go ahead and delete the local HTML, JS and CSS resources. All you’ll need to keep is the appx manifest (Where you configure the app) and the image resources to be displayed in the store, start menu and on the taskbar.</li>
-    </ul>
-
-    <p><br />
- <strong>Delete highlighted folders/files</strong>
- <img src="/WebAppsDocs/images/CreateHWA/DeletePackagedContent.PNG" /></p>
-
-    <p><br /></p>
-  </li>
-  <li><strong>Set the Start page URL in the App Manifest</strong>
-    <ul>
-      <li>Open the package.appxmanifest file</li>
-      <li>Under the Application tab find the StartPage: default.html” field</li>
-      <li>Replace “default.html” with http://codepen.io/seksenov/pen/wBbVyb/?editors=101</li>
-    </ul>
-
-    <p><br />
- <strong>Copy and paste the Start page URL</strong>
- <img src="/WebAppsDocs/images/CreateHWA/StartPageScreen.PNG" /></p>
-
-    <p><br /></p>
-  </li>
-  <li><strong>Define the Boundaries of your Web App</strong>
-    <ul>
-      <li>In the Content URIs tab define the URLs that make up your web app</li>
-      <li>Here you are able to control which URLs gain access to native platform functionality</li>
-      <li>Go ahead and add 1. http://codepen.io/seksenov/pen/wBbVyb/?editors=101 and 2. http://*.codepen.io/</li>
-      <li>Set WinRT Access to All for both URLs</li>
-    </ul>
-
-    <p><br />
- <strong>Copy and paste the Content URIs</strong>
- <img src="/WebAppsDocs/images/CreateHWA/ContentURIScreen.PNG" /></p>
-
-    <p><br /></p>
-  </li>
-  <li><strong>Hit Run!</strong>
-    <ul>
-      <li>At this point you have a fully functioning native Web App on Windows that is able to access platform APIs</li>
-      <li>The hosted Codepen is running in the App Host on Windows 10 and has access to Universal Windows APIs</li>
-      <li>In the Codepen Click or touch the Toast Notification button to call a Windows API from hosted script</li>
-    </ul>
-
-    <p><br />
- <strong>Codepen running as a Hosted Web App showing a Windows Toast Notification</strong>
- <img src="/WebAppsDocs/images/CreateHWA/CodepenToast.PNG" />
- <br /></p>
-  </li>
-  <li><strong>Add Camera Capture</strong>
-    <ul>
-      <li>Just copy and paste the JavaScript code for Camera Capture directly into the JS editor of the Codepen
-        <ul>
-          <li>Note: It’s best to view the raw code when copying</li>
-        </ul>
-      </li>
-      <li>A button to invoke the cameraCapture() function was already present in HTML, so go ahead, click it and take a pic</li>
-    </ul>
-
-    <p><br />
- <strong>Camera Capture</strong>
- <br />
- <strong>Codepen Calling Native Camera Capture</strong>
- <img src="/WebAppsDocs/images/CreateHWA/CameraCapture.PNG" />
- <br /></p>
-  </li>
-</ol>
-
-<h2 id="all-set">All Set!</h2>
-
-<p>After 7 simple steps you’ve been able to not only turn a website into an app but also access Universal Windows APIs from your hosted JavaScript. Thanks for completing the tutorial, we can’t wait to see what scenarios you envision next!</p>
-
-<p><br /></p>
-
-<p><a href="/WebAppsDocs/en-US/win10/HWAfeatures.htm"><button class="next">Next: Accessing Features</button></a></p>
-
+    <div class="jumbotron jumbotron-centered webapp-accent">
+    <div class="container relative">
+        <div class="hidden-xs hidden-sm doc-breadcrumb">
+            <a href="https://dev.windows.com/windows-apps">Windows Apps</a>
+            &gt;
+            <a href="https://dev.windows.com/bridges">Windows Bridges</a>
+            &gt;
+            Windows Bridge for Hosted Web Apps
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-16">
+                <div class="centered-content webapp-width-inherit webapp-padding-40">
+                    <div class="webapp-block image-container">
+                        <img class="img-responsive" src="/WebAppsDocs/images/devices.png" />
+                    </div>
+                    <div class="webapp-block jumbotron-content win-color-fg-primary color-alt">
+                        <h1 class="jumbotron-header header-large">Windows Bridge for Hosted Web Apps</h1>
+                        <p class="jumbotron-subheader">Build great Windows apps with your existing website code.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-24 col-lg-12">
+            <section class="section">
+                <header class="section-header">
+                    <h2 class="section-title">What is the Windows Bridge for Hosted Web Apps?</h2>
+                </header>
+                <div class="section-body">
+                    <p>For existing web applications, Windows 10 makes it easy for you to create a Universal Windows Platform (UWP) app that packages your website for publishing to the Store.</p>
+                    <ul class="bulleted-list">
+                        <li>Look great across all Windows-based devices, including PCs, tablets, phones, HoloLens, Surface Hub, Xbox and Raspberry Pi.</li>
+                        <li>Update and call native Windows APIs from JavaScript running on your website, creating a more engaging user experience.</li>
+                        <li>Integrate with Cortana voice commands.</li>
+                        <li>Debug your app with Microsoft Edge F12 Developer Tools.</li>
+                        <li>Track status, ratings, and reviews, see analytics, and get paid for all of your Windows app in the Windows Store.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-24 col-lg-12">
+            <section class="section">
+                <div class="video-player nomargin">
+                    <video class="doc-video" preload="none" poster="https://assets.windowsphone.com/e9e95cdd-bf84-410b-922c-886c19cc2be1/westminsterPosterImg_InvariantCulture_Default.png" controls="">
+                        <source src="https://sec.ch9.ms/ch9/d87f/3527ba83-7ab8-413a-9aae-d62b4847d87f/Westminster_high.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<div class="jumbotron jumbotron-highlight-band">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-24">
+                 <section class="section item-section">
+                    <header class="section-header">
+                        <h2 class="spacer-32-bottom">Get started now</h2>
+                    </header>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-24 col-lg-8">
+                <section class="section item-section">
+                    <header class="section-header">
+                        <h4>Create your app</h4>
+                    </header>
+                    <div class="section-body">
+                        <div class="spacer-16-bottom">Whether you're on a Mac or a PC, you can create your very own Hosted Web App in a matter of minutes. The best way to get started is by using Visual Studio, especially if you're on a Windows device. <a href="/WebAppsDocs/en-US//win10/CreateHWA.htm">Learn more here</a>.</div>
+                        <div>If you do not have access to Visual Studio, there are a few options from which you can choose. If you are familiar with command-line interface (CLI) utilities, check out <a href="http://manifoldjs.com/">ManifoldJS</a>. You can also use <a href="http://appstudio.windows.com/">App Studio</a>, a free, online creation tool that allows you to quickly build Windows 10 apps. Select the Hosted Web App template when prompted.</div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-24 col-lg-8">
+                <section class="section item-section">
+                    <header class="section-header">
+                        <h4>Enhance your app</h4>
+                    </header>
+                    <div class="section-body">
+                        <div class="spacer-16-bottom">With Hosted Web Apps, you can take full advantage of the Universal Windows Platform.</div>
+                        <ul class="bulleted-list">
+                            <li class="spacer-12-bottom">Make your app sparkle by <a href="/WebAppsDocs/en-US//win10/HWAfeatures.htm#call-windows-runtime-apis">accessing native Windows features</a> in JavaScript from the Windows Runtime.</li>
+                            <li class="spacer-12-bottom">Keep your app secure by setting <a href="/WebAppsDocs/en-US//win10/HWAfeatures.htm#keep-your-app-secure----setting-application-content-uri-rules-acurs">Application Content URI Rules</a> (ACURs) with our Content Security Policy (CSP) model.</li>
+                            <li class="spacer-12-bottom">Run your app with the power of voice by integrating with <a href="/WebAppsDocs/en-US//win10/HWAfeatures.htm#integrate-cortana-voice-commands">Cortana voice commands</a>.</li>
+                            <li class="spacer-12-bottom">Grant programmatic access to user resources and device functionality by declaring <a href="/WebAppsDocs/en-US//win10/HWAfeatures.htm#app-capability-declarations">app cabilities</a>.</li>
+                            <li class="spacer-12-bottom">Create a simple and smooth login flow for your users by verifying their identity with <a href="/WebAppsDocs/en-US//win10/HWAfeatures.htm#web-authentication-broker">OpenID and OAuth</a>.</li>
+                            <li class="spacer-12-bottom">Stop having to decide between a Packaged and Hosted Web app. You can have a bit of both by creating a <a href="/WebAppsDocs/en-US//win10/HWAfeatures.htm#create-hybrid-apps----packaged-web-apps-vs-hosted-web-apps">Hybrid App</a>.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-24 col-lg-8">
+                <section class="section item-section">
+                    <header class="section-header">
+                        <h4>Convert your app</h4>
+                    </header>
+                    <div class="section-body">
+                        <div>We have made it easy to convert your existing Chrome hosted app to a Windows Hosted Web App. <a href="http://manifoldjs.com/">ManifoldJS</a> now accepts Chrome manifests as a form of input. We have also developed a <a href="https://github.com/MicrosoftEdge/hwa-cli">CLI tool</a> that generates an <code>.appx</code> package from your existing <code>.zip</code> or <code>.crx</code> files.</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-24">
+            <section class="section spacer-12-bottom">
+                <header class="section-header">
+                    <h2 class="section-title">Demos</h2>
+                </header>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-24 col-md-12">
+            <section class="section">
+                <header class="setion-header">
+                    <h4 class="spacer-12-bottom"><a href="http://contosotravel.azurewebsites.net/">Contoso Travel App</a></h4>
+                </header>
+                <div class="section-body">
+                    <p>The Contoso Travel App demonstrates a few simple ways to call the Windows Runtime APIs. The source code is <a href="https://github.com/seksenov/ContosoTravel">available here</a>.</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-24 col-md-12">
+            <section class="section">
+                <header class="setion-header">
+                    <h4 class="spacer-12-bottom"><a href="http://rjs.azurewebsites.net/">Windows APIs</a></h4>
+                </header>
+                <div class="section-body">
+                    <p>Experiment with Windows APIs using this simple demo page. The source code is <a href="https://github.com/Gr8Gatsby/rjs">available here</a>.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
     <div class="chrome-header-wrapper">
         <div class="container iot-site-footer">
     <div class="row">
         <div class="text-center">
             <!-- <h3>Questions/Suggestions</h3> -->
             <!-- <p>As always, for questions or feedback, <a href="/WebAppsDocs/en-US/Community.htm#contact">contact us</a></p> -->
-            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/CreateHWA.md">
+            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/HostedWebApps.md">
                 <img src="/WebAppsDocs/images/Octocat.png" class="nr" />Edit this page on GitHub
             </a>
         </div>

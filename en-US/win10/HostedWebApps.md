@@ -22,19 +22,9 @@ lang: en-US
                     <div class="webapp-block image-container">
                         <img class="img-responsive" src="{{site.baseurl}}/images/devices.png" />
                     </div>
-                    <div class="col-md-12">
-                    	<br>
-                        <h4 class="text-muted gray-lighter top15">COMING SOON... Create your app with the CLI on a Mac</h4>
-                        <p class="text-muted gray-light">Step-by-step instructions to connect your web app to the Universal Windows Platform using Command Line Interface (CLI) and a Mac-based Operating System.</p>
-                        <a href="#" class="text-muted gray-light">Create your app with your Mac now</a>
-                    </div>
-                </div>
-                <div class="row section-heading">
-                    <div class="col-md-12">
-                        <div class="webapp-block jumbotron-content win-color-fg-primary color-alt">
-                            <h1 class="jumbotron-header header-large">Windows Bridge for Hosted Web Apps</h1>
-                            <p class="jumbotron-subheader">Build great Windows apps with your existing website code.</p>
-                        </div>
+                    <div class="webapp-block jumbotron-content win-color-fg-primary color-alt">
+                        <h1 class="jumbotron-header header-large">Windows Bridge for Hosted Web Apps</h1>
+                        <p class="jumbotron-subheader">Build great Windows apps with your existing website code.</p>
                     </div>
                 </div>
             </div>

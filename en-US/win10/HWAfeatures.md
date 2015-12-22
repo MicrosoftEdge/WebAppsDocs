@@ -152,7 +152,7 @@ An easy way to turn your website into a UWP app is to use an **app manifest** an
 
 <br>
 
-<a href="http://rjs.azurewebsites.net/"><button>Next: Windows API Demos</button></a>
+<a href="http://rjs.azurewebsites.net/"><button class="next">Next: Windows API Demos</button></a>
 
 ## Related topics
 

@@ -79,14 +79,14 @@ a:link {
     border-radius: 0;
 }
 
-.shell-header {
+/*.shell-header {
     background-color: #fff !important;
     border: 0 !important;
     top: 0 !important;
     position: absolute !important;
     width: 100% !important;
     z-index: 9999;
-}
+}*/
 
 .iot-site-footer {
     margin-top: 50px;
@@ -220,7 +220,7 @@ ul.get-started-steps > li > a:hover {
     margin-top: 1.7em;   
 }
 
-button {
+button.next {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
@@ -233,6 +233,54 @@ button {
     margin-left: auto;
 }
 
-button:hover {
+button.next:hover {
     background-color: #333;
+}
+
+.webapp-accent {
+    background-color: #228AC9;
+}
+
+.webapp-block {
+    display: block !important;
+    height: auto !important;
+}
+
+.webapp-width-inherit {
+    width: inherit;
+}
+
+.webapp-padding-40 {
+    padding: 40px 0;
+}
+
+.doc-breadcrumb {
+    width: 450px;
+    position: absolute;
+    top: 20px;
+}
+
+.doc-breadcrumb,
+.doc-breadcrumb a {
+    font-size: 12px;
+    color: #FFF;
+}
+
+.doc-footer {
+    height: auto;
+    min-height: auto;
+    padding: 40px 0;
+    color: #FFF;
+}
+
+.doc-video {
+    width: 100%;
+}
+
+.nomargin {
+    margin: 0;
+}
+
+.relative {
+    position: relative;
 }

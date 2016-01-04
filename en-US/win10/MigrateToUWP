@@ -1,0 +1,61 @@
+---
+layout: default
+title: Create a Hosted Web App
+permalink: /en-US/win10/CreateHWA.htm
+lang: en-US
+---
+
+#Migrating your Windows 8.1 App to a Universal Windows Platform (UWP) app for Windows 10
+
+Migrating an HTML/JavaScript app from Windows 8.1 to the Windows 10 can be accompanied by a few challenges. Learn what common roadblocks app developers are most likely to encounter when migrating their Windows 8.1 apps, and how to address them.
+
+##Security Model Changes - The new Windows 10 security model for HTML/Javascript apps.
+
+In Windows 8 and 8.1, HTML/JavaScript apps using the default **ms-appx:///** protocol applied a Microsoft specific “SafeHTML” security model, which imposed restrictions around changing innerHTML or dynamically adding certain types of attributes. Performing these operations in our Windows 8.1 App would have required the use of additional SafeHTML APIs 
+
+'''js
+
+// SafeHTML APIs in use 
+var nextDiv = document.createElement(“DIV”); 
+nextDiv.innerHTML = toStaticHTML(myDiv.innerHTML); 
+MSApp.execUnsafeLocalFunction(function() { var nextDiv = document.createElement(“DIV”) nextDiv.innerHTML = myDiv.innerHTML; }); 
+'''
+
+In Windows 10 the SafeHTML security model has been removed. When Migrating an app we should remove all references to the SafeHTML APIs, or if too numerous, feature detect them and provide a shim for environments where they don't exist. 
+
+'''js
+// HTML injection restrictions from Windows 8 have been removed in UWP. 
+// Shim these functions since they no longer exist in UWP
+if (!window.toStaticHTML) { window.toStaticHTML = function (text) { return text; }; }
+if (window.MSApp && !window.MSApp.execUnsafeLocalFunction) { MSApp.execUnsafeLocalFunction = function (c) { c(); }; } 
+'''
+
+The new security model for Windows 10 apps using the default **ms-appx:///** protocol, applies an "unsafe inline" CSP directive by default. CSP is a standardized [W3C security Model]{http://w3c.github.io/webappsec-csp/}.
+
+Under the new Security Model, any inline script tags defined within an App’s HTML files will not execute. 
+```html
+<!-- This will not execute --> 
+<script> var myDiv = document.body.querySelector(“#mydiv”); </script> 
+```
+
+Instead, we should move the script from our inline script tags into a .js file that our same HTML file can load. 
+'''html
+<script src=”./js/default.js”></script> 
+'''
+
+For more information and links to documentation on the new security model, visit: https://msdn.microsoft.com/en-us/library/windows/apps/dn705792.aspx?f=255&MSPPError=-2147217396#new_security_model 
+
+##Settings Changes - Invoking Settings for Win10 HTML/Javascript apps.
+
+In Windows 8 and 8.1, developers were encouraged to make their app settings accessible through the *Settings* charm in the Windows Charms bar. 
+
+In Windows 10, there is no charms bar. Instead it is reccomended that UWP apps add their own app UI for users to invoke the settings view. If your app is using WinJS, you may want to include a command for settings in your WinJS AppBar.
+
+##Migrating to WinJS 4.X
+
+Migrated Apps that were using WinJS 2.0 or WinJS 2.1 will probably notice that look and feel of the 2.X version of WinJS does not match the new Windowws 10 design language enjoyed by other new first and third party UWP apps in the store.
+
+To upgrade the look and feel of you WinJS App you can grab the latest version of WinJS 4.X. WinJS is a now an open source project and the latest version can be obtained [from here](http://try.buildwinjs.com/download/GetWinJS/)
+
+Some WinJS design concepts and controls have been changed more significantly than others, any may require 
+

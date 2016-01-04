@@ -49,13 +49,18 @@ For more information and links to documentation on the new security model, visit
 
 In Windows 8 and 8.1, developers were encouraged to make their app settings accessible through the *Settings* charm in the Windows Charms bar. 
 
-In Windows 10, there is no charms bar. Instead it is reccomended that UWP apps add their own app UI for users to invoke the settings view. If your app is using WinJS, you may want to include a command for settings in your WinJS AppBar.
+In Windows 10, there is no charms bar. It is reccomended that UWP apps add their own app UI for users to invoke their settings view. If your app is using WinJS, you may want to include a command for settings in your WinJS AppBar.
 
 ##Migrating to WinJS 4.X
 
-Migrated Apps that were using WinJS 2.0 or WinJS 2.1 will probably notice that look and feel of the 2.X version of WinJS does not match the new Windowws 10 design language enjoyed by other new first and third party UWP apps in the store.
+When migrated an App that was using WinJS 2.0 or WinJS 2.1, you will probably notice that the look and feel of the 2.X version of WinJS does not match the new Windowws 10 design language enjoyed by the first party UWP apps in the Windows store.
 
-To upgrade the look and feel of you WinJS App you can grab the latest version of WinJS 4.X. WinJS is a now an open source project and the latest version can be obtained [from here](http://try.buildwinjs.com/download/GetWinJS/)
+To upgrade the look and feel of you WinJS App to follow the Windows 10 design language, you can grab the latest version of WinJS 4.X. WinJS is a now an open source project and the latest version can be obtained [from here](http://try.buildwinjs.com/download/GetWinJS/)
 
-Some WinJS design concepts and controls have been changed more significantly than others, any may require 
+Some WinJS design concepts and controls have been changed more significantly than others. See the WinJS [change log](https://github.com/winjs/winjs/wiki/Changelog) for reference.
+
+### Below are some tips for adjusting to two of the biggest changes.
+
+1. **Changes to WinJS styling of instrinsic controls**  https://github.com/winjs/winjs/wiki/Styling-HTML-Controls
+2. **Changes to the WinJS AppBar**
 

@@ -33,10 +33,10 @@ if (window.MSApp && !window.MSApp.execUnsafeLocalFunction) { MSApp.execUnsafeLoc
 The new security model for Windows 10 apps using the default **ms-appx:///** protocol, applies an "unsafe inline" CSP directive by default. CSP is a standardized [W3C security Model]{http://w3c.github.io/webappsec-csp/}.
 
 Under the new Security Model, any inline script tags defined within an App’s HTML files will not execute. 
-```html
+'''html
 <!-- This will not execute --> 
 <script> var myDiv = document.body.querySelector(“#mydiv”); </script> 
-```
+'''
 
 Instead, we should move the script from our inline script tags into a .js file that our same HTML file can load. 
 '''html
@@ -57,10 +57,14 @@ When migrated an App that was using WinJS 2.0 or WinJS 2.1, you will probably no
 
 To upgrade the look and feel of you WinJS App to follow the Windows 10 design language, you can grab the latest version of WinJS 4.X. WinJS is a now an open source project and the latest version can be obtained [from here](http://try.buildwinjs.com/download/GetWinJS/)
 
-Some WinJS design concepts and controls have been changed more significantly than others. See the WinJS [change log](https://github.com/winjs/winjs/wiki/Changelog) for reference.
+Some WinJS design concepts and controls have been changed more significantly than others. This can lead to non-trivial work when migrating some apps. See the WinJS [change log](https://github.com/winjs/winjs/wiki/Changelog) for the high level details on whats changed. 
 
-### Below are some tips for adjusting to two of the biggest changes.
+### Below are some tips for adjusting to two of the biggest changes in WinJS 4.X
 
-1. **Changes to WinJS styling of instrinsic controls**  https://github.com/winjs/winjs/wiki/Styling-HTML-Controls
+1. **Changes to WinJS styling of instrinsic controls** 
+  - The 'ui-light' and 'ui-dark'stylesheets in WinJS 2 contained CSS rules for both, the set of controls in the WinJS UI Toolkit, and many browser controls like ''' <button>''',  '''<input type="range">''' and '''<h1>''' elements. 
+  - Now outside of some generic styles applied to  <body>  and  <html> , WinJS does not globally style any browser controls such as  <button> , or apply any font styles. Instead, you must opt-in to styling for each element you create, similar to Twitter Bootstrap. 
+  EXAMPLE GOES HERE
+  - A detailed list for all the new opt-in styles can be found [here](https://github.com/winjs/winjs/wiki/Styling-HTML-Controls)
 2. **Changes to the WinJS AppBar**
 

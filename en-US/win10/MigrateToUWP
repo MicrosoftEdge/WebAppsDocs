@@ -90,9 +90,9 @@ Here are the important details on how to Migrate your app from using the WinJS 2
 		
 	• In Windows 8.1 apps, the paradigm for end users to invoke the AppBar was either (1) swiping a finger across the top or bottom of the screen, or (2) right clicking an empty region of the App. When either action occurred, Apps for 8.1 would trigger a custom event causing the  WinJS 2.0 AppBar to open/close itself.
 	
-	• In Apps for Windows 10, the paradigm has changed. Right clicking or edge swiping will no longer fire an event to open the AppBar. Instead The WinJS 4.X AppBar provides its own UI for users to open and close it.   <Provide a visual of the new […] UI? Or link to MSDN page with image>
+	• In Apps for Windows 10, the paradigm has changed. Right clicking or edge swiping will no longer fire an event to open the AppBar. Instead The WinJS 4.X AppBar provides its own UI for users to open and close it.
 	
-	• Additionally, the AppBar can be configured, via the new AppBar "closedDisplayMode" property to appear in 4 distinct visual states while closed.
+	• Additionally, the AppBar can be configured, via the new `AppBar.closedDisplayMode` property to appear in 4 distinct visual states while closed.
 		- full
 		- compact (default)
 		- minimal
@@ -117,14 +117,30 @@ Here are the important details on how to Migrate your app from using the WinJS 2
 
 **Removed API's:**
 	• Properties
-		- The "hidden" property has been removed. If apps that were using the hidden property, should use the new opened property instead.  Unlike the hidden property, the opened property is both get and set. <include code example>
-		
-		- The "commands" property was removed. If your app was using the commands property to set AppBar commands programatically, you should use the new AppBar "data" property instead. Unlike the commands property which took an Array of Instantiated AppBarCommands, the AppBar.data property only accepts a WinJS.Binding.List of Instantiated AppBarCommand objects. <include code examples>The commands property was set only, but the data property is get/set.
-		- The "disabled" property has been removed. Apps that were using the "disabled" property can set the closedDisplayMode property to "none", and  close the AppBar to hide it completely, removing any ability for an end user to interact with it.
-		- The "sticky" property has been removed. Apps that were using the "sticky" property should instead set the closedDisplayMode property to "compact" or "full".
-		- The "layout" property has been removed. Apps that were setting the layout property to "custom", should instead use AppBarCommand(s) whose "type" property is set to "content" in order to host arbitrary HTML in your AppBar.
-		- [Example] of  AppBar with custom conent.
-  • Methods
+		- The `hidden` property has been removed. If apps that were using the hidden property, should use the new `opened` property instead.  Unlike the hidden property, the opened property is both get and set. 
+			'''js
+			// if(appBar.hidden) { return true }
+			if(!appBar.opened){ return true }
+			'''
+		- The `commands` property was removed. If your app was using the commands property to set AppBar commands programatically, you should use the new `data` property instead. 
+			**difference**
+			- The commands property was set only, but the data property is get/set. 
+			- Unlike the commands property which took an Array of Instantiated AppBarCommands, the AppBar.data property only accepts a WinJS.Binding.List of Instantiated AppBarCommand objects. 
+			'''js
+			var cmds = [
+					new WinJS.UI.AppBarCommand(null, {icon: 'add', label'add'}),
+				    	new WinJS.UI.AppBarCommand(null, {icon: 'delete', label'delete'})
+				   ];
+			// appBar.commands = cmds;
+			appBar.data = new WinJS.Binding.List(cmds);
+			'''
+			
+		- The `disabled` property has been removed. Apps that were using the disabled property can set the AppBar's `closedDisplayMode` property to "none", and  close the AppBar to hide it completely, removing any ability for an end user to interact with it.
+		- The `sticky` property has been removed. Apps that were using the `sticky` property should instead set the new`closedDisplayMode` property to "compact" or "full".
+		- The `layout` property has been removed. Apps that were setting the `layout` property to "custom", should instead use AppBarCommand(s) whose `type` property is set to "content" in order to host arbitrary HTML in your AppBar.
+		- [Example](https://msdn.microsoft.com/en-us/library/windows/apps/hh780658.aspx) of AppBar with custom conent.
+  
+  • Methods	
 		- showCommands() and hideCommands() have been removed from the AppBar. Apps that were using showCommands() or hideCommands() should instead use showOnlyCommands() to describe the set of commands in the AppBar that should be visible. All commands not included in the array parameter will be implicitly hidden.
 		<include code example>
 		

@@ -135,15 +135,38 @@ Here are the important details on how to Migrate your app from using the WinJS 2
 			appBar.data = new WinJS.Binding.List(cmds);
 			'''
 			
-		- The `disabled` property has been removed. Apps that were using the disabled property can set the AppBar's `closedDisplayMode` property to "none", and  close the AppBar to hide it completely, removing any ability for an end user to interact with it.
-		- The `sticky` property has been removed. Apps that were using the `sticky` property should instead set the new`closedDisplayMode` property to "compact" or "full".
-		- The `layout` property has been removed. Apps that were setting the `layout` property to "custom", should instead use AppBarCommand(s) whose `type` property is set to "content" in order to host arbitrary HTML in your AppBar.
-		- [Example](https://msdn.microsoft.com/en-us/library/windows/apps/hh780658.aspx) of AppBar with custom conent.
-  
-  • Methods	
+		- The `disabled` property has been removed. Apps that were using the disabled property can set the AppBar's `closedDisplayMode` property to "none", and close the AppBar to hide it completely, removing any ability for an end user to interact with it.
+		- The `sticky` property has been removed. Apps that were using the `sticky` property should instead set the new `closedDisplayMode` property to "compact" or "full".
+		- The `layout` property has been removed. Apps that were setting the `layout` property to "custom", should host that content inside of AppBarCommand(s) whose `type` property is set to "content".
+		- [Example](https://msdn.microsoft.com/en-us/library/windows/apps/hh780658.aspx) of AppBar with "content" commands for hosting custom conent.
+
+	• Methods	
 		- showCommands() and hideCommands() have been removed from the AppBar. Apps that were using showCommands() or hideCommands() should instead use showOnlyCommands() to describe the set of commands in the AppBar that should be visible. All commands not included in the array parameter will be implicitly hidden.
-		<include code example>
+		'''js
+		var cmdAdd = new WinJS.UI.AppBarCommand(null, {icon: 'add', label'add'});
+		var cmdDel = new WinJS.UI.AppBarCommand(null, {icon: 'delete', label'delete'});
+		appBar.data = new WinJs.Binding.List([cmdAdd, cmdDel]);
+		
+		// Hide Commands
+		// appBar.hideCommands([cmdAdd, cmdDel]);
+		appBar.showOnlyCommands([]);
+		
+		// Show Commands
+		// appBar.showCommands
+		appBar.showOnlyCommands([cmdAdd, cmdDel]);
+		'''
 		
 	• CSS classes
+	      	- Removed the `.win-commandlayout` CSS class. This class name was obsolete with the removal of the "layout" property.
 
-      Removed the .win-commandlayout CSS class. This class name was obsolete with the removal of the "layout" property.
+**New layout and rendering for AppBarCommands**
+
+	- In WinJS 2.X apps could control whether commands were placed on the left side or right side of the AppBar via the AppBarCommand's `section` property via values of either "global" or "selection". 
+	- In WinJS 4.X the strategy of laying out commands to either the left or the right is no longer suppported, and the values of "global" and "selection" for the AppBarCommand `section` propety have been deprecated. 
+		- Instead commands are laid out in DOM order, into either: 
+			- a single row of the action area (always left aligned except in RTL mode), 
+			- a single column of the overflow area.
+		- Developers can designate which area a command should go to by setting the AppBarCommand `section` property to 
+			- primary (action area)
+			- secondary (overflow area)
+		

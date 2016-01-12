@@ -167,6 +167,10 @@ Here are the important details on how to Migrate your app from using the WinJS 2
 			- a single row of the action area (always left aligned except in RTL mode), 
 			- a single column of the overflow area.
 		- Developers can designate which area a command should go to by setting the AppBarCommand `section` property to 
-			- primary (action area)
+			- primary (action area) (this is the default value)
 			- secondary (overflow area)
-		
+		- Some primary commands in the actionarea can overflow into the overflow area if there is not enough room to fit all primary commands. 
+		- Developers can set the AppBarCommand `priority` property to designate the order in which commands should overflow.
+			- The `priority` property will accept any non negative number. 
+			- Commands with a weaker priority will overflow first. Priority 0 is considered to be stronger than Priority 1, andd Priority 1 is stronger than Priority 2.
+			- Commands assigneda the same `priority` value will be grouped together and overflow at the samee time.

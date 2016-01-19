@@ -150,12 +150,12 @@ If your Windows 8.1 app is using any of these API's by their previous name, you 
 	var cmdDel = new WinJS.UI.AppBarCommand(null, {icon: 'delete', label'delete'});
 	appBar.data = new WinJs.Binding.List([cmdAdd, cmdDel]);
 	
-	// Hide Commands
+	// Don't show any commands
 	// appBar.hideCommands([cmdAdd, cmdDel]);
 	appBar.showOnlyCommands([]);
 	
-	// Show Commands
-	// appBar.showCommands
+	// Show both Commands
+	// appBar.showCommands([cmdAdd, cmdDel]);
 	appBar.showOnlyCommands([cmdAdd, cmdDel]);
 	```
 	

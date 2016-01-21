@@ -270,7 +270,7 @@ lang: en-US
                         </header>
                         <div class="section-body spacer-32-bottom">
                             <p class="spacer-32-bottom">Copy and paste the JavaScript code below to enable camera capture. If you are following along with your own website, create a button to invoke the <code>cameraCapture()</code> method. If you are following along with our Codepen example, a button is already present in HTML. Click the button and a take a picture.</p>
-                            <!-- Insert gist here -->
+                            {% gist 9f9c2e6881d09116cdb3 %}
                         </div>
                     </section>
                 </div>

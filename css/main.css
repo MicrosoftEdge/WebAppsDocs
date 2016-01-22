@@ -284,3 +284,29 @@ button.next:hover {
 .relative {
     position: relative;
 }
+
+/*Raspberry Pi Documentation*/
+.table-wrapper
+{
+    width: 100%;
+    min-width: 300px;
+}
+.table-head-item
+{
+    font-size: 16px;
+    font-weight: 500;
+}
+.inline-block
+{
+    display: inline-block !important;
+}
+.jumbotron .image-container img 
+{
+    float:left;
+    position: relative;
+    padding: 10px 10px 0px 0px;
+}
+.jumbotron p 
+{
+    max-width: 300px;
+}

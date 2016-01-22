@@ -1,0 +1,135 @@
+---
+layout: index
+title: Deploy to Raspberry Pi using Visual Studio
+permalink: /en-US/win10/DeployToPiWithVS.htm
+lang: en-US
+---
+<div class="container">
+	<br>
+	<div class="row">
+     	<div class="col-md-4 col-lg-4"></div>
+        <div class="col-md-16 col-lg-16">
+            <section class="section">
+                <header class="section-header">
+                    <h1 class="section-title">Deploying to Raspberry Pi 2 with  Windows and Visual Studio 2015</h1>
+                </header>
+                <div class="section-body">
+                	<p>The following tutorial will teach you how to quickly deploy a hosted web app on a Windows machine and Visual Studio (VS). The application will run as a Universal Windows Platform (UWP) app using Project Westminster for Windows 10. All you need to do is add your site URL to a Windows app manifest, set your image resources to use for app tiles, and store discovery. Continue by adding native platform integration from JavaScript hosted on your servers in a matter of minutes.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+     	<div class="col-md-4 col-lg-4"></div>
+        <div class="col-md-16 col-lg-16">
+            <section class="section">
+                <header class="section-header">
+                    <h2 class="section-title">What you need</h2>
+                </header>
+                <div class="section-body">
+                	<ul>
+                		<li>
+                			<p><a href="https://dev.windows.com/en-us/downloads">Visual Studio 2015</a> - The  free, full-featured Visual Studio Community 2015 includes the Windows 10 developer tools, universal app templates, a code editor, a powerful debugger, Windows Mobile emulators, rich language support, and more, all ready to use in production. </p>
+                		</li>
+                		<li>
+                			<p><a href="https://dev.windows.com/en-us/downloads/windows-10-sdk">Windows Standalone SDK for Windows 10</a> - If you are using a different development environment than Visual Studio 2015, you can download a standalone Windows SDK for Windows 10 installer. Note that you don’t need to install this SDK if you’re using Visual Studio 2015 – it's already included.</p>
+                		</li>
+  					</ul>
+                </div>
+            </section>
+        </div>
+    </div>
+     <div class="row row-spacer">
+        <div class="col-xs-24 col-md-12">
+            <section class="item-section">
+                <header class="section-header">
+                    <h2 class="spacer-32-bottom">Step 1: Pick a website URL</h2>
+                </header>
+                <div class="section-body spacer-32-bottom">
+                    <p>Choose an existing website that will work great as a single-page app. We highly recommend that you are the owner or developer of the site; this way you will be able to make all the necessary changes. If you do not have a URL in mind, we will be walking you through using this <a href="http://codepen.io/seksenov/pen/wBbVyb/?editors=101">Codepen example</a> as the website. Copy your URL, or the Codepen URL, to use throughout the tutorial.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row row-spacer">
+    	<div class="col-xs-24 col-md-12">
+            <div class="image-container">
+                <a href="{{site.baseurl}}/images/CreateHWA/remote-machine-debugging.png">
+                    <img alt="Codepen example" src="{{site.baseurl}}/images/WebOnPi/BlankJSTemplate.png" />
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-24 col-md-12">
+            <section class="item-section">
+                <header class="section-header">
+                    <h2 class="spacer-32-bottom">Step 2: Create a blank JavaScript app</h2>
+                </header>
+                <div class="section-body spacer-32-bottom">
+                    <p>Launch Visual Studio 2015.</p>
+                    <ol class="spacer-16-top">
+                        <li>Click <strong>File</strong>.</li>
+                        <li>Click <strong>New Project</strong>.</li>
+                        <li>Under <strong>JavaScript</strong> then <strong>Windows Universal</strong>, click <strong>Blank App (Windows Universal).</strong></li>
+                    </ol>
+                </div>
+            </section>
+        </div>   
+    </div>
+    <div class="row row-spacer">
+        <div class="col-xs-24 col-md-12 col-md-push-12">
+            <section class="item-section">
+                <header class="section-header">
+                    <h2 class="spacer-32-bottom">Step 1: Pick a website URL</h2>
+                </header>
+                <div class="section-body spacer-32-bottom">
+                    <p>Choose an existing website that will work great as a single-page app. We highly recommend that you are the owner or developer of the site; this way you will be able to make all the necessary changes. If you do not have a URL in mind, we will be walking you through using this <a href="http://codepen.io/seksenov/pen/wBbVyb/?editors=101">Codepen example</a> as the website. Copy your URL, or the Codepen URL, to use throughout the tutorial.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row row-spacer">
+        <div class="col-xs-24 col-md-12">
+            <section class="item-section">
+                <header class="section-header">
+                    <h2 class="spacer-32-bottom">Step 2: Create a blank JavaScript app</h2>
+                </header>
+                <div class="section-body spacer-32-bottom">
+                    <p>Launch Visual Studio 2015.</p>
+                    <ol class="spacer-16-top">
+                        <li>Click <strong>File</strong>.</li>
+                        <li>Click <strong>New Project</strong>.</li>
+                        <li>Under <strong>JavaScript</strong> then <strong>Windows Universal</strong>, click <strong>Blank App (Windows Universal).</strong></li>
+                    </ol>
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-24 col-md-12 col-md-pull-12">
+        	<div class="image-container">
+                <a href="{{site.baseurl}}/images/CreateHWA/remote-connections.png">
+                    <img alt="Choose the blank JavaScript template" src="{{site.baseurl}}/images/WebOnPi/remote-connections.png" />
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="row row-spacer">
+        <div class="col-xs-24 col-md-12 col-md-push-12">
+            <section class="item-section">
+                <header class="section-header">
+                    <h2 class="spacer-32-bottom">Step 1: Pick a website URL</h2>
+                </header>
+                <div class="section-body spacer-32-bottom">
+                    <p>Choose an existing website that will work great as a single-page app. We highly recommend that you are the owner or developer of the site; this way you will be able to make all the necessary changes. If you do not have a URL in mind, we will be walking you through using this <a href="http://codepen.io/seksenov/pen/wBbVyb/?editors=101">Codepen example</a> as the website. Copy your URL, or the Codepen URL, to use throughout the tutorial.</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-24 col-md-12 col-md-pull-12">
+        	<div class="image-container">
+                <a href="{{site.baseurl}}/images/CreateHWA/remote-connections.png">
+                    <img alt="Choose the blank JavaScript template" src="{{site.baseurl}}/images/WebOnPi/remote-connections.png" />
+                </a>
+            </div>
+        </div>
+    </div>
+     <p>Also need to download js template: https://visualstudiogallery.msdn.microsoft.com/49cdc7d0-95e7-48dd-8a6a-141cb66e726e</p>s
+</div>

@@ -49,11 +49,6 @@ body {
     max-width: 1206px !important;
 }
 
-.row {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
 .btn {
     border-radius: 0;
 }
@@ -285,6 +280,78 @@ button.next:hover {
     position: relative;
 }
 
+.switch {
+    position: relative;
+    height: 35px;
+    width: 244px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.switch-label {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 120px;
+    line-height: 35px;
+    font-size: 15px;
+    color: #000;
+    text-align: center;
+    cursor: pointer;
+}
+
+.switch-label-off {
+    padding-right: 2px;
+}
+
+.switch-label-on {
+    padding-left: 2px;
+    margin-left: 2px;
+}
+
+.switch-input {
+    display: none;
+}
+
+.switch-input:checked + .switch-label {
+    color: #fff;
+    transition: 0.15s ease-out;
+}
+
+.switch-input:checked + .switch-label-on ~ .switch-selection {
+    left: 122px;
+}
+
+.switch-selection {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 2px;
+    left: 2px;
+    width: 120px;
+    height: 31px;
+    background: #0078D7;
+    transition: left 0.15s ease-out;
+}
+
+.reqs,
+.steps {
+    display: none;
+}
+
+.row-spacer {
+    padding-bottom: 65px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 65px;
+}
+
+.row-spacer:last-of-type {
+    border: 0;
+    padding-bottom: 0;
+}
+
+.row-spacer strong {
+    font-weight: 600;
+}
 /*Raspberry Pi Documentation*/
 .table-wrapper
 {
@@ -309,4 +376,12 @@ button.next:hover {
 .jumbotron p 
 {
     max-width: 300px;
+}
+img.horizontal-margin-auto
+{
+    margin: 0 auto;
+}
+.grey-border
+{
+    border: 1px solid grey;
 }

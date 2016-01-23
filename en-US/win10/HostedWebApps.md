@@ -33,7 +33,7 @@ lang: en-US
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-xs-24 col-lg-12">
+        <div class="col-xs-24 col-md-12">
             <section class="section">
                 <header class="section-header">
                     <h2 class="section-title">What is the Windows Bridge for Hosted Web Apps?</h2>
@@ -50,7 +50,7 @@ lang: en-US
                 </div>
             </section>
         </div>
-        <div class="col-xs-24 col-lg-12">
+        <div class="col-xs-24 col-md-12">
             <section class="section">
                 <div class="video-player nomargin">
                     <video class="doc-video" preload="none" poster="https://assets.windowsphone.com/e9e95cdd-bf84-410b-922c-886c19cc2be1/westminsterPosterImg_InvariantCulture_Default.png" controls="">
@@ -80,8 +80,8 @@ lang: en-US
                         <h4>Create your app</h4>
                     </header>
                     <div class="section-body">
-                        <div class="spacer-16-bottom">Whether you're on a Mac or a PC, you can create your very own Hosted Web App in a matter of minutes. The best way to get started is by using Visual Studio, especially if you're on a Windows device. <a href="{{site.baseurl}}/{{page.lang}}//win10/CreateHWA.htm">Learn more here</a>.</div>
-                        <div>If you do not have access to Visual Studio, there are a few options from which you can choose. If you are familiar with command-line interface (CLI) utilities, check out <a href="http://manifoldjs.com/">ManifoldJS</a>. You can also use <a href="http://appstudio.windows.com/">App Studio</a>, a free, online creation tool that allows you to quickly build Windows 10 apps. Select the Hosted Web App template when prompted.</div>
+                        <div class="spacer-16-bottom">Whether you're on a Mac or a PC, you can create your very own Hosted Web App in a matter of minutes. The best way to get started is by using Visual Studio, especially if you're on a Windows device. <a href="{{site.baseurl}}/{{page.lang}}/win10/CreateHWA.htm">Learn more here</a>.</div>
+                        <div>If you do not have access to Visual Studio, there are a few options from which you can choose. If you are familiar with command-line interface (CLI) utilities, check out <a href="http://manifoldjs.com/">ManifoldJS</a>. You can also use <a href="http://appstudio.windows.com/">App Studio</a>, a free, online creation tool that allows you to quickly build Windows 10 apps. <a href="{{site.baseurl}}/{{page.lang}}/win10/CreateHWA.htm#mac">Learn more here.</a></div>
                     </div>
                 </section>
             </div>
@@ -93,12 +93,12 @@ lang: en-US
                     <div class="section-body">
                         <div class="spacer-16-bottom">With Hosted Web Apps, you can take full advantage of the Universal Windows Platform.</div>
                         <ul class="bulleted-list">
-                            <li class="spacer-12-bottom">Make your app sparkle by <a href="{{site.baseurl}}/{{page.lang}}//win10/HWAfeatures.htm#call-windows-runtime-apis">accessing native Windows features</a> in JavaScript from the Windows Runtime.</li>
-                            <li class="spacer-12-bottom">Keep your app secure by setting <a href="{{site.baseurl}}/{{page.lang}}//win10/HWAfeatures.htm#keep-your-app-secure----setting-application-content-uri-rules-acurs">Application Content URI Rules</a> (ACURs) with our Content Security Policy (CSP) model.</li>
-                            <li class="spacer-12-bottom">Run your app with the power of voice by integrating with <a href="{{site.baseurl}}/{{page.lang}}//win10/HWAfeatures.htm#integrate-cortana-voice-commands">Cortana voice commands</a>.</li>
-                            <li class="spacer-12-bottom">Grant programmatic access to user resources and device functionality by declaring <a href="{{site.baseurl}}/{{page.lang}}//win10/HWAfeatures.htm#app-capability-declarations">app cabilities</a>.</li>
-                            <li class="spacer-12-bottom">Create a simple and smooth login flow for your users by verifying their identity with <a href="{{site.baseurl}}/{{page.lang}}//win10/HWAfeatures.htm#web-authentication-broker">OpenID and OAuth</a>.</li>
-                            <li class="spacer-12-bottom">Stop having to decide between a Packaged and Hosted Web app. You can have a bit of both by creating a <a href="{{site.baseurl}}/{{page.lang}}//win10/HWAfeatures.htm#create-hybrid-apps----packaged-web-apps-vs-hosted-web-apps">Hybrid App</a>.</li>
+                            <li class="spacer-12-bottom">Make your app sparkle by <a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm#call-windows-runtime-apis">accessing native Windows features</a> in JavaScript from the Windows Runtime.</li>
+                            <li class="spacer-12-bottom">Keep your app secure by setting <a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm#keep-your-app-secure----setting-application-content-uri-rules-acurs">Application Content URI Rules</a> (ACURs) with our Content Security Policy (CSP) model.</li>
+                            <li class="spacer-12-bottom">Run your app with the power of voice by integrating with <a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm#integrate-cortana-voice-commands">Cortana voice commands</a>.</li>
+                            <li class="spacer-12-bottom">Grant programmatic access to user resources and device functionality by declaring <a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm#app-capability-declarations">app cabilities</a>.</li>
+                            <li class="spacer-12-bottom">Create a simple and smooth login flow for your users by verifying their identity with <a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm#web-authentication-broker">OpenID and OAuth</a>.</li>
+                            <li class="spacer-12-bottom">Stop having to decide between a Packaged and Hosted Web app. You can have a bit of both by creating a <a href="{{site.baseurl}}/{{page.lang}}/win10/HWAfeatures.htm#create-hybrid-apps----packaged-web-apps-vs-hosted-web-apps">Hybrid App</a>.</li>
                         </ul>
                     </div>
                 </section>

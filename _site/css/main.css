@@ -358,7 +358,7 @@ button.next:hover {
     width: 100%;
     min-width: 300px;
 }
-.table-head-item
+.table-head-item span
 {
     font-size: 16px;
     font-weight: 500;

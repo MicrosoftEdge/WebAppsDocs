@@ -352,6 +352,9 @@ button.next:hover {
 .row-spacer strong {
     font-weight: 600;
 }
+.breadcrumb > li + li:before {
+    font-family: "Segoe MDL2 Assets";
+}
 /*Raspberry Pi Documentation*/
 .table-wrapper
 {

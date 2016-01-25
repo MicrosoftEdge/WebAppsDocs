@@ -13,7 +13,7 @@ lang: en-US
             &gt;
             <a href="https://dev.windows.com/bridges">Windows Bridges</a>
             &gt;
-            Windows Bridge for Hosted Web Apps
+            Hosted Web Apps
         </div>
         <div class="row">
             <div class="col-md-4"></div>
@@ -23,7 +23,7 @@ lang: en-US
                         <img class="img-responsive" src="{{site.baseurl}}/images/devices.png" />
                     </div>
                     <div class="webapp-block jumbotron-content win-color-fg-primary color-alt">
-                        <h1 class="jumbotron-header header-large">Windows Bridge for Hosted Web Apps</h1>
+                        <h1 class="jumbotron-header header-large">Hosted Web Apps</h1>
                         <p class="jumbotron-subheader">Build great Windows apps with your existing website code.</p>
                     </div>
                 </div>

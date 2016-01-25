@@ -12,7 +12,7 @@ lang: en-US
                 <ol class="breadcrumb hidden-xs hidden-sm">
                     <li><a href="https://dev.windows.com/windows-apps">Windows Apps</a></li>
                     <li><a href="https://dev.windows.com/bridges">Windows Bridges</a></li>
-                    <li><a href="{{site.baseurl}}">Windows Bridge for Hosted Web Apps</a></li>
+                    <li><a href="{{site.baseurl}}/">Windows Bridge for Hosted Web Apps</a></li>
                     <li class="active">Create your app</li>
                 </ol>
                 <header class="page-title-header">

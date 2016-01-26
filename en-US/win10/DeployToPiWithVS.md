@@ -181,8 +181,8 @@ lang: en-US
         </div>
         <div class="col-xs-24 col-md-12 col-md-pull-12">
             <div class="image-container">
-                <a href="{{site.baseurl}}/images/WebOnPI/rpi2-inst.png">
-                    <img alt="Remote machine debugging" src="{{site.baseurl}}/images/WebOnPI/rpi2-inst.png" />
+                <a href="{{site.baseurl}}/images/WebOnPi/rpi2-inst.png">
+                    <img alt="Remote machine debugging" src="{{site.baseurl}}/images/WebOnPi/rpi2-inst.png" />
                 </a>
             </div>
         </div>
@@ -201,8 +201,8 @@ lang: en-US
         </div>
         <div class="col-xs-24 col-md-12">
             <div class="image-container">
-                <a href="{{site.baseurl}}/images/WebOnPI/DefaultAppRpi2.png">
-                    <img alt="set remote connections" src="{{site.baseurl}}/images/WebOnPI/DefaultAppRpi2.png"/>
+                <a href="{{site.baseurl}}/images/WebOnPi/DefaultAppRpi2.png">
+                    <img alt="set remote connections" src="{{site.baseurl}}/images/WebOnPi/DefaultAppRpi2.png"/>
                 </a>
             </div>
         </div>
@@ -222,7 +222,7 @@ lang: en-US
         <div class="col-xs-24 col-md-12 col-md-pull-12">
             <div class="image-container">
                 <a href="{{site.baseurl}}/images/WebOnPI/remote-connections.png">
-                    <img alt="set remote connections" src="{{site.baseurl}}/images/WebOnPI/remote-connections.png"/>
+                    <img alt="set remote connections" src="{{site.baseurl}}/images/WebOnPi/remote-connections.png"/>
                 </a>
             </div>
         </div>

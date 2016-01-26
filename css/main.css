@@ -376,15 +376,23 @@ button.next:hover {
 {
     display: inline-block !important;
 }
+.pad-left-20
+{
+    padding: 0px 0px 0px 20px !important;
+}
+.no-pad
+{
+    padding: 0px !important;
+}
 .jumbotron .image-container img 
 {
     float:left;
     position: relative;
-    padding: 10px 10px 0px 0px;
+    padding: 10px 0px 0px 0px;
 }
-.jumbotron p.width-300 
+.max-width-500 
 {
-    max-width: 300px;
+    max-width: 500px;
 }
 img.horizontal-margin-auto
 {

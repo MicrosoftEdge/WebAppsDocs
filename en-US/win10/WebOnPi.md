@@ -10,12 +10,12 @@ lang: en-US
         <div class="row">
             <div class="col-md-4 col-lg-4"></div>
             <div class="centered-content">
-                <div class="image-container inline-block">
+                <div class="image-container inline-block no-pad">
                     <img class="img-responsive" src="{{site.baseurl}}/images/WebOnPi/rpi2.png" />
                 </div>
-                <div class="jumbotron-content inline-block win-color-fg-primary color-alt">
+                <div class="jumbotron-content inline-block pad-left-20 win-color-fg-primary color-alt">
                     <h1 class="jumbotron-header header-large">Your web app on a Pi</h1>
-                    <p class="jumbotron-subheader width-300">Deploy your awesome website on the Raspberry Pi 2 by making a Hosted Web App for Windows</p>
+                    <p class="jumbotron-subheader max-width-500">Deploy your awesome website on the Raspberry Pi 2 by making a Hosted Web App for Windows</p>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Windows Bridge for Hosted Web Apps - Web apps on the Pi</title>
+    <title>Windows Bridge for Hosted Web Apps - Learn Meteor JS and deploy an app to the Raspberry Pi 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Everything you need to know about Hosted Web Apps on Windows, part of the Universal Windows Apps family with full access to platform APIs from remote JavaScript.">
     <meta name="keywords" content="Windows Web Apps, Hosted Web Apps, Windows Web Applications, Web Apps, JavaScript Apps, HTML Apps, HTML 5, Windows 10, Windows Universal, Windows Universal Apps, Windows Platform, Universal Windows Apps, Universal Windows APIs, UWP, Project Westminster, Westminster, Windows Apps, Windows 10 Apps, Windows App Building, Apps, Web, HTML5">
@@ -778,144 +778,124 @@
 
     </div>
 
-    <div class="jumbotron jumbotron-centered webapp-accent">
-    <div class="container relative">
-        <div class="row">
-            <div class="col-md-4 col-lg-4"></div>
-            <div class="centered-content">
-                <div class="image-container inline-block">
-                    <img class="img-responsive" src="/WebAppsDocs/images/WebOnPi/rpi2.png" />
+    <div class="container">
+    <div class="spacer-32-top row">
+    	<div class="col-md-4 col-lg-4"></div>
+        <div class="col-md-16 col-lg-16">
+            <section class="section">
+                <header class="spacer-32-top section-header">
+                    <h1>Create a MeteorJS app and deploy it to the Raspberry Pi 2</h1>
+                </header>
+                <div class="section-body">
+                    <p>In this tutorial, we are going to create and deploy the sample applciation, MeteorJS Todos, as a Universal Windows App that can run on the Raspberry Pi 2 as well as any other Windows Device.</p>
+                    <p class="spacer-16-top">We are additionally going to add Windows native notifications support for Windows 10 devices. Note that the IoT Core does not support the native notifications yet.</p>
                 </div>
-                <div class="jumbotron-content inline-block win-color-fg-primary color-alt">
-                    <h1 class="jumbotron-header header-large">Your web app on a Pi</h1>
-                    <p class="jumbotron-subheader">Deploy your awesome website on the Raspberry Pi 2 by making a Hosted Web App for Windows</p>
+            </section>
+        </div>
+    </div>
+    <div class="row row-spacer">
+    	<div class="col-md-4 col-lg-4"></div>
+        <div class="col-md-16 col-lg-16">
+            <section class="section">
+                <header class="spacer-32-top section-header">
+                    <h2>What you need to for this tutorial</h2>
+                </header>
+                <div class="section-body">
+                    <ul class="bulleted-list">
+                        <li>Windows machine</li>
+                        <li>Raspberry Pi 2</li>
+                        <li>Basic Git knowledge</li>
+                        <li><a href="https://www.visualstudio.com/">Visual Studio 2015</a>. The free, full-featured Visual Studio Community 2015 includes the Windows 10 developer tools, universal app templates, a code editor, a powerful debugger, Windows Mobile emulators, rich language support, and much more—all ready to use in production.</li>
+                        <li>(Optional) <a href="https://dev.windows.com/en-us/downloads/windows-10-sdk">Windows Standalone SDK for Windows 10</a>. If you are using a development environment other than Visual Studio 2015, you can download a standalone Windows SDK for Windows 10 installer. Note that you do not need to install this SDK if you're using Visual Studio 2015; it is already included.</li>
+                    </ul>
                 </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="row row-spacer">
+        <div class="col-xs-24 col-md-12 col-md-push-12">
+            <section class="item-section">
+                <header class="section-header">
+                    <h2 class="spacer-32-bottom">Step 1: Get and Run MeteorJS Todos</h2>
+                </header>
+                <div class="section-body spacer-32-bottom">
+                    <ol class="spacer-16-top">
+                        <li><a href="https://www.meteor.com/install">Download MeteorJS</a> for Windows</li>
+                        <li>
+                        	<p>To download the app, open your terminal and type:</p>
+                        	<p class="spacer-16-top"><code class="simple-code"> meteor create --example todos</code></p>
+                   			<p class="spacer-16-top">This will create a new folder called <strong>todos</strong> with all of the files that a Meteor app needs.</p>
+                        </li>
+                        <li>
+                        	<p>To run the newly create app, open your terminal and type:</p>
+                        	<p class="spacer-16-top">
+                        		<code class="simple-code">
+                        			cd todos
+                        		</code>
+                        	</p>
+                        	<p>
+                        		<code class="simple-code">
+                        			meteor
+                        		</code>
+                        	</p>
+                   			<p class="spacer-16-top">Open Edge and go to <strong>http://localhost:3000</strong> to see the app running. It should look like the picture to the left.</p>
+                        </li>
+                        
+                    </ol>
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-24 col-md-12 col-md-pull-12">
+            <div class="image-container">
+                <a href="/WebAppsDocs/images/MeteorOnPi/todosMeteor.png">
+                    <img class="grey-border" alt="Codepen example" src="/WebAppsDocs/images/MeteorOnPi/todosMeteor.png" />
+                </a>
             </div>
         </div>
     </div>
+    <div class="row row-spacer">
+        <div class="col-xs-24 col-md-12">
+            <section class="item-section">
+                <header class="section-header">
+                    <h2 class="spacer-32-bottom">Step 2: Deploy your app</h2>
+                </header>
+                <div class="section-body spacer-32-bottom">
+                	<p>Now that we have tested the app locally, let's deploy it to the web so we can use that URL to make a hosted web app.</p>
+                	<p class="spacer-16-top">Go to your directoy and type:</p>
+                    <p class="spacer-16-top">
+                		<code class="simple-code">
+                			meteor deploy my_app_name.meteor.com
+                		</code>
+                	</p>
+                    <p class="spacer-16-top">Once it's done, you can navigate to <strong>http://my_app_name.meteor.com</strong> to play with your app.</p>           
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-24 col-md-12">
+            <div class="image-container">
+                <a href="/WebAppsDocs/images/MeteorOnPi/deployedTodosMeteor.png">
+                    <img class="grey-border" alt="Codepen example" src="/WebAppsDocs/images/MeteorOnPi/deployedTodosMeteor.png" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row row-spacer">
+        <div class="col-md-4 col-lg-4"></div>
+        <div class="col-md-16 col-lg-16">
+            <section class="item-section">
+                <header class="section-header">
+                    <h2 class="spacer-32-bottom">Step 3: Your web on Pi</h2>
+                </header>
+                <div class="section-body spacer-32-bottom">
+                    <div class="section-body">
+                    <p>Follow <a href="/WebAppsDocs/en-US/win10/CreateHWA.htm">this tutorial</a> to deploy your newly MeteorJS app as Windows Universal Platform app.</p>
+                </div>
+                </div>
+            </section>
+        </div>
+    </div>
 </div>
-<div class="container">
-    <div class="row">
-    	<div class="col-md-4 col-lg-4"></div>
-        <div class="col-md-16 col-lg-16">
-            <section class="section">
-                <header class="section-header">
-                    <h1>Web applications on the Raspberry Pi 2</h1>
-                </header>
-                <div class="section-body">
-                    <p>We've had the pleasure to play with the Raspberry Pi for sometime now while testing the EdgeHTML rendering engine on Windows IoT Core. The one consitent thing we found is that anyone who walked through our open space was interested in the Pi and was amazed by how easy you could deploy a web app to it. Knowing that this device is unique and loved by the maker community, we thought it would be great to share how to quickly build a Universal Windows App in HTML and JavaScript and get it running on the Pi.</p>
-                </div>
-            </section>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-lg-4"></div>
-        <div class="col-md-16 col-lg-16">
-            <section class="section">
-                <header class="section-header">
-                    <h2>Home Application</h2>
-                </header>
-                <div class="section-body">
-                    <p>If you've received a Raspberry Pi from the Web Platform team, your new Pi has these awesome sample apps:</p>
-                    <ol class="spacer-16-top">
-                        <li>
-                            <p><a href="http://seksenov.github.io/WebHelloBlinky/">Web Hello Blinky</a> allows you to toggle and modulate the blinking frequency of the on-board LED. This is possible thanks to the simple JavaScript projections of WinRT APIs. Check out the repo to see how you can easily control the Pi's GPIO's through JavaScript. 
-                            </p>
-                        </li>
-                        <li>
-                            <p><a href="https://github.com/csuwildcat/webonpi">#WebOnPi</a> shows the newest 20 tweets with the hashtag: #WebOnPi. Tweet something out to see your tweet glide among the clouds all thanks to the Pi!
-                            </p>
-                        </li>
-                        <li>
-                            <p><a href="http://codepen.io/seksenov/pen/obpLmR">Blinky with CodePen.</a> CodePen's power is now available on the Pi. Play with HTML, CSS, and JavaScript on the fly!
-                            </p>
-                        </li>
-                        <li>
-                            <p><a href="http://windowstodo.meteor.com/">MeteorJS Todos</a> helps you stay organized no matter your device. Desktop, mobile or even a Raspberry Pi, we got you covered. The app is built with the platform MeteorJS.
-                            </p>
-                        </li>
-                        <li>
-                            <p><a href="http://aka.ms/meteor-tutorial/">MeteorJS Tutorial.</a> Learn how to build and deploy a MeteorJS app to the Pi
-                            </p>
-                        </li>
-                    </ol>
-                    <p>If you didn't get a Raspberry Pi from us, don't worry. You can easily provision your Pi following <a href="http://ms-iot.github.io/content/en-US/GetStarted.htm">this tutorial</a> and get the home app <a href="https://github.com/MicrosoftEdge/WebOnPi">here</a>.</p> 
-                </div>
-            </section>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-lg-4"></div>
-        <div class="col-md-16 col-lg-16">
-            <section class="section">
-                <header class="section-header">
-                    <h2>Deployment</h2>
-                </header>
-                <div class="section-body">
-                    <p>So you've played with the sample apps and are feeling motivated to deploy your own app to the Pi? Great! It's very simple. Let's start by choosing your route: </p>
-                    <ol>
-                        <li>
-                            <a href="/WebAppsDocs/en-US/win10/CreateHWA.htm">Deploying using ManifoldJS (Mac)</a>
-                        </li>
-                        <li>
-                            <a href="/WebAppsDocs/en-US/win10/DeployToPiWithVs.htm">Deploying using Visual Studio (Windows)</a>
-                        </li>
-                    </ol>
-                </div>
-            </section>
-        </div>
-    </div>
-    <div class="row">
-    	<div class="col-md-4 col-lg-4"></div>
-        <div class="col-md-16 col-lg-16">
-            <section class="section">
-                <header class="section-header">
-                    <h2>Our Kit</h2>
-                </header>
-                <div class="section-body">
-                    <p>There's an official WIndows Kit, but we decided to go for a slightly different spec.</p>
-                    <div class="table-wrapper">
-						<table class="table table-bordered table-striped"> 
-							<thead> 
-								<tr> 
-									<th class="table-head-item"><span>Item</span></th> 
-									<th class="table-head-item"><span>Cost</span></th>
-								</tr>
-							</thead> 
-							<tbody> 
-								<tr> 
-									<th scope="row">
-                                        <a href="http://www.amazon.com/gp/product/B008XVAVAW" rel="nofollow">
-                                            CanaKit Raspberry Pi 2 Starter
-                                        </a> 
-									</th> 
-									<td>$69.99 </td> 
-								</tr> 
-								<tr> 
-									<th scope="row"> 
-										<a href="http://www.amazon.com/Zebra-Case-Raspberry-Pi-Wood/dp/B00ME5XUAG" rel="nofollow">
-                                            Zebra Case - Raspberry Pi B+ and 2B (Wood)
-                                        </a>
-									</th> 
-									<td>$14.50</td> 
-								</tr> 
-								<tr> 
-									<th scope="row"> 
-										<a href="http://www.amazon.com/TP-LINK-TL-WN725N-Wireless-Adapter-150Mbps/dp/B008IFXQFU" rel="nofollow">
-                                            TP-LINK TL-WN725N Wireless N Nano USB Adapter 150Mbps
-                                        </a>
-									</th> 
-									<td>$8.86 </td> 
-								</tr> 
-							</tbody>
-						</table> 
-					</div>
-                </div>
-            </section>
-        </div>
-    </div>
- </div>
-
 
 
     <div class="chrome-header-wrapper">
@@ -924,7 +904,7 @@
         <div class="text-center">
             <!-- <h3>Questions/Suggestions</h3> -->
             <!-- <p>As always, for questions or feedback, <a href="/WebAppsDocs/en-US/Community.htm#contact">contact us</a></p> -->
-            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/WebOnPi.md">
+            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/MeteorOnPi.md">
                 <img src="/WebAppsDocs/images/Octocat.png" class="nr" />Edit this page on GitHub
             </a>
         </div>

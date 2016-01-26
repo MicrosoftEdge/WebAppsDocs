@@ -82,10 +82,10 @@ lang: en-US
                     <p>So you've played with the sample apps and are feeling motivated to deploy your own app to the Pi? Great! It's very simple. Let's start by choosing your route: </p>
                     <ol>
                         <li>
-                            <a href="http://microsoftedge.github.io/WebAppsDocs/en-US/win10/CreateHWA.htm">Deploying using ManifoldJS (Mac)</a>
+                            <a href="{{site.baseurl}}/en-US/win10/CreateHWA.htm">Deploying using ManifoldJS (Mac)</a>
                         </li>
                         <li>
-                            <a href="http://microsoftedge.github.io/WebAppsDocs/en-US/win10/DeployToPiWithVs.htm">Deploying using Visual Studio (Windows)</a>
+                            <a href="{{site.baseurl}}/en-US/win10/DeployToPiWithVs.htm">Deploying using Visual Studio (Windows)</a>
                         </li>
                     </ol>
                 </div>
@@ -97,7 +97,7 @@ lang: en-US
         <div class="col-md-16 col-lg-16">
             <section class="section">
                 <header class="section-header">
-                    <h2 class="section-title">Our Kit</h2>
+                    <h2>Our Kit</h2>
                 </header>
                 <div class="section-body">
                     <p>There's an official WIndows Kit, but we decided to go for a slightly different spec.</p>

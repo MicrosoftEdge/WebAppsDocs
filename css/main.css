@@ -356,6 +356,12 @@ button.next:hover {
     font-family: "Segoe MDL2 Assets";
 }
 /*Raspberry Pi Documentation*/
+.simple-code
+{
+    padding: 10px;
+    background: #efefef;
+    display: block;
+}
 .table-wrapper
 {
     width: 100%;

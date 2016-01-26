@@ -794,35 +794,28 @@
 
 <p>In Windows 8 and 8.1, HTML/JavaScript apps using the default <strong>ms-appx:///</strong> protocol applied a Microsoft specific “SafeHTML” security model, which imposed restrictions around changing innerHTML or dynamically adding certain types of attributes. Performing these operations in our Windows 8.1 App would have required the use of additional SafeHTML APIs</p>
 
-<p>’'’js</p>
-
-<p>// SafeHTML APIs in use 
-var nextDiv = document.createElement(“DIV”); 
-nextDiv.innerHTML = toStaticHTML(myDiv.innerHTML); 
-MSApp.execUnsafeLocalFunction(function() { var nextDiv = document.createElement(“DIV”) nextDiv.innerHTML = myDiv.innerHTML; }); 
-‘’’</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// SafeHTML APIs in use </span>
+<span class="kd">var</span> <span class="nx">nextDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="err">“</span><span class="nx">DIV</span><span class="err">”</span><span class="p">);</span> 
+<span class="nx">nextDiv</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">toStaticHTML</span><span class="p">(</span><span class="nx">myDiv</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">);</span> 
+<span class="nx">MSApp</span><span class="p">.</span><span class="nx">execUnsafeLocalFunction</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">nextDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="err">“</span><span class="nx">DIV</span><span class="err">”</span><span class="p">)</span> <span class="nx">nextDiv</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">myDiv</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span> <span class="p">});</span></code></pre></div>
 
 <p>In Windows 10 the SafeHTML security model has been removed. When Migrating an app we should remove all references to the SafeHTML APIs, or if too numerous, feature detect them and provide a shim for environments where they don’t exist.</p>
 
-<p>’'’js
-// HTML injection restrictions from Windows 8 have been removed in UWP. 
-// Shim these functions since they no longer exist in UWP
-if (!window.toStaticHTML) { window.toStaticHTML = function (text) { return text; }; }
-if (window.MSApp &amp;&amp; !window.MSApp.execUnsafeLocalFunction) { MSApp.execUnsafeLocalFunction = function (c) { c(); }; } 
-‘’’</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// HTML injection restrictions from Windows 8 have been removed in UWP. </span>
+<span class="c1">// Shim these functions since they no longer exist in UWP</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">toStaticHTML</span><span class="p">)</span> <span class="p">{</span> <span class="nb">window</span><span class="p">.</span><span class="nx">toStaticHTML</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">text</span><span class="p">;</span> <span class="p">};</span> <span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">MSApp</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">MSApp</span><span class="p">.</span><span class="nx">execUnsafeLocalFunction</span><span class="p">)</span> <span class="p">{</span> <span class="nx">MSApp</span><span class="p">.</span><span class="nx">execUnsafeLocalFunction</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span> <span class="nx">c</span><span class="p">();</span> <span class="p">};</span> <span class="p">}</span></code></pre></div>
 
 <p>The new security model for Windows 10 apps using the default <strong>ms-appx:///</strong> protocol, applies an “unsafe inline” CSP directive by default. CSP is a standardized [W3C security Model]{http://w3c.github.io/webappsec-csp/}.</p>
 
-<p>Under the new Security Model, any inline script tags defined within an App’s HTML files will not execute. 
-‘'’html
-<!-- This will not execute --> 
-<script> var myDiv = document.body.querySelector(“#mydiv”); </script> 
-‘’’</p>
+<p>Under the new Security Model, any inline script tags defined within an App’s HTML files will not execute.</p>
 
-<p>Instead, we should move the script from our inline script tags into a .js file that our same HTML file can load. 
-‘'’html
-&lt;script src=”./js/default.js”&gt;&lt;/script&gt; 
-‘’’</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- This will not execute --&gt;</span> 
+<span class="nt">&lt;script&gt;</span> <span class="kd">var</span> <span class="nx">myDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="err">“#</span><span class="nx">mydiv</span><span class="err">”</span><span class="p">);</span> <span class="nt">&lt;/script&gt;</span></code></pre></div>
+
+<p>Instead, we should move the script from our inline script tags into a .js file that our same HTML file can load.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">”./js/default.js”</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
 <p>For more information and links to documentation on the new security model, visit: https://msdn.microsoft.com/en-us/library/windows/apps/dn705792.aspx?f=255&amp;MSPPError=-2147217396#new_security_model</p>
 
@@ -844,7 +837,7 @@ if (window.MSApp &amp;&amp; !window.MSApp.execUnsafeLocalFunction) { MSApp.execU
 
 <p>The <code>ui-light</code> and <code>ui-dark</code> stylesheets in WinJS 2 contained CSS rules for both the set of controls in the WinJS UI Toolkit, and many browser controls like <code>&lt;button&gt;</code>,  <code>&lt;input type="range"&gt;</code> and <code>&lt;h1&gt;</code> elements.</p>
 
-<p>Outside of some generic styles applied to  &lt;body&gt;  and  &lt;html&gt; , WinJS 4.X does not globally style any browser controls such as  <button> , or apply any font styles. Instead, you must opt-in to styling for each element you create, similar to Twitter Bootstrap.</button></p>
+<p>Outside of some generic styles applied to  <code>&lt;body&gt;</code>  and  <code>&lt;html&gt;</code> , WinJS 4.X does not globally style any browser controls such as <code>&lt;button&gt;</code>, or apply any font styles. Instead, you must opt-in to styling for each element you create, similar to Twitter Bootstrap.</p>
 
 <p>For example, take button elements:
 - In WinJS 2.X, all <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> button elements would have the styles for the Modern Windows look and feel automatically applied. 
@@ -853,12 +846,13 @@ if (window.MSApp &amp;&amp; !window.MSApp.execUnsafeLocalFunction) { MSApp.execU
   	- <code>win-button-primary</code> - Add this class to a button in addition to <code>win-button</code> to make it stand out
   	- <code>win-button-file</code> - Add this class to a button in addition to <code>win-button</code> when its type is <code>file</code></p>
 
-<pre><code>  ```html
-  &lt;button class='win-button'&gt;Default button&lt;/button&gt;
-  &lt;input type='button' class='win-button win-button-primary' value='Primary button' /&gt;
-  &lt;input type='file' class='win-button win-button-file' /&gt;
-  ``` - A detailed list for all the new opt-in styles can be found [here](https://github.com/winjs/winjs/wiki/Styling-HTML-Controls)
-</code></pre>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&#39;win-button&#39;</span><span class="nt">&gt;</span>Default button<span class="nt">&lt;/button&gt;</span>
+	  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&#39;button&#39;</span> <span class="na">class=</span><span class="s">&#39;win-button win-button-primary&#39;</span> <span class="na">value=</span><span class="s">&#39;Primary button&#39;</span> <span class="nt">/&gt;</span>
+	  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&#39;file&#39;</span> <span class="na">class=</span><span class="s">&#39;win-button win-button-file&#39;</span> <span class="nt">/&gt;</span></code></pre></div>
+
+<ul>
+  <li>A detailed list for all the new opt-in styles can be found <a href="https://github.com/winjs/winjs/wiki/Styling-HTML-Controls">here</a></li>
+</ul>
 
 <h3 id="changes-to-the-winjs-appbar">Changes to the WinJS AppBar</h3>
 
@@ -867,98 +861,115 @@ if (window.MSApp &amp;&amp; !window.MSApp.execUnsafeLocalFunction) { MSApp.execU
 <p>Here are the important details on how to Migrate your app from using the WinJS 2.0 AppBar, to the WinJS 4.X AppBar.</p>
 
 <p><strong>Paradigm Shift</strong>
-	• In WinJS 2.0, the AppBar control doesn’t provide any dedicated UI for opening or closing it. Additionally, when closed, the AppBar was hidden completely from view and out of a user’s reach.</p>
+- In WinJS 2.0, the AppBar control doesn’t provide any dedicated UI for opening or closing it. Additionally, when closed, the AppBar was hidden completely from view and out of a user’s reach.</p>
 
-<pre><code>• In Windows 8.1 apps, the paradigm for end users to invoke the AppBar was either (1) swiping a finger across the top or bottom of the screen, or (2) right clicking an empty region of the App. When either action occurred, Apps for 8.1 would trigger a custom event causing the  WinJS 2.0 AppBar to open/close itself.
+<ul>
+  <li>
+    <p>In Windows 8.1 apps, the paradigm for end users to invoke the AppBar was either (1) swiping a finger across the top or bottom of the screen, or (2) right clicking an empty region of the App. When either action occurred, Apps for 8.1 would trigger a custom event causing the  WinJS 2.0 AppBar to open/close itself.</p>
+  </li>
+  <li>
+    <p>In Apps for Windows 10, the paradigm has changed. Right clicking or edge swiping will no longer fire an event to open the AppBar. Instead The WinJS 4.X AppBar provides its own UI for users to open and close it.</p>
+  </li>
+  <li>
+    <p>Additionally, the AppBar can be configured, via the new <code>AppBar.closedDisplayMode</code> property to appear in 4 distinct visual states while closed. The supported <code>closedDisplayMode</code> values are:</p>
+    <ul>
+      <li>“full”</li>
+      <li>“compact” (default)</li>
+      <li>“minimal”</li>
+      <li>“none” (same as WinJS 2.0 AppBar)</li>
+    </ul>
+  </li>
+</ul>
 
-• In Apps for Windows 10, the paradigm has changed. Right clicking or edge swiping will no longer fire an event to open the AppBar. Instead The WinJS 4.X AppBar provides its own UI for users to open and close it.
-
-• Additionally, the AppBar can be configured, via the new `AppBar.closedDisplayMode` property to appear in 4 distinct visual states while closed.
-	- full
-	- compact (default)
-	- minimal
-	- none (same as WinJS 2.0 AppBar)
-
-For more information on the design of the new AppBar, please visit:
-https://msdn.microsoft.com/en-us/library/windows/apps/hh465296.aspx
-</code></pre>
+<p>For more information on the design of the new AppBar, please visit:
+https://msdn.microsoft.com/en-us/library/windows/apps/hh465296.aspx</p>
 
 <p><strong>Renamed API’s:</strong>
-	• Methods
-		- The hide() method was renamed to close()
-		- The show() method was renamed to open()
-	• Events
-		- Renamed the onafterhide event property to onafterclose
-		- Renamed the onaftershow event property to onafteropen
-		- Renamed the onbeforehide event property to onbeforeclose
-		- Renamed the onbeforeshow event property to onbeforeopen
-	• CSS classes
-		- Renamed the  .win-appbar-hidden CSS class to .win-appbar-closed.</p>
+- Methods
+	- The hide() method was renamed to close()
+	- The show() method was renamed to open()
+- Events
+	- Renamed the onafterhide event property to onafterclose
+	- Renamed the onaftershow event property to onafteropen
+	- Renamed the onbeforehide event property to onbeforeclose
+	- Renamed the onbeforeshow event property to onbeforeopen
+- CSS classes
+	- Renamed the  .win-appbar-hidden CSS class to .win-appbar-closed.</p>
 
-<pre><code>If your Windows 8.1 app is using any of these API's by their previous name, you simply need to rename them to the new value and they will continue to work the same as before.
-</code></pre>
+<p>If your Windows 8.1 app is using any of these API’s by their previous name, you simply need to rename them to the new value and they will continue to work the same as before.</p>
 
 <p><strong>Removed API’s:</strong>
-	• Properties
-		- The <code>hidden</code> property has been removed. If apps that were using the hidden property, should use the new <code>opened</code> property instead.  Unlike the hidden property, the opened property is both get and set. 
-			‘'’js
-			// if(appBar.hidden) { return true }
-			if(!appBar.opened){ return true }
-			‘’’
-		- The <code>commands</code> property was removed. If your app was using the commands property to set AppBar commands programatically, you should use the new <code>data</code> property instead. 
-			<strong>difference</strong>
-			- The commands property was set only, but the data property is get/set. 
-			- Unlike the commands property which took an Array of Instantiated AppBarCommands, the AppBar.data property only accepts a WinJS.Binding.List of Instantiated AppBarCommand objects. 
-			‘'’js
-			var cmds = [
-					new WinJS.UI.AppBarCommand(null, {icon: ‘add’, label’add’}),
-				    	new WinJS.UI.AppBarCommand(null, {icon: ‘delete’, label’delete’})
-				   ];
-			// appBar.commands = cmds;
-			appBar.data = new WinJS.Binding.List(cmds);
-			‘’’</p>
+- Properties
+	- The <code>hidden</code> property has been removed. If apps that were using the hidden property, should use the new <code>opened</code> property instead.  Unlike the hidden property, the opened property is both get and set.</p>
 
-<pre><code>	- The `disabled` property has been removed. Apps that were using the disabled property can set the AppBar's `closedDisplayMode` property to "none", and close the AppBar to hide it completely, removing any ability for an end user to interact with it.
-	- The `sticky` property has been removed. Apps that were using the `sticky` property should instead set the new `closedDisplayMode` property to "compact" or "full".
-	- The `layout` property has been removed. Apps that were setting the `layout` property to "custom", should host that content inside of AppBarCommand(s) whose `type` property is set to "content".
-	- [Example](https://msdn.microsoft.com/en-us/library/windows/apps/hh780658.aspx) of AppBar with "content" commands for hosting custom conent.
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// if(appBar.hidden) { return true }</span>
+		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">appBar</span><span class="p">.</span><span class="nx">opened</span><span class="p">){</span> <span class="k">return</span> <span class="kc">true</span> <span class="p">}</span></code></pre></div>
 
-• Methods	
-	- showCommands() and hideCommands() have been removed from the AppBar. Apps that were using showCommands() or hideCommands() should instead use showOnlyCommands() to describe the set of commands in the AppBar that should be visible. All commands not included in the array parameter will be implicitly hidden.
-	'''js
-	var cmdAdd = new WinJS.UI.AppBarCommand(null, {icon: 'add', label'add'});
-	var cmdDel = new WinJS.UI.AppBarCommand(null, {icon: 'delete', label'delete'});
-	appBar.data = new WinJs.Binding.List([cmdAdd, cmdDel]);
+<ul>
+  <li>The <code>commands</code> property was removed. If your app was using the commands property to set AppBar commands programatically, you should use the new <code>data</code> property instead. 
+<strong>difference</strong></li>
+  <li>The commands property was set only, but the data property is get/set.</li>
+  <li>Unlike the commands property which took an Array of Instantiated AppBarCommands, the AppBar.data property only accepts a WinJS.Binding.List of Instantiated AppBarCommand objects.</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">cmds</span> <span class="o">=</span> <span class="p">[</span>
+				<span class="k">new</span> <span class="nx">WinJS</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">AppBarCommand</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span><span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="nx">label</span><span class="s1">&#39;add&#39;</span><span class="p">}),</span>
+			    	<span class="k">new</span> <span class="nx">WinJS</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">AppBarCommand</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span><span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="nx">label</span><span class="s1">&#39;delete&#39;</span><span class="p">})</span>
+			   <span class="p">];</span>
+		<span class="c1">// appBar.commands = cmds;</span>
+		<span class="nx">appBar</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WinJS</span><span class="p">.</span><span class="nx">Binding</span><span class="p">.</span><span class="nx">List</span><span class="p">(</span><span class="nx">cmds</span><span class="p">);</span></code></pre></div>
+
+<ul>
+  <li>The <code>disabled</code> property has been removed. Apps that were using the disabled property can set the AppBar’s <code>closedDisplayMode</code> property to “none”, and close the AppBar to hide it completely, removing any ability for an end user to interact with it.</li>
+  <li>The <code>sticky</code> property has been removed. Apps that were using the <code>sticky</code> property should instead set the new <code>closedDisplayMode</code> property to “compact” or “full”.</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// appBar.sticky = true;</span>
+	<span class="nx">appBar</span><span class="p">.</span><span class="nx">closedDisplayMode</span> <span class="o">=</span> <span class="nx">WinJS</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">AppBar</span><span class="p">.</span><span class="nx">ClosedDisplayMode</span><span class="p">.</span><span class="nx">compact</span><span class="p">;</span></code></pre></div>
+
+<ul>
+  <li>The <code>layout</code> property has been removed. Apps that were setting the <code>layout</code> property to “custom”, should host that content inside of AppBarCommand(s) whose <code>type</code> property is set to “content”.</li>
+  <li>
+    <p><a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh780658.aspx">Example</a> of AppBar with “content” commands for hosting custom conent.</p>
+  </li>
+  <li>Methods
+    <ul>
+      <li>showCommands() and hideCommands() have been removed from the AppBar. Apps that were using showCommands() or hideCommands() should instead use showOnlyCommands() to describe the set of commands in the AppBar that should be visible. All commands not included in the array parameter will be implicitly hidden.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">cmdAdd</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WinJS</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">AppBarCommand</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span><span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="nx">label</span><span class="s1">&#39;add&#39;</span><span class="p">});</span>
+	<span class="kd">var</span> <span class="nx">cmdDel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WinJS</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">AppBarCommand</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span><span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="nx">label</span><span class="s1">&#39;delete&#39;</span><span class="p">});</span>
+	<span class="nx">appBar</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WinJs</span><span class="p">.</span><span class="nx">Binding</span><span class="p">.</span><span class="nx">List</span><span class="p">([</span><span class="nx">cmdAdd</span><span class="p">,</span> <span class="nx">cmdDel</span><span class="p">]);</span>
 	
-	// Hide Commands
-	// appBar.hideCommands([cmdAdd, cmdDel]);
-	appBar.showOnlyCommands([]);
+	<span class="c1">// Don&#39;t show any commands</span>
+	<span class="c1">// appBar.hideCommands([cmdAdd, cmdDel]);</span>
+	<span class="nx">appBar</span><span class="p">.</span><span class="nx">showOnlyCommands</span><span class="p">([]);</span>
 	
-	// Show Commands
-	// appBar.showCommands
-	appBar.showOnlyCommands([cmdAdd, cmdDel]);
-	'''
-	
-• CSS classes
-      	- Removed the `.win-commandlayout` CSS class. This class name was obsolete with the removal of the "layout" property.
-</code></pre>
+	<span class="c1">// Show both Commands</span>
+	<span class="c1">// appBar.showCommands([cmdAdd, cmdDel]);</span>
+	<span class="nx">appBar</span><span class="p">.</span><span class="nx">showOnlyCommands</span><span class="p">([</span><span class="nx">cmdAdd</span><span class="p">,</span> <span class="nx">cmdDel</span><span class="p">]);</span></code></pre></div>
 
-<p><strong>New layout and rendering for AppBarCommands</strong></p>
+<ul>
+  <li>CSS classes
+    	- Removed the <code>.win-commandlayout</code> CSS class. This class name was obsolete with the removal of the “layout” property.</li>
+</ul>
 
-<pre><code>- In WinJS 2.X apps could control whether commands were placed on the left side or right side of the AppBar via the AppBarCommand's `section` property via values of either "global" or "selection". 
-- In WinJS 4.X the strategy of laying out commands to either the left or the right is no longer suppported, and the values of "global" and "selection" for the AppBarCommand `section` propety have been deprecated. 
-	- Instead commands are laid out in DOM order, into either: 
-		- a single row of the action area (always left aligned except in RTL mode), 
-		- a single column of the overflow area.
-	- Developers can designate which area a command should go to by setting the AppBarCommand `section` property to 
-		- primary (action area) (this is the default value)
-		- secondary (overflow area)
-	- Some primary commands in the actionarea can overflow into the overflow area if there is not enough room to fit all primary commands. 
-	- Developers can set the AppBarCommand `priority` property to designate the order in which commands should overflow.
-		- The `priority` property will accept any non negative number. 
-		- Commands with a weaker priority will overflow first. Priority 0 is considered to be stronger than Priority 1, andd Priority 1 is stronger than Priority 2.
-		- Commands assigneda the same `priority` value will be grouped together and overflow at the samee time.
-</code></pre>
+<p><strong>New layout and rendering for AppBarCommands</strong>
+- In WinJS 2.X apps could control whether commands were placed on the left side or right side of the AppBar via the AppBarCommand’s <code>section</code> property via values of either “global” or “selection”. 
+- In WinJS 4.X the strategy of laying out commands to either the left or the right is no longer suppported, and the values of “global” and “selection” for the AppBarCommand <code>section</code> propety have been deprecated. 
+- Instead commands are laid out in DOM order, into either: 
+	- a single row of the action area (always left aligned except in RTL mode), 
+	- a single column of the overflow area.
+- Developers can designate which area a command should go to by setting the AppBarCommand <code>section</code> property to: 
+	- “primary” (action area) (this is the default value)
+	- “secondary” (overflow area)
+- Some primary commands in the actionarea can overflow into the overflow area if there is not enough room to fit all primary commands. 
+- Developers can set the AppBarCommand <code>priority</code> property to designate the order in which commands should overflow.
+	- The <code>priority</code> property will accept any non negative number. 
+	- Commands with a weaker priority will overflow first. Priority 0 is considered to be stronger than Priority 1, andd Priority 1 is stronger than Priority 2.
+	- Commands assigned the same <code>priority</code> value will be grouped together and all overflow at the same time.</p>
 
             </div>
         </div>

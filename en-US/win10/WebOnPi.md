@@ -1,6 +1,6 @@
 ---
 layout: index
-title: Web apps on the Pi
+title: Web apps on the Raspberry Pi 2
 permalink: /en-US/win10/WebOnPi.htm
 lang: en-US
 ---

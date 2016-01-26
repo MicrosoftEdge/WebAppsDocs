@@ -115,7 +115,7 @@ lang: en-US
                 </header>
                 <div class="section-body spacer-32-bottom">
                     <div class="section-body">
-                    <p>Follow <a href="{{site.baseurl}}/en-US/win10/CreateHWA.htm">this tutorial</a> to deploy your newly MeteorJS app as Windows Universal Platform app.</p>
+                    <p>Follow <a href="{{site.baseurl}}/en-US/win10/CreateHWA.htm">this tutorial</a> to deploy your newly MeteorJS app as a Windows Universal Platform app.</p>
                 </div>
                 </div>
             </section>

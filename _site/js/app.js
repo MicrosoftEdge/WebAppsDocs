@@ -6,39 +6,42 @@
     $("a[href*='" + filename + "'] h3").toggleClass('active');
 
     var platformToggle = $("[name=platform]");
-    var prevPlatform = platformToggle[0].checked ? platformToggle[0].value : platformToggle[1].value;
 
-    if (window.location.hash) {
-        var hash = window.location.hash.substring(1);
+    if (platformToggle.length > 0) {
+        var prevPlatform = platformToggle[0].checked ? platformToggle[0].value : platformToggle[1].value;
 
-        if (hash != prevPlatform) {
-            if (hash == platformToggle[0].value) {
-                platformToggle[0].checked = true;
-                platformToggle[1].checked = false;
-                prevPlatform = hash;
-            }
+        if (window.location.hash) {
+            var hash = window.location.hash.substring(1);
 
-            if (hash == platformToggle[1].value) {
-                platformToggle[1].checked = true;
-                platformToggle[0].checked = false;
-                prevPlatform = hash;
+            if (hash != prevPlatform) {
+                if (hash == platformToggle[0].value) {
+                    platformToggle[0].checked = true;
+                    platformToggle[1].checked = false;
+                    prevPlatform = hash;
+                }
+
+                if (hash == platformToggle[1].value) {
+                    platformToggle[1].checked = true;
+                    platformToggle[0].checked = false;
+                    prevPlatform = hash;
+                }
             }
         }
+
+        $("#reqs-" + prevPlatform).show();
+        $("#steps-" + prevPlatform).show();
+
+        platformToggle.click(function () {
+            var curPlatform = $(this).val();
+
+            if (curPlatform != prevPlatform) {
+                $(".reqs").hide();
+                $(".steps").hide();
+                $("#reqs-" + curPlatform).show();
+                $("#steps-" + curPlatform).show();
+                prevPlatform = curPlatform;
+                window.location = "#" + curPlatform;
+            }
+        });
     }
-
-    $("#reqs-" + prevPlatform).show();
-    $("#steps-" + prevPlatform).show();
-
-    platformToggle.click(function () {
-    	var curPlatform = $(this).val();
-
-    	if (curPlatform != prevPlatform) {
-    		$(".reqs").hide();
-    		$(".steps").hide();
-    		$("#reqs-" + curPlatform).show();
-    		$("#steps-" + curPlatform).show();
-    		prevPlatform = curPlatform;
-            window.location = "#" + curPlatform;
-    	}
-    });
 });

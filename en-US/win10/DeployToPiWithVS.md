@@ -108,8 +108,8 @@ lang: en-US
         </div>
         <div class="col-xs-24 col-md-12">
             <div class="image-container">
-                <a href="{{site.baseurl}}/images/CreateHWA/step4.png">
-                    <img alt="Copy and paste your start page URL" src="{{site.baseurl}}/images/CreateHWA/step4.png" />
+                <a href="{{site.baseurl}}/images/WebOnPi/startPage.png">
+                    <img class="grey-border" alt="Copy and paste your start page URL" src="{{site.baseurl}}/images/WebOnPi/startPage.png" />
                 </a>
             </div>
         </div>
@@ -128,7 +128,7 @@ lang: en-US
                         <li>
                             <p>Add any necessary URIs for your start page.</p>
                             <p class="spacer-16-top">For example:</p>
-                            <p class="spacer-16-top">1. <code>http://codepen.io/seksenov/pen/wBbVyb/?editors=101</code></p>
+                            <p class="spacer-16-top">1. <code>http://codepen.io/</code></p>
                             <p>2. <code>http://*.codepen.io/</code></p>
                         </li>
                         <li>Set the <strong>WinRT Access</strong> to <strong>All</strong> for each URI you added.</li>
@@ -138,8 +138,8 @@ lang: en-US
         </div>
         <div class="col-xs-24 col-md-12 col-md-pull-12">
             <div class="image-container">
-                <a href="{{site.baseurl}}/images/CreateHWA/step5.png">
-                    <img alt="Create new Content URIs" src="{{site.baseurl}}/images/CreateHWA/step5.png" />
+                <a href="{{site.baseurl}}/images/WebOnPi/uris.png">
+                    <img class="grey-border" alt="Create new Content URIs" src="{{site.baseurl}}/images/WebOnPi/uris.png"/>
                 </a>
             </div>
         </div>

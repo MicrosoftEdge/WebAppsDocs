@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Windows Bridge for Hosted Web Apps - Web apps on the Raspberry Pi 2</title>
+    <title>Windows Bridge for Hosted Web Apps - Create a Hosted Web App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Everything you need to know about Hosted Web Apps on Windows, part of the Universal Windows Apps family with full access to platform APIs from remote JavaScript.">
     <meta name="keywords" content="Windows Web Apps, Hosted Web Apps, Windows Web Applications, Web Apps, JavaScript Apps, HTML Apps, HTML 5, Windows 10, Windows Universal, Windows Universal Apps, Windows Platform, Universal Windows Apps, Universal Windows APIs, UWP, Project Westminster, Westminster, Windows Apps, Windows 10 Apps, Windows App Building, Apps, Web, HTML5">
@@ -13,8 +13,13 @@
     <link rel="icon" type="image/png" href="http://MicrosoftEdge.github.io/WebAppsDocs/favicon.png">
     <!--[if IE]><link rel="shortcut icon" href="http://MicrosoftEdge.github.io/WebAppsDocs/favicon.ico"/><![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="/WebAppsDocs/css/WebCore.4.3.0.ltr.light.min.css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="/WebAppsDocs/css/bootstrap.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/pygments.css" rel="stylesheet" />
     <link href="/WebAppsDocs/css/main.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/nav.css" rel="stylesheet" />
+    <link href="/WebAppsDocs/css/syntax.css" rel="stylesheet" />
+
 
     <script type="text/javascript">
         var appInsights=window.appInsights||function(config){
@@ -27,8 +32,8 @@
     </script>
 </head>
 
-<body class="withLeftNav">
-    <div id="headerWrapper">
+<body class="default-body">
+    <div class="chrome-header-wrapper">
         
   <link href="https://assets.onestore.ms/cdnfiles/onestorerolling-1511-18012/shell/v3/scss/shell.min.css" rel="stylesheet" type="text/css" />
 
@@ -653,7 +658,7 @@
         <li class="c-top-nav-item">
                 <a class="c-top-nav-link c-nav-link" href="/WebAppsDocs/" ms.title="Windows Bridge for Hosted Web Apps" role="menuitem" data-bi-slot="1" data-show-cta="True" tabindex="70">
                     <span>
-                        Windows Bridge for Hosted Web Apps
+                        Hosted Web Apps
                     </span>
                 </a>
             </li>
@@ -778,153 +783,193 @@
 
     </div>
 
-    <div class="jumbotron jumbotron-centered webapp-accent">
-    <div class="container relative">
-        <div class="row">
-            <div class="col-md-4 col-lg-4"></div>
-            <div class="centered-content">
-                <div class="image-container inline-block no-pad">
-                    <img class="img-responsive" src="/WebAppsDocs/images/WebOnPi/rpi2.png" />
-                </div>
-                <div class="jumbotron-content inline-block pad-left-20 win-color-fg-primary color-alt">
-                    <h1 class="jumbotron-header header-large">Your web app on a Pi</h1>
-                    <p class="jumbotron-subheader max-width-500">Deploy your awesome website on the Raspberry Pi 2 by making a Hosted Web App for Windows</p>
-                </div>
+    <div class="row">
+        <div class="default-max-width">
+            <div class="content-container col-md-12">
+                <h1 id="migrating-your-windows-81-app-to-a-universal-windows-platform-uwp-app-for-windows-10">Migrating your Windows 8.1 App to a Universal Windows Platform (UWP) app for Windows 10</h1>
+
+<p>Migrating an HTML/JavaScript app from Windows 8.1 to the Windows 10 can be accompanied by a few challenges. Learn what common roadblocks app developers are most likely to encounter when migrating their Windows 8.1 apps, and how to address them.</p>
+
+<h2 id="security-model-changes---the-new-windows-10-security-model-for-htmljavascript-apps">Security Model Changes - The new Windows 10 security model for HTML/Javascript apps.</h2>
+
+<p>In Windows 8 and 8.1, HTML/JavaScript apps using the default <strong>ms-appx:///</strong> protocol applied a Microsoft specific “SafeHTML” security model, which imposed restrictions around changing innerHTML or dynamically adding certain types of attributes. Performing these operations in our Windows 8.1 App would have required the use of additional SafeHTML APIs</p>
+
+<p>’'’js</p>
+
+<p>// SafeHTML APIs in use 
+var nextDiv = document.createElement(“DIV”); 
+nextDiv.innerHTML = toStaticHTML(myDiv.innerHTML); 
+MSApp.execUnsafeLocalFunction(function() { var nextDiv = document.createElement(“DIV”) nextDiv.innerHTML = myDiv.innerHTML; }); 
+‘’’</p>
+
+<p>In Windows 10 the SafeHTML security model has been removed. When Migrating an app we should remove all references to the SafeHTML APIs, or if too numerous, feature detect them and provide a shim for environments where they don’t exist.</p>
+
+<p>’'’js
+// HTML injection restrictions from Windows 8 have been removed in UWP. 
+// Shim these functions since they no longer exist in UWP
+if (!window.toStaticHTML) { window.toStaticHTML = function (text) { return text; }; }
+if (window.MSApp &amp;&amp; !window.MSApp.execUnsafeLocalFunction) { MSApp.execUnsafeLocalFunction = function (c) { c(); }; } 
+‘’’</p>
+
+<p>The new security model for Windows 10 apps using the default <strong>ms-appx:///</strong> protocol, applies an “unsafe inline” CSP directive by default. CSP is a standardized [W3C security Model]{http://w3c.github.io/webappsec-csp/}.</p>
+
+<p>Under the new Security Model, any inline script tags defined within an App’s HTML files will not execute. 
+‘'’html
+<!-- This will not execute --> 
+<script> var myDiv = document.body.querySelector(“#mydiv”); </script> 
+‘’’</p>
+
+<p>Instead, we should move the script from our inline script tags into a .js file that our same HTML file can load. 
+‘'’html
+&lt;script src=”./js/default.js”&gt;&lt;/script&gt; 
+‘’’</p>
+
+<p>For more information and links to documentation on the new security model, visit: https://msdn.microsoft.com/en-us/library/windows/apps/dn705792.aspx?f=255&amp;MSPPError=-2147217396#new_security_model</p>
+
+<h2 id="settings-changes---invoking-settings-for-win10-htmljavascript-apps">Settings Changes - Invoking Settings for Win10 HTML/Javascript apps.</h2>
+
+<p>In Windows 8 and 8.1, developers were encouraged to make their app settings accessible through the <em>Settings</em> charm in the Windows Charms bar.</p>
+
+<p>In Windows 10, there is no charms bar. It is reccomended that UWP apps add their own app UI for users to invoke their settings view. If your app is using WinJS, you may want to include a command for settings in your WinJS AppBar.</p>
+
+<h2 id="migrating-to-winjs-4x">Migrating to WinJS 4.X</h2>
+
+<p>When migrated an App that was using WinJS 2.0 or WinJS 2.1, you will probably notice that the look and feel of the 2.X version of WinJS does not match the new Windowws 10 design language enjoyed by the first party UWP apps in the Windows store.</p>
+
+<p>To upgrade the look and feel of you WinJS App to follow the Windows 10 design language, you can grab the latest version of WinJS 4.X. WinJS is a now an open source project and the latest version can be obtained <a href="http://try.buildwinjs.com/download/GetWinJS/">from here</a></p>
+
+<p>Some WinJS design concepts and controls have been changed more significantly than others. This can lead to non-trivial work when migrating some apps. See the WinJS <a href="https://github.com/winjs/winjs/wiki/Changelog">change log</a> for the high level details on whats changed. Below are some tips for adjusting to two of the biggest changes in WinJS 4.X</p>
+
+<h3 id="changes-to-winjs-styling-of-instrinsic-controls">Changes to WinJS styling of instrinsic controls</h3>
+
+<p>The <code>ui-light</code> and <code>ui-dark</code> stylesheets in WinJS 2 contained CSS rules for both the set of controls in the WinJS UI Toolkit, and many browser controls like <code>&lt;button&gt;</code>,  <code>&lt;input type="range"&gt;</code> and <code>&lt;h1&gt;</code> elements.</p>
+
+<p>Outside of some generic styles applied to  &lt;body&gt;  and  &lt;html&gt; , WinJS 4.X does not globally style any browser controls such as  <button> , or apply any font styles. Instead, you must opt-in to styling for each element you create, similar to Twitter Bootstrap.</button></p>
+
+<p>For example, take button elements:
+- In WinJS 2.X, all <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> button elements would have the styles for the Modern Windows look and feel automatically applied. 
+- In WinJS 4.X, a should use the following button classes on any <code>&lt;button&gt;</code> or button <code>&lt;input&gt;</code> elements that they want to give the Modern Windows look and feel.
+  	- <code>win-button</code> - Base button class
+  	- <code>win-button-primary</code> - Add this class to a button in addition to <code>win-button</code> to make it stand out
+  	- <code>win-button-file</code> - Add this class to a button in addition to <code>win-button</code> when its type is <code>file</code></p>
+
+<pre><code>  ```html
+  &lt;button class='win-button'&gt;Default button&lt;/button&gt;
+  &lt;input type='button' class='win-button win-button-primary' value='Primary button' /&gt;
+  &lt;input type='file' class='win-button win-button-file' /&gt;
+  ``` - A detailed list for all the new opt-in styles can be found [here](https://github.com/winjs/winjs/wiki/Styling-HTML-Controls)
+</code></pre>
+
+<h3 id="changes-to-the-winjs-appbar">Changes to the WinJS AppBar</h3>
+
+<p>At a glance the WinJS 4.0 AppBar may look similar to previous AppBar implementations, but some aspects of the design have changed significantly since WinJS 2.0. To facilitate these design changes, key AppBar API’s have been renamed, replaced, or removed. The extent of how many changes to the AppBar that an app may require will depend on which features off the AppBar was using, but it is likely that most appbars will require at least a few changes.</p>
+
+<p>Here are the important details on how to Migrate your app from using the WinJS 2.0 AppBar, to the WinJS 4.X AppBar.</p>
+
+<p><strong>Paradigm Shift</strong>
+	• In WinJS 2.0, the AppBar control doesn’t provide any dedicated UI for opening or closing it. Additionally, when closed, the AppBar was hidden completely from view and out of a user’s reach.</p>
+
+<pre><code>• In Windows 8.1 apps, the paradigm for end users to invoke the AppBar was either (1) swiping a finger across the top or bottom of the screen, or (2) right clicking an empty region of the App. When either action occurred, Apps for 8.1 would trigger a custom event causing the  WinJS 2.0 AppBar to open/close itself.
+
+• In Apps for Windows 10, the paradigm has changed. Right clicking or edge swiping will no longer fire an event to open the AppBar. Instead The WinJS 4.X AppBar provides its own UI for users to open and close it.
+
+• Additionally, the AppBar can be configured, via the new `AppBar.closedDisplayMode` property to appear in 4 distinct visual states while closed.
+	- full
+	- compact (default)
+	- minimal
+	- none (same as WinJS 2.0 AppBar)
+
+For more information on the design of the new AppBar, please visit:
+https://msdn.microsoft.com/en-us/library/windows/apps/hh465296.aspx
+</code></pre>
+
+<p><strong>Renamed API’s:</strong>
+	• Methods
+		- The hide() method was renamed to close()
+		- The show() method was renamed to open()
+	• Events
+		- Renamed the onafterhide event property to onafterclose
+		- Renamed the onaftershow event property to onafteropen
+		- Renamed the onbeforehide event property to onbeforeclose
+		- Renamed the onbeforeshow event property to onbeforeopen
+	• CSS classes
+		- Renamed the  .win-appbar-hidden CSS class to .win-appbar-closed.</p>
+
+<pre><code>If your Windows 8.1 app is using any of these API's by their previous name, you simply need to rename them to the new value and they will continue to work the same as before.
+</code></pre>
+
+<p><strong>Removed API’s:</strong>
+	• Properties
+		- The <code>hidden</code> property has been removed. If apps that were using the hidden property, should use the new <code>opened</code> property instead.  Unlike the hidden property, the opened property is both get and set. 
+			‘'’js
+			// if(appBar.hidden) { return true }
+			if(!appBar.opened){ return true }
+			‘’’
+		- The <code>commands</code> property was removed. If your app was using the commands property to set AppBar commands programatically, you should use the new <code>data</code> property instead. 
+			<strong>difference</strong>
+			- The commands property was set only, but the data property is get/set. 
+			- Unlike the commands property which took an Array of Instantiated AppBarCommands, the AppBar.data property only accepts a WinJS.Binding.List of Instantiated AppBarCommand objects. 
+			‘'’js
+			var cmds = [
+					new WinJS.UI.AppBarCommand(null, {icon: ‘add’, label’add’}),
+				    	new WinJS.UI.AppBarCommand(null, {icon: ‘delete’, label’delete’})
+				   ];
+			// appBar.commands = cmds;
+			appBar.data = new WinJS.Binding.List(cmds);
+			‘’’</p>
+
+<pre><code>	- The `disabled` property has been removed. Apps that were using the disabled property can set the AppBar's `closedDisplayMode` property to "none", and close the AppBar to hide it completely, removing any ability for an end user to interact with it.
+	- The `sticky` property has been removed. Apps that were using the `sticky` property should instead set the new `closedDisplayMode` property to "compact" or "full".
+	- The `layout` property has been removed. Apps that were setting the `layout` property to "custom", should host that content inside of AppBarCommand(s) whose `type` property is set to "content".
+	- [Example](https://msdn.microsoft.com/en-us/library/windows/apps/hh780658.aspx) of AppBar with "content" commands for hosting custom conent.
+
+• Methods	
+	- showCommands() and hideCommands() have been removed from the AppBar. Apps that were using showCommands() or hideCommands() should instead use showOnlyCommands() to describe the set of commands in the AppBar that should be visible. All commands not included in the array parameter will be implicitly hidden.
+	'''js
+	var cmdAdd = new WinJS.UI.AppBarCommand(null, {icon: 'add', label'add'});
+	var cmdDel = new WinJS.UI.AppBarCommand(null, {icon: 'delete', label'delete'});
+	appBar.data = new WinJs.Binding.List([cmdAdd, cmdDel]);
+	
+	// Hide Commands
+	// appBar.hideCommands([cmdAdd, cmdDel]);
+	appBar.showOnlyCommands([]);
+	
+	// Show Commands
+	// appBar.showCommands
+	appBar.showOnlyCommands([cmdAdd, cmdDel]);
+	'''
+	
+• CSS classes
+      	- Removed the `.win-commandlayout` CSS class. This class name was obsolete with the removal of the "layout" property.
+</code></pre>
+
+<p><strong>New layout and rendering for AppBarCommands</strong></p>
+
+<pre><code>- In WinJS 2.X apps could control whether commands were placed on the left side or right side of the AppBar via the AppBarCommand's `section` property via values of either "global" or "selection". 
+- In WinJS 4.X the strategy of laying out commands to either the left or the right is no longer suppported, and the values of "global" and "selection" for the AppBarCommand `section` propety have been deprecated. 
+	- Instead commands are laid out in DOM order, into either: 
+		- a single row of the action area (always left aligned except in RTL mode), 
+		- a single column of the overflow area.
+	- Developers can designate which area a command should go to by setting the AppBarCommand `section` property to 
+		- primary (action area) (this is the default value)
+		- secondary (overflow area)
+	- Some primary commands in the actionarea can overflow into the overflow area if there is not enough room to fit all primary commands. 
+	- Developers can set the AppBarCommand `priority` property to designate the order in which commands should overflow.
+		- The `priority` property will accept any non negative number. 
+		- Commands with a weaker priority will overflow first. Priority 0 is considered to be stronger than Priority 1, andd Priority 1 is stronger than Priority 2.
+		- Commands assigneda the same `priority` value will be grouped together and overflow at the samee time.
+</code></pre>
+
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-    	<div class="col-md-4 col-lg-4"></div>
-        <div class="col-md-16 col-lg-16">
-            <section class="section">
-                <header class="section-header">
-                    <h1>Web applications on the Raspberry Pi 2</h1>
-                </header>
-                <div class="section-body">
-                    <p>We've had the pleasure to play with the Raspberry Pi for sometime now while testing the EdgeHTML rendering engine on Windows IoT Core. The one consitent thing we found is that anyone who walked through our open space was interested in the Pi and was amazed by how easy you could deploy a web app to it. Knowing that this device is unique and loved by the maker community, we thought it would be great to share how to quickly build a Universal Windows App in HTML and JavaScript and get it running on the Pi.</p>
-                </div>
-            </section>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-lg-4"></div>
-        <div class="col-md-16 col-lg-16">
-            <section class="section">
-                <header class="section-header">
-                    <h2>Home Application</h2>
-                </header>
-                <div class="section-body">
-                    <p>If you've received a Raspberry Pi from the Web Platform team, your new Pi has these awesome sample apps:</p>
-                    <ol class="spacer-16-top">
-                        <li>
-                            <p><a href="http://seksenov.github.io/WebHelloBlinky/">Web Hello Blinky</a> allows you to toggle and modulate the blinking frequency of the on-board LED. This is possible thanks to the simple JavaScript projections of WinRT APIs. Check out the repo to see how you can easily control the Pi's GPIO's through JavaScript. 
-                            </p>
-                        </li>
-                        <li>
-                            <p><a href="https://github.com/csuwildcat/webonpi">#WebOnPi</a> shows the newest 20 tweets with the hashtag: #WebOnPi. Tweet something out to see your tweet glide among the clouds all thanks to the Pi!
-                            </p>
-                        </li>
-                        <li>
-                            <p><a href="http://codepen.io/seksenov/pen/obpLmR">Blinky with CodePen.</a> CodePen's power is now available on the Pi. Play with HTML, CSS, and JavaScript on the fly!
-                            </p>
-                        </li>
-                        <li>
-                            <p><a href="http://windowstodo.meteor.com/">MeteorJS Todos</a> helps you stay organized no matter your device. Desktop, mobile or even a Raspberry Pi, we got you covered. The app is built with the platform MeteorJS.
-                            </p>
-                        </li>
-                        <li>
-                            <p><a href="http://aka.ms/meteor-tutorial/">MeteorJS Tutorial.</a> Learn how to build and deploy a MeteorJS app to the Pi
-                            </p>
-                        </li>
-                    </ol>
-                    <p>If you didn't get a Raspberry Pi from us, don't worry. You can easily provision your Pi following <a href="http://ms-iot.github.io/content/en-US/GetStarted.htm">this tutorial</a> and get the home app <a href="https://github.com/MicrosoftEdge/WebOnPi">here</a>.</p> 
-                </div>
-            </section>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-lg-4"></div>
-        <div class="col-md-16 col-lg-16">
-            <section class="section">
-                <header class="section-header">
-                    <h2>Deployment</h2>
-                </header>
-                <div class="section-body">
-                    <p>So you've played with the sample apps and are feeling motivated to deploy your own app to the Pi? Great! It's very simple. Let's start by choosing your route: </p>
-                    <ol>
-                        <li>
-                            <a href="/WebAppsDocs/en-US/win10/CreateHWA.htm#mac">Deploying using ManifoldJS (Mac)</a>
-                        </li>
-                        <li>
-                            <a href="/WebAppsDocs/en-US/win10/DeployToPiWithVS.htm">Deploying using Visual Studio (Windows)</a>
-                        </li>
-                    </ol>
-                </div>
-            </section>
-        </div>
-    </div>
-    <div class="row">
-    	<div class="col-md-4 col-lg-4"></div>
-        <div class="col-md-16 col-lg-16">
-            <section class="section">
-                <header class="section-header">
-                    <h2>Our Kit</h2>
-                </header>
-                <div class="section-body">
-                    <p>There's an official WIndows Kit, but we decided to go for a slightly different spec.</p>
-                    <div class="table-wrapper">
-						<table class="table table-bordered table-striped"> 
-							<thead> 
-								<tr> 
-									<th class="table-head-item"><span>Item</span></th> 
-									<th class="table-head-item"><span>Cost</span></th>
-								</tr>
-							</thead> 
-							<tbody> 
-								<tr> 
-									<th scope="row">
-                                        <a href="http://www.amazon.com/gp/product/B008XVAVAW" rel="nofollow">
-                                            CanaKit Raspberry Pi 2 Starter
-                                        </a> 
-									</th> 
-									<td>$69.99 </td> 
-								</tr> 
-								<tr> 
-									<th scope="row"> 
-										<a href="http://www.amazon.com/Zebra-Case-Raspberry-Pi-Wood/dp/B00ME5XUAG" rel="nofollow">
-                                            Zebra Case - Raspberry Pi B+ and 2B (Wood)
-                                        </a>
-									</th> 
-									<td>$14.50</td> 
-								</tr> 
-								<tr> 
-									<th scope="row"> 
-										<a href="http://www.amazon.com/TP-LINK-TL-WN725N-Wireless-Adapter-150Mbps/dp/B008IFXQFU" rel="nofollow">
-                                            TP-LINK TL-WN725N Wireless N Nano USB Adapter 150Mbps
-                                        </a>
-									</th> 
-									<td>$8.86 </td> 
-								</tr> 
-							</tbody>
-						</table> 
-					</div>
-                </div>
-            </section>
-        </div>
-    </div>
- </div>
-
-
-
     <div class="chrome-header-wrapper">
         <div class="container iot-site-footer">
     <div class="row">
         <div class="text-center">
             <!-- <h3>Questions/Suggestions</h3> -->
             <!-- <p>As always, for questions or feedback, <a href="/WebAppsDocs/en-US/Community.htm#contact">contact us</a></p> -->
-            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/WebOnPi.md">
+            <a href="https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/en-US/win10/MigrateToUWP.md">
                 <img src="/WebAppsDocs/images/Octocat.png" class="nr" />Edit this page on GitHub
             </a>
         </div>

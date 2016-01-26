@@ -85,7 +85,7 @@ lang: en-US
                             <a href="{{site.baseurl}}/en-US/win10/CreateHWA.htm">Deploying using ManifoldJS (Mac)</a>
                         </li>
                         <li>
-                            <a href="{{site.baseurl}}/en-US/win10/DeployToPiWithVs.htm">Deploying using Visual Studio (Windows)</a>
+                            <a href="{{site.baseurl}}/en-US/win10/DeployToPiWithVS.htm">Deploying using Visual Studio (Windows)</a>
                         </li>
                     </ol>
                 </div>

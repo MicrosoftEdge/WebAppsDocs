@@ -13,34 +13,34 @@ Migrating an HTML/JavaScript app from Windows 8.1 to the Windows 10 can be accom
 
 In Windows 8 and 8.1, HTML/JavaScript apps using the default **ms-appx:///** protocol applied a Microsoft specific “SafeHTML” security model, which imposed restrictions around changing innerHTML or dynamically adding certain types of attributes. Performing these operations in our Windows 8.1 App would have required the use of additional SafeHTML APIs 
 
-```javascript
+{% highlight javascript %}
 // SafeHTML APIs in use 
 var nextDiv = document.createElement(“DIV”); 
 nextDiv.innerHTML = toStaticHTML(myDiv.innerHTML); 
 MSApp.execUnsafeLocalFunction(function() { var nextDiv = document.createElement(“DIV”) nextDiv.innerHTML = myDiv.innerHTML; }); 
-```
+{% endhighlight %}
 
 In Windows 10 the SafeHTML security model has been removed. When Migrating an app we should remove all references to the SafeHTML APIs, or if too numerous, feature detect them and provide a shim for environments where they don't exist. 
 
-```javascript
+{% highlight javascript %}
 // HTML injection restrictions from Windows 8 have been removed in UWP. 
 // Shim these functions since they no longer exist in UWP
 if (!window.toStaticHTML) { window.toStaticHTML = function (text) { return text; }; }
 if (window.MSApp && !window.MSApp.execUnsafeLocalFunction) { MSApp.execUnsafeLocalFunction = function (c) { c(); }; } 
-```
+{% endhighlight %}
 
 The new security model for Windows 10 apps using the default **ms-appx:///** protocol, applies an "unsafe inline" CSP directive by default. CSP is a standardized [W3C security Model]{http://w3c.github.io/webappsec-csp/}.
 
 Under the new Security Model, any inline script tags defined within an App’s HTML files will not execute. 
-```html
+{% highlight html %}
 <!-- This will not execute --> 
 <script> var myDiv = document.body.querySelector(“#mydiv”); </script> 
-```
+{% endhighlight %}
 
 Instead, we should move the script from our inline script tags into a .js file that our same HTML file can load. 
-```html
+{% highlight html %}
 <script src=”./js/default.js”></script> 
-```
+{% endhighlight %}
 
 For more information and links to documentation on the new security model, visit: https://msdn.microsoft.com/en-us/library/windows/apps/dn705792.aspx?f=255&MSPPError=-2147217396#new_security_model 
 
@@ -62,7 +62,7 @@ Some WinJS design concepts and controls have been changed more significantly tha
 
 The `ui-light` and `ui-dark` stylesheets in WinJS 2 contained CSS rules for both the set of controls in the WinJS UI Toolkit, and many browser controls like `<button>`,  `<input type="range">` and `<h1>` elements. 
 
-Outside of some generic styles applied to  <body>  and  <html> , WinJS 4.X does not globally style any browser controls such as  <button> , or apply any font styles. Instead, you must opt-in to styling for each element you create, similar to Twitter Bootstrap.
+Outside of some generic styles applied to  `<body>`  and  `<html>` , WinJS 4.X does not globally style any browser controls such as `<button>`, or apply any font styles. Instead, you must opt-in to styling for each element you create, similar to Twitter Bootstrap.
 
 For example, take button elements:
 - In WinJS 2.X, all `<button>` or `<input>` button elements would have the styles for the Modern Windows look and feel automatically applied. 
@@ -71,11 +71,11 @@ For example, take button elements:
   	- `win-button-primary` - Add this class to a button in addition to `win-button` to make it stand out
   	- `win-button-file` - Add this class to a button in addition to `win-button` when its type is `file`
       
-	  ```html
+	  {% highlight html %}
 	  <button class='win-button'>Default button</button>
 	  <input type='button' class='win-button win-button-primary' value='Primary button' />
 	  <input type='file' class='win-button win-button-file' />
-	  ```
+	  {% endhighlight %}
 - A detailed list for all the new opt-in styles can be found [here](https://github.com/winjs/winjs/wiki/Styling-HTML-Controls)
 
 ###Changes to the WinJS AppBar###
@@ -117,35 +117,41 @@ If your Windows 8.1 app is using any of these API's by their previous name, you 
 **Removed API's:**
 - Properties
 	- The `hidden` property has been removed. If apps that were using the hidden property, should use the new `opened` property instead.  Unlike the hidden property, the opened property is both get and set. 
-		```javascript
+		
+		{% highlight javascript %}
 		// if(appBar.hidden) { return true }
 		if(!appBar.opened){ return true }
-		```
-	- The `commands` property was removed. If your app was using the commands property to set AppBar commands programatically, you should use the new `data` property instead. 
-		**difference**
-		- The commands property was set only, but the data property is get/set. 
-		- Unlike the commands property which took an Array of Instantiated AppBarCommands, the AppBar.data property only accepts a WinJS.Binding.List of Instantiated AppBarCommand objects. 
-		```javascript
+		{% endhighlight %}
+
+- The `commands` property was removed. If your app was using the commands property to set AppBar commands programatically, you should use the new `data` property instead. 
+**difference**
+- The commands property was set only, but the data property is get/set. 
+- Unlike the commands property which took an Array of Instantiated AppBarCommands, the AppBar.data property only accepts a WinJS.Binding.List of Instantiated AppBarCommand objects. 
+		
+		{% highlight javascript %}
 		var cmds = [
 				new WinJS.UI.AppBarCommand(null, {icon: 'add', label'add'}),
 			    	new WinJS.UI.AppBarCommand(null, {icon: 'delete', label'delete'})
 			   ];
 		// appBar.commands = cmds;
 		appBar.data = new WinJS.Binding.List(cmds);
-		```
+		{% endhighlight %}
 		
-	- The `disabled` property has been removed. Apps that were using the disabled property can set the AppBar's `closedDisplayMode` property to "none", and close the AppBar to hide it completely, removing any ability for an end user to interact with it.
-	- The `sticky` property has been removed. Apps that were using the `sticky` property should instead set the new `closedDisplayMode` property to "compact" or "full".
-	```javascript
+- The `disabled` property has been removed. Apps that were using the disabled property can set the AppBar's `closedDisplayMode` property to "none", and close the AppBar to hide it completely, removing any ability for an end user to interact with it.
+- The `sticky` property has been removed. Apps that were using the `sticky` property should instead set the new `closedDisplayMode` property to "compact" or "full".
+	
+	{% highlight javascript %}
 	// appBar.sticky = true;
 	appBar.closedDisplayMode = WinJS.UI.AppBar.ClosedDisplayMode.compact;
-	```
-	- The `layout` property has been removed. Apps that were setting the `layout` property to "custom", should host that content inside of AppBarCommand(s) whose `type` property is set to "content".
-	- [Example](https://msdn.microsoft.com/en-us/library/windows/apps/hh780658.aspx) of AppBar with "content" commands for hosting custom conent.
+	{% endhighlight %}
+
+- The `layout` property has been removed. Apps that were setting the `layout` property to "custom", should host that content inside of AppBarCommand(s) whose `type` property is set to "content".
+- [Example](https://msdn.microsoft.com/en-us/library/windows/apps/hh780658.aspx) of AppBar with "content" commands for hosting custom conent.
 
 - Methods	
 	- showCommands() and hideCommands() have been removed from the AppBar. Apps that were using showCommands() or hideCommands() should instead use showOnlyCommands() to describe the set of commands in the AppBar that should be visible. All commands not included in the array parameter will be implicitly hidden.
-	```javascript
+	
+	{% highlight javascript %}
 	var cmdAdd = new WinJS.UI.AppBarCommand(null, {icon: 'add', label'add'});
 	var cmdDel = new WinJS.UI.AppBarCommand(null, {icon: 'delete', label'delete'});
 	appBar.data = new WinJs.Binding.List([cmdAdd, cmdDel]);
@@ -157,8 +163,8 @@ If your Windows 8.1 app is using any of these API's by their previous name, you 
 	// Show both Commands
 	// appBar.showCommands([cmdAdd, cmdDel]);
 	appBar.showOnlyCommands([cmdAdd, cmdDel]);
-	```
-	
+	{% endhighlight %}
+
 - CSS classes
       	- Removed the `.win-commandlayout` CSS class. This class name was obsolete with the removal of the "layout" property.
 

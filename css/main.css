@@ -382,7 +382,7 @@ button.next:hover {
     position: relative;
     padding: 10px 10px 0px 0px;
 }
-.jumbotron p 
+.jumbotron p.width-300 
 {
     max-width: 300px;
 }

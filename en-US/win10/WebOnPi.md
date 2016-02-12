@@ -46,7 +46,7 @@ lang: en-US
                     <p>If you've received a Raspberry Pi from the Web Platform team, your new Pi has these awesome sample apps:</p>
                     <ol class="spacer-16-top">
                         <li>
-                            <p><a href="https://github.com/MicrosoftEdge/WebOnPi">Home App</a> allows you to navigate back and forth between the pre-installed apps. You can also see your device info and select your network preferences. 
+                            <p><a href="https://github.com/MicrosoftEdge/WebOnPi">Home App</a> allows you to navigate back and forth between pre-installed apps. You can also see your device info and select your network preferences. 
                             </p>
                         </li>
                         <li>

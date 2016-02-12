@@ -46,7 +46,7 @@ lang: en-US
                     <p>If you've received a Raspberry Pi from the Web Platform team, your new Pi has these awesome sample apps:</p>
                     <ol class="spacer-16-top">
                         <li>
-                            <p><a href="http://seksenov.github.io/WebHelloBlinky/">Web Hello Blinky</a> allows you to toggle and modulate the blinking frequency of the on-board LED. This is possible thanks to the simple JavaScript projections of WinRT APIs. Check out the repo to see how you can easily control the Pi's GPIO's through JavaScript. 
+                            <p><a href="https://github.com/seksenov/WebHelloBlinky">Web Hello Blinky</a> allows you to toggle and modulate the blinking frequency of the on-board LED. This is possible thanks to the simple JavaScript projections of WinRT APIs. Check out the repo to see how you can easily control the Pi's GPIO's through JavaScript. 
                             </p>
                         </li>
                         <li>
@@ -58,7 +58,7 @@ lang: en-US
                             </p>
                         </li>
                         <li>
-                            <p><a href="http://windowstodo.meteor.com/">MeteorJS Todos</a> helps you stay organized no matter your device. Desktop, mobile or even a Raspberry Pi, we got you covered. The app is built with the platform MeteorJS.
+                            <p><a href="https://github.com/seksenov/WindowsToDos">MeteorJS Todos</a> helps you stay organized no matter your device. Desktop, mobile or even a Raspberry Pi, we got you covered. The app is built with the platform MeteorJS.
                             </p>
                         </li>
                         <li>

@@ -36,7 +36,7 @@ lang: en-US
         <div class="col-xs-24 col-md-12">
             <section class="section">
                 <header class="section-header">
-                    <h2 class="section-title">What is the Windows Bridge for Hosted Web Apps?</h2>
+                    <h2 class="section-title">What are Hosted Web Apps on Windows 10?</h2>
                 </header>
                 <div class="section-body">
                     <p>For existing web applications, Windows 10 makes it easy for you to create a Universal Windows Platform (UWP) app that packages your website for publishing to the Store.</p>

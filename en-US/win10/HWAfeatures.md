@@ -159,6 +159,6 @@ An easy way to turn your website into a UWP app is to use an **app manifest** an
   - [**RJS: examples of platform integration points**](http://rjs.azurewebsites.net/)
   - [**Codepen: sandbox to use for calling Windows Runtime APIs**](http://codepen.io/seksenov/pen/wBbVyb/)
   - [**Cortana interactions**](https://msdn.microsoft.com/en-us/library/windows/apps/dn974231.aspx)
-  - [**Voice Command Defintion (VCD) elements and attributes v1.2**](https://msdn.microsoft.com/en-us/library/windows/apps/dn954977.aspx)
+  - [**Voice Command Definition (VCD) elements and attributes v1.2**](https://msdn.microsoft.com/en-us/library/windows/apps/dn954977.aspx)
   - [**Web authentication broker considerations for online providers**](https://msdn.microsoft.com/en-us/library/windows/apps/dn448956.aspx)
   - [**App capability declarations**](https://msdn.microsoft.com/en-us/library/windows/apps/hh464936.aspx)

@@ -854,32 +854,29 @@
 
 <p>Here is an example of how to implement a Live Tile and update it from remote JavaScript:</p>
 
-<p>```javascript
+<p><code>javascript
 	function updateTile(message, imgUrl, imgAlt) {
 	    // Namespace: Windows.UI.Notifications
-	    if (typeof Windows !== ‘undefined’&amp;&amp;
-	            typeof Windows.UI !== ‘undefined’ &amp;&amp;
-	            typeof Windows.UI.Notifications !== ‘undefined’) {</p>
-
-<pre><code>        var notifications = Windows.UI.Notifications,
-        tile = notifications.TileTemplateType.tileSquare150x150PeekImageAndText01,
-        tileContent = notifications.TileUpdateManager.getTemplateContent(tile),
-        tileText = tileContent.getElementsByTagName('text'),
-        tileImage = tileContent.getElementsByTagName('image');
-
-        tileText[0].appendChild(tileContent.createTextNode(message || 'Demo Message'));
-        tileImage[0].setAttribute('src', imgUrl || 'https://unsplash.it/150/150/?random');
-        tileImage[0].setAttribute('alt', imgAlt || 'Random demo image');
-
-        var tileNotification = new notifications.TileNotification(tileContent);
-        var currentTime = new Date();
-        tileNotification.expirationTime = new Date(currentTime.getTime() + 600 * 1000);
-        notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
-    } else {
-        //Alternative behavior
-    }
-} ```
-</code></pre>
+	    if (typeof Windows !== 'undefined'&amp;&amp;
+	            typeof Windows.UI !== 'undefined' &amp;&amp;
+	            typeof Windows.UI.Notifications !== 'undefined') {	
+	        var notifications = Windows.UI.Notifications,
+	        tile = notifications.TileTemplateType.tileSquare150x150PeekImageAndText01,
+	        tileContent = notifications.TileUpdateManager.getTemplateContent(tile),
+	        tileText = tileContent.getElementsByTagName('text'),
+	        tileImage = tileContent.getElementsByTagName('image');	
+	        tileText[0].appendChild(tileContent.createTextNode(message || 'Demo Message'));
+	        tileImage[0].setAttribute('src', imgUrl || 'https://unsplash.it/150/150/?random');
+	        tileImage[0].setAttribute('alt', imgAlt || 'Random demo image');	
+	        var tileNotification = new notifications.TileNotification(tileContent);
+	        var currentTime = new Date();
+	        tileNotification.expirationTime = new Date(currentTime.getTime() + 600 * 1000);
+	        notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
+	    } else {
+	        //Alternative behavior
+	    }
+	}
+</code></p>
 
 <p>This code will produce a tile that looks something like this:
 <img src="/WebAppsDocs/images/HWA_liveTile.png" /></p>

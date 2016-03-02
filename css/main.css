@@ -400,5 +400,10 @@ img.horizontal-margin-auto
 }
 .grey-border
 {
-    border: 1px solid grey;
+    border: 1px solid gray;
+}
+
+.highlight 
+{
+    color: gray;
 }

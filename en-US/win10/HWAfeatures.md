@@ -5,13 +5,13 @@ permalink: /en-US/win10/HWAfeatures.htm
 lang: en-US
 ---
 
-#Hosted Web Apps - Accessing Windows features
+# Hosted Web Apps - Accessing Windows features
 
 You web app can have full access to the **Universal Windows Platform (UWP)**, including calling Windows Runtime APIs directly from script hosted on a server, leveraging Cortana integration, and using an online authentication provider. Hybrid apps are also supported as you can include local code to be called from the hosted script and manage app navigation between remote and local pages.
 
 **Project Westminster** enables you to get started.  
 
-##Get started
+## Get started
 1. Install [**Visual Studio 2015**](https://dev.windows.com/en-us/downloads) - The  free, full-featured Visual Studio Community 2015 includes the Windows 10 developer tools, universal app templates, a code editor, a powerful debugger, Windows Mobile emulators, rich language support, and more, all ready to use in production.
 
   **NOTE:** If you are using a different development environment than Visual Studio 2015, you can download the [Windows Standalone SDK for Windows 10](https://dev.windows.com/en-us/downloads/windows-10-sdk) installer.

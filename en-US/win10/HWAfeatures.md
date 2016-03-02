@@ -35,16 +35,16 @@ If your user navigates to a URL that is not included in your rules, then Windows
 
 Here are a few examples of ACURs.
 
-```xml
-	<Application
-	Id="App"
-	StartPage="http://contoso.com/home">
-	<uap:ApplicationContentUriRules>
-		<uap:Rule Type="include" Match="https://contoso.com/" WindowsRuntimeAccess="all" />
-		<uap:Rule Type="include" Match="https://*.contoso.com/" WindowsRuntimeAccess="all" />
-		<uap:Rule Type="exclude" Match="https://contoso.com/excludethispage.aspx" />
-	</uap:ApplicationContentUriRules>
-```
+{% highlight xml %}
+<Application
+Id="App"
+StartPage="http://contoso.com/home">
+<uap:ApplicationContentUriRules>
+	<uap:Rule Type="include" Match="https://contoso.com/" WindowsRuntimeAccess="all" />
+	<uap:Rule Type="include" Match="https://*.contoso.com/" WindowsRuntimeAccess="all" />
+	<uap:Rule Type="exclude" Match="https://contoso.com/excludethispage.aspx" />
+</uap:ApplicationContentUriRules>
+{% endhighlight %}
 
 ## Call Windows Runtime APIs
 If a URL is defined within the app’s bounds (ACURs), it can call Windows Runtime APIs with JavaScript using the “WindowsRuntimeAccess” attribute. The Windows namespace will be injected and present in the script engine when a URL with appropriate access is loaded in the App Host. This makes Universal Windows APIs available for the app’s scripts to call directly. As a developer, you just need to feature detect for the Windows API you would like to call and, if available, proceed to light-up platform features.  
@@ -57,39 +57,39 @@ To enable this, you need to specify the `(WindowsRuntimeAccess="<<level>>")` att
 
 Here is an example rule type:
 
-```javascript
-	<uap:ApplicationContentUriRules>
-      		<uap:Rule Type="include" Match="http://contoso.com/" WindowsRuntimeAccess="all"  />
-	</uap:ApplicationContentUriRules>
-```
+{% highlight xml %}
+<uap:ApplicationContentUriRules>
+    <uap:Rule Type="include" Match="http://contoso.com/" WindowsRuntimeAccess="all"  />
+</uap:ApplicationContentUriRules>
+{% endhighlight %}
 
 This gives script running on http://contoso.com/ access to Windows Runtime namespaces and custom packaged components in the package. See the [**Windows.UI.Notifications.js**](https://gist.github.com/Gr8Gatsby/3d471150e5b317eb1813#file-windows-ui-notifications-js) example on GitHub for toast notifications.
 
 Here is an example of how to implement a Live Tile and update it from remote JavaScript:
 
-```javascript
-	function updateTile(message, imgUrl, imgAlt) {
-	    // Namespace: Windows.UI.Notifications
-	    if (typeof Windows !== 'undefined'&&
-	            typeof Windows.UI !== 'undefined' &&
-	            typeof Windows.UI.Notifications !== 'undefined') {	
-	        var notifications = Windows.UI.Notifications,
-	        tile = notifications.TileTemplateType.tileSquare150x150PeekImageAndText01,
-	        tileContent = notifications.TileUpdateManager.getTemplateContent(tile),
-	        tileText = tileContent.getElementsByTagName('text'),
-	        tileImage = tileContent.getElementsByTagName('image');	
-	        tileText[0].appendChild(tileContent.createTextNode(message || 'Demo Message'));
-	        tileImage[0].setAttribute('src', imgUrl || 'https://unsplash.it/150/150/?random');
-	        tileImage[0].setAttribute('alt', imgAlt || 'Random demo image');	
-	        var tileNotification = new notifications.TileNotification(tileContent);
-	        var currentTime = new Date();
-	        tileNotification.expirationTime = new Date(currentTime.getTime() + 600 * 1000);
-	        notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
-	    } else {
-	        //Alternative behavior
-	    }
-	}
-```
+{% highlight javascript %}
+function updateTile(message, imgUrl, imgAlt) {
+    // Namespace: Windows.UI.Notifications
+    if (typeof Windows !== 'undefined'&&
+            typeof Windows.UI !== 'undefined' &&
+            typeof Windows.UI.Notifications !== 'undefined') {	
+        var notifications = Windows.UI.Notifications,
+        tile = notifications.TileTemplateType.tileSquare150x150PeekImageAndText01,
+        tileContent = notifications.TileUpdateManager.getTemplateContent(tile),
+        tileText = tileContent.getElementsByTagName('text'),
+        tileImage = tileContent.getElementsByTagName('image');	
+        tileText[0].appendChild(tileContent.createTextNode(message || 'Demo Message'));
+        tileImage[0].setAttribute('src', imgUrl || 'https://unsplash.it/150/150/?random');
+        tileImage[0].setAttribute('alt', imgAlt || 'Random demo image');	
+        var tileNotification = new notifications.TileNotification(tileContent);
+        var currentTime = new Date();
+        tileNotification.expirationTime = new Date(currentTime.getTime() + 600 * 1000);
+        notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
+    } else {
+        //Alternative behavior
+    }
+}
+{% endhighlight %}
 
 This code will produce a tile that looks something like this:
 <img src="{{site.baseurl}}/images/HWA_liveTile.png">
@@ -104,9 +104,9 @@ When you add a `<meta>` element tag that lists the location of your VCD file, Wi
 
 Here is an example of the use of the <meta> tag in an html page in a hosted web app:
 
-```html
+{% highlight html %}
 <meta name="msapplication-cortanavcd" content="http:// contoso.com/vcd.xml"/>
-```
+{% endhighlight %}
 
 For more info on Cortana integration and VCDs, see [**Cortana interactions**](https://msdn.microsoft.com/en-us/library/windows/apps/dn974231.aspx) and [**Voice Command Defintion (VCD) elements and attributes v1.2**](https://msdn.microsoft.com/en-us/library/windows/apps/dn954977.aspx).
 
@@ -121,11 +121,9 @@ You have options for creating your UWP app. The app might be designed to be down
 You can use the web authentication broker to handle the login flow for your users if you have an online identity provider that uses internet authentication and authorization protocols like OpenID or OAuth. You specify the start and end URIs in a `<meta>` tag on an html page in your app. Windows detects these URIs and passes them to the web authentication broker to complete the login flow. The start URI consists of the address where you send the authentication request to your online provider appended with other required information, such as an app ID, a redirect URI where the user is sent after completing authentication, and the expected response type. You can find out from your provider what parameters are required.
 Here is an example use of the `<meta>` tag:
 
-```html
-	<meta name="ms-webauth-uris" 
-	 	content="https://<providerstartpoint>?client_id=<clientid>&response_type=token, 
-               		https://<appendpoint>"/>
-```
+{% highlight html %}
+<meta name="ms-webauth-uris" content="https://<providerstartpoint>?client_id=<clientid>&response_type=token, https://<appendpoint>"/>
+{% endhighlight %}
 
 For more guidance, see [**Web authentication broker considerations for online providers**](https://msdn.microsoft.com/en-us/library/windows/apps/dn448956.aspx).
 

@@ -820,16 +820,14 @@
 
 <p>Here are a few examples of ACURs.</p>
 
-<p><code>xml
-	&lt;Application
-	Id="App"
-	StartPage="http://contoso.com/home"&gt;
-	&lt;uap:ApplicationContentUriRules&gt;
-		&lt;uap:Rule Type="include" Match="https://contoso.com/" WindowsRuntimeAccess="all" /&gt;
-		&lt;uap:Rule Type="include" Match="https://*.contoso.com/" WindowsRuntimeAccess="all" /&gt;
-		&lt;uap:Rule Type="exclude" Match="https://contoso.com/excludethispage.aspx" /&gt;
-	&lt;/uap:ApplicationContentUriRules&gt;
-</code></p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Application</span>
+<span class="na">Id=</span><span class="s">&quot;App&quot;</span>
+<span class="na">StartPage=</span><span class="s">&quot;http://contoso.com/home&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;uap:ApplicationContentUriRules&gt;</span>
+	<span class="nt">&lt;uap:Rule</span> <span class="na">Type=</span><span class="s">&quot;include&quot;</span> <span class="na">Match=</span><span class="s">&quot;https://contoso.com/&quot;</span> <span class="na">WindowsRuntimeAccess=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;uap:Rule</span> <span class="na">Type=</span><span class="s">&quot;include&quot;</span> <span class="na">Match=</span><span class="s">&quot;https://*.contoso.com/&quot;</span> <span class="na">WindowsRuntimeAccess=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;uap:Rule</span> <span class="na">Type=</span><span class="s">&quot;exclude&quot;</span> <span class="na">Match=</span><span class="s">&quot;https://contoso.com/excludethispage.aspx&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/uap:ApplicationContentUriRules&gt;</span></code></pre></div>
 
 <h2 id="call-windows-runtime-apis">Call Windows Runtime APIs</h2>
 <p>If a URL is defined within the app’s bounds (ACURs), it can call Windows Runtime APIs with JavaScript using the “WindowsRuntimeAccess” attribute. The Windows namespace will be injected and present in the script engine when a URL with appropriate access is loaded in the App Host. This makes Universal Windows APIs available for the app’s scripts to call directly. As a developer, you just need to feature detect for the Windows API you would like to call and, if available, proceed to light-up platform features.</p>
@@ -844,39 +842,35 @@
 
 <p>Here is an example rule type:</p>
 
-<p><code>javascript
-	&lt;uap:ApplicationContentUriRules&gt;
-      		&lt;uap:Rule Type="include" Match="http://contoso.com/" WindowsRuntimeAccess="all"  /&gt;
-	&lt;/uap:ApplicationContentUriRules&gt;
-</code></p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;uap:ApplicationContentUriRules&gt;</span>
+    <span class="nt">&lt;uap:Rule</span> <span class="na">Type=</span><span class="s">&quot;include&quot;</span> <span class="na">Match=</span><span class="s">&quot;http://contoso.com/&quot;</span> <span class="na">WindowsRuntimeAccess=</span><span class="s">&quot;all&quot;</span>  <span class="nt">/&gt;</span>
+<span class="nt">&lt;/uap:ApplicationContentUriRules&gt;</span></code></pre></div>
 
 <p>This gives script running on http://contoso.com/ access to Windows Runtime namespaces and custom packaged components in the package. See the <a href="https://gist.github.com/Gr8Gatsby/3d471150e5b317eb1813#file-windows-ui-notifications-js"><strong>Windows.UI.Notifications.js</strong></a> example on GitHub for toast notifications.</p>
 
 <p>Here is an example of how to implement a Live Tile and update it from remote JavaScript:</p>
 
-<p><code>javascript
-	function updateTile(message, imgUrl, imgAlt) {
-	    // Namespace: Windows.UI.Notifications
-	    if (typeof Windows !== 'undefined'&amp;&amp;
-	            typeof Windows.UI !== 'undefined' &amp;&amp;
-	            typeof Windows.UI.Notifications !== 'undefined') {	
-	        var notifications = Windows.UI.Notifications,
-	        tile = notifications.TileTemplateType.tileSquare150x150PeekImageAndText01,
-	        tileContent = notifications.TileUpdateManager.getTemplateContent(tile),
-	        tileText = tileContent.getElementsByTagName('text'),
-	        tileImage = tileContent.getElementsByTagName('image');	
-	        tileText[0].appendChild(tileContent.createTextNode(message || 'Demo Message'));
-	        tileImage[0].setAttribute('src', imgUrl || 'https://unsplash.it/150/150/?random');
-	        tileImage[0].setAttribute('alt', imgAlt || 'Random demo image');	
-	        var tileNotification = new notifications.TileNotification(tileContent);
-	        var currentTime = new Date();
-	        tileNotification.expirationTime = new Date(currentTime.getTime() + 600 * 1000);
-	        notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
-	    } else {
-	        //Alternative behavior
-	    }
-	}
-</code></p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">updateTile</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">imgUrl</span><span class="p">,</span> <span class="nx">imgAlt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Namespace: Windows.UI.Notifications</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">Windows</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="o">&amp;&amp;</span>
+            <span class="k">typeof</span> <span class="nx">Windows</span><span class="p">.</span><span class="nx">UI</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span> <span class="o">&amp;&amp;</span>
+            <span class="k">typeof</span> <span class="nx">Windows</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Notifications</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">)</span> <span class="p">{</span>	
+        <span class="kd">var</span> <span class="nx">notifications</span> <span class="o">=</span> <span class="nx">Windows</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Notifications</span><span class="p">,</span>
+        <span class="nx">tile</span> <span class="o">=</span> <span class="nx">notifications</span><span class="p">.</span><span class="nx">TileTemplateType</span><span class="p">.</span><span class="nx">tileSquare150x150PeekImageAndText01</span><span class="p">,</span>
+        <span class="nx">tileContent</span> <span class="o">=</span> <span class="nx">notifications</span><span class="p">.</span><span class="nx">TileUpdateManager</span><span class="p">.</span><span class="nx">getTemplateContent</span><span class="p">(</span><span class="nx">tile</span><span class="p">),</span>
+        <span class="nx">tileText</span> <span class="o">=</span> <span class="nx">tileContent</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">),</span>
+        <span class="nx">tileImage</span> <span class="o">=</span> <span class="nx">tileContent</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">);</span>	
+        <span class="nx">tileText</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">tileContent</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="nx">message</span> <span class="o">||</span> <span class="s1">&#39;Demo Message&#39;</span><span class="p">));</span>
+        <span class="nx">tileImage</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="nx">imgUrl</span> <span class="o">||</span> <span class="s1">&#39;https://unsplash.it/150/150/?random&#39;</span><span class="p">);</span>
+        <span class="nx">tileImage</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;alt&#39;</span><span class="p">,</span> <span class="nx">imgAlt</span> <span class="o">||</span> <span class="s1">&#39;Random demo image&#39;</span><span class="p">);</span>	
+        <span class="kd">var</span> <span class="nx">tileNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">notifications</span><span class="p">.</span><span class="nx">TileNotification</span><span class="p">(</span><span class="nx">tileContent</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">currentTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+        <span class="nx">tileNotification</span><span class="p">.</span><span class="nx">expirationTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">currentTime</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">+</span> <span class="mi">600</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="nx">notifications</span><span class="p">.</span><span class="nx">TileUpdateManager</span><span class="p">.</span><span class="nx">createTileUpdaterForApplication</span><span class="p">().</span><span class="nx">update</span><span class="p">(</span><span class="nx">tileNotification</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">//Alternative behavior</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
 <p>This code will produce a tile that looks something like this:
 <img src="/WebAppsDocs/images/HWA_liveTile.png" /></p>
@@ -891,10 +885,7 @@
 
 <p>Here is an example of the use of the <meta /> tag in an html page in a hosted web app:</p>
 
-<p>```html</p>
-<meta name="msapplication-cortanavcd" content="http:// contoso.com/vcd.xml" />
-
-<p>```</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;msapplication-cortanavcd&quot;</span> <span class="na">content=</span><span class="s">&quot;http:// contoso.com/vcd.xml&quot;</span><span class="nt">/&gt;</span></code></pre></div>
 
 <p>For more info on Cortana integration and VCDs, see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn974231.aspx"><strong>Cortana interactions</strong></a> and <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn954977.aspx"><strong>Voice Command Defintion (VCD) elements and attributes v1.2</strong></a>.</p>
 
@@ -907,11 +898,7 @@
 <p>You can use the web authentication broker to handle the login flow for your users if you have an online identity provider that uses internet authentication and authorization protocols like OpenID or OAuth. You specify the start and end URIs in a <code>&lt;meta&gt;</code> tag on an html page in your app. Windows detects these URIs and passes them to the web authentication broker to complete the login flow. The start URI consists of the address where you send the authentication request to your online provider appended with other required information, such as an app ID, a redirect URI where the user is sent after completing authentication, and the expected response type. You can find out from your provider what parameters are required.
 Here is an example use of the <code>&lt;meta&gt;</code> tag:</p>
 
-<p><code>html
-	&lt;meta name="ms-webauth-uris" 
-	 	content="https://&lt;providerstartpoint&gt;?client_id=&lt;clientid&gt;&amp;response_type=token, 
-               		https://&lt;appendpoint&gt;"/&gt;
-</code></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;ms-webauth-uris&quot;</span> <span class="na">content=</span><span class="s">&quot;https://&lt;providerstartpoint&gt;?client_id=&lt;clientid&gt;&amp;response_type=token, https://&lt;appendpoint&gt;&quot;</span><span class="nt">/&gt;</span></code></pre></div>
 
 <p>For more guidance, see <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn448956.aspx"><strong>Web authentication broker considerations for online providers</strong></a>.</p>
 

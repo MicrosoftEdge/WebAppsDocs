@@ -1,8 +1,6 @@
 ---
-layout: index
 title: Create a Hosted Web App
-permalink: /en-US/win10/CreateHWA.htm
-lang: en-US
+redirect_to: "https://developer.microsoft.com/en-us/windows/bridges/hosted-web-apps"
 ---
 
 <div class="container">

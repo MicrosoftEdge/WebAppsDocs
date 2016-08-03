@@ -1,8 +1,8 @@
 # Site settings
 baseurl: "/WebAppsDocs"
-url: "http://MicrosoftEdge.github.io/WebAppsDocs"
+url: "https://developer.microsoft.com/en-us/windows/bridges/hosted-web-apps"
 repositoryurl: "https://github.com/MicrosoftEdge/WebAppsDocs/tree/master/"
-landingurl: "/WebAppsDocs/en-US/win10/HWA.htm"
+landingurl: "https://developer.microsoft.com/en-us/windows/bridges/hosted-web-apps"
 hacksterurl: "http://microsoft.hackster.io"
 hardwareurl: "http://go.microsoft.com/fwlink/p/?linkID=532948"
 signupurl: "https://www.windowsondevices.com/signup.aspx"

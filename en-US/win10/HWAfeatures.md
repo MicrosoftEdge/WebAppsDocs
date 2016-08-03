@@ -1,8 +1,6 @@
 ---
-layout: default
 title: Hosted Web Apps - Accessing Windows features
-permalink: /en-US/win10/HWAfeatures.htm
-lang: en-US
+redirect_to: "https://msdn.microsoft.com/en-us/windows/uwp/porting/hwa-access-features"
 ---
 
 # Hosted Web Apps - Accessing Windows features

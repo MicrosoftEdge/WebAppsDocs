@@ -1,8 +1,6 @@
 ---
-layout: index
 title: Hosted Web Apps
-permalink: /en-US/win10/HWA.htm
-lang: en-US
+redirect_to: "https://developer.microsoft.com/en-us/windows/bridges/hosted-web-apps"
 ---
 
 

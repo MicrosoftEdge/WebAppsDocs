@@ -3,6 +3,8 @@ layout: index
 title: Web apps on the Raspberry Pi 2
 permalink: /en-US/win10/WebOnPi.htm
 lang: en-US
+redirect_to: 
+    - https://developer.microsoft.com/en-us/windows/bridges/hosted-web-apps
 ---
 
 <div class="jumbotron jumbotron-centered webapp-accent">

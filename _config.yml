@@ -16,3 +16,9 @@ permalink: pretty
 highlighter: pygments
 safe: true
 lsi: false
+
+gems:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
